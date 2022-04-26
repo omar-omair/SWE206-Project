@@ -1,3 +1,4 @@
-#login:hover {
-    -fx-background-color: #BBE1FA;
+.sideButton:hover {
+    -fx-border-width: 0px 2px 0px 0px;
+    -fx-border-color: #0F4C75;
 }
