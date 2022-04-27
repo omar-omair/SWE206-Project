@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,8 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appMenuController">
    <children>
       <AnchorPane fx:id="slider" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #3282B8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="585.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -63,6 +63,11 @@
                         <Font name="Leelawadee UI" size="15.0" />
                      </font>
                   </JFXButton>
+                  <Label prefHeight="43.0" prefWidth="205.0" text="  Copyright © 2022 Omar, Ghaith, Waleed, Kumail." textFill="#0f4c75">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
             <ImageView fitHeight="94.0" fitWidth="124.0" layoutX="61.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -87,6 +92,36 @@
       <ImageView fx:id="closeButton" fitHeight="20.0" fitWidth="20.0" layoutX="215.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/icons8-close-50.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="286.0" layoutY="151.0" text="Applicants list" />
+      <ImageView fx:id="appListButton" fitHeight="80.0" fitWidth="80.0" layoutX="283.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/resume.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="441.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/email.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="430.0" layoutY="151.0" text="Create Job offering" />
+      <Label layoutX="274.0" layoutY="308.0" text="Assign Interviewee" />
+      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="610.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/2666501.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="283.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/job-interview.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="616.0" layoutY="151.0" text="Assign Job" />
+      <Label layoutX="442.0" layoutY="308.0" text="New Applicant" />
+      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="441.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/resume%20(1).png" />
          </image>
       </ImageView>
    </children>

@@ -9,7 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import com.jfoenix.controls.JFXButton;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -41,34 +42,11 @@ public class controller {
     @FXML
     private Button loginButton;
 
-    // Main menu variables
+    @FXML
+    private Text incorrectLogin;
 
     @FXML
-    private JFXButton applicantsButton;
-
-    @FXML
-    private ImageView closeButton;
-
-    @FXML
-    private JFXButton employeesButton;
-
-    @FXML
-    private JFXButton interviewsButton;
-
-    @FXML
-    private ImageView settingsButton;
-
-    @FXML
-    private AnchorPane slider;
-
-    @FXML
-    private JFXButton unitsButton;
-
-
-
-    @FXML
-    void initialize() {
-
+    public void initialize() {
         eyeHidden.setOnMouseClicked(e -> {
             passwordReveal.setText(passwordText.getText());
             passwordReveal.setVisible(true);
@@ -86,22 +64,24 @@ public class controller {
         });
 
         
-        loginButton.setOnMouseClicked(e -> {
+        loginButton.setOnMouseClicked(e -> { 
             try {
                 if (userText.getText().equalsIgnoreCase("Ahmed12") && 
                 (passwordText.getText().equalsIgnoreCase("123") || passwordReveal.getText().equalsIgnoreCase("123"))) {
-                    Parent root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
+                    AnchorPane loader = (AnchorPane) FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
                     Stage stage = (Stage)(loginButton.getScene().getWindow());
-                    stage.setScene(new Scene(root));
+                    stage.setScene(new Scene(loader));
+                    incorrectLogin.setVisible(false);
+                    stage.setTitle("  Portal");
+                    stage.show();
                 }
                 else {
-                    
+                    incorrectLogin.setVisible(true);
                 }
             }
             catch(IOException ex) {
                 ex.printStackTrace();
             }
         });
-
     }
 }

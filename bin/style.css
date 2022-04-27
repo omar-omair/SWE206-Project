@@ -1,4 +1,4 @@
 .sideButton:hover {
-    -fx-border-width: 0px 2px 0px 0px;
+    -fx-border-width: 0px 4px 0px 0px;
     -fx-border-color: #0F4C75;
 }
