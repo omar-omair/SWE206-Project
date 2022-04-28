@@ -121,6 +121,7 @@
             <Color green="0.6470588445663452" blue="0.9607843160629272" />
          </selectedColor>
       </JFXRadioButton>
-      <Button fx:id="addButton" layoutX="459.0" layoutY="356.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #3282B8; -fx-text-fill: #FFFFFF;" text="Add" />
+      <Button fx:id="addButton" layoutX="459.0" layoutY="356.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #3282B8; -fx-text-fill: #FFFFFF;" text="Add" visible="false" />
+      <Button fx:id="addButtonL" layoutX="459.0" layoutY="356.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #808080; -fx-text-fill: #FFFFFF;" text="Add" />
    </children>
 </AnchorPane>

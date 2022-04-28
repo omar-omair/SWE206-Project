@@ -42,8 +42,30 @@ public class appListController {
     @FXML
     private JFXButton unitsButton; 
 
-    public void initialize() {
+    @FXML
+    private Button jobButtonL;
 
+    @FXML
+    private Button jobButtonUN;
+
+    @FXML
+    private Button offerButtonL;
+
+    @FXML
+    private Button offerButtonUN;
+
+    public void initialize() {
+        offerButtonL.setOnAction(e -> {
+            try {
+                AnchorPane loader = (AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("jobOfferMenu.fxml"));
+                Stage stage = (Stage)(offerButtonUN.getScene().getWindow());
+                stage.setScene(new Scene(loader));
+                stage.show();
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
     public void changeToMain(ActionEvent event) throws IOException {

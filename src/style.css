@@ -2,3 +2,17 @@
     -fx-border-width: 0px 4px 0px 0px;
     -fx-border-color: #0F4C75;
 }
+
+.salary>.thumb {
+    -fx-background-color: #0F4C75;
+}
+.salary>.animated-thumb {
+    -fx-background-color: #0F4C75
+}
+.salary>.colored-track {
+    -fx-background-color: #3282b8;
+}
+.salary>.track {
+    -fx-prefHeight: 7px;
+    -fx-background-color: linear-gradient(to left, red, orange, yellow, green);
+}
