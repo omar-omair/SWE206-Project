@@ -89,37 +89,14 @@
             <AnchorPane layoutX="21.0" layoutY="5.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0F4C75;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="490.0" />
          </children>
       </AnchorPane>
-      <ImageView fx:id="closeButton" fitHeight="20.0" fitWidth="20.0" layoutX="215.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../res/icons8-close-50.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="286.0" layoutY="151.0" text="Applicants list" />
-      <ImageView fx:id="appListButton" fitHeight="80.0" fitWidth="80.0" layoutX="283.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="363.0" layoutY="259.0" text="Applicants list" />
+      <ImageView fx:id="appListButton" fitHeight="80.0" fitWidth="80.0" layoutX="360.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/resume.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="441.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../res/email.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="430.0" layoutY="151.0" text="Create Job offering" />
-      <Label layoutX="274.0" layoutY="308.0" text="Assign Interviewee" />
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="610.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../res/2666501.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="283.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../res/job-interview.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="616.0" layoutY="151.0" text="Assign Job" />
-      <Label layoutX="442.0" layoutY="308.0" text="New Applicant" />
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="441.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="551.0" layoutY="259.0" text="New Applicant" />
+      <ImageView fx:id="newAppButton" fitHeight="80.0" fitWidth="80.0" layoutX="551.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/resume%20(1).png" />
          </image>

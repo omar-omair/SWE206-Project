@@ -42,11 +42,26 @@ public class appMenuController {
     private ImageView appListButton;
 
     @FXML
+    private ImageView newAppButton;
+
+    @FXML
     public void initialize() {
          appListButton.setOnMouseClicked(e -> {
             try {    
             AnchorPane loader = FXMLLoader.load(getClass().getClassLoader().getResource("appList.fxml"));
             Stage stage = (Stage)(appListButton.getScene().getWindow());
+            stage.setScene(new Scene(loader));
+            stage.show();
+            }  
+            catch(IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        newAppButton.setOnMouseClicked(t -> {
+            try {    
+            AnchorPane loader = FXMLLoader.load(getClass().getClassLoader().getResource("newAppMenu.fxml"));
+            Stage stage = (Stage)(newAppButton.getScene().getWindow());
             stage.setScene(new Scene(loader));
             stage.show();
             }  
