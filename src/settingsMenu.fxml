@@ -17,7 +17,7 @@
       </Label>
       <Button fx:id="offerButtonUN" layoutX="269.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Create a job offering" textFill="WHITE" visible="false" />
       <Button fx:id="removeButtonUN" layoutX="537.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Remove Applicant" textFill="WHITE" visible="false" AnchorPane.leftAnchor="560.0" />
-      <ImageView fx:id="back" fitHeight="22.0" fitWidth="22.0" layoutX="48.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="453.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="730.0" AnchorPane.topAnchor="25.0">
+      <ImageView fx:id="back" fitHeight="22.0" fitWidth="22.0" layoutX="48.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" styleClass="back" AnchorPane.bottomAnchor="453.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="730.0" AnchorPane.topAnchor="25.0">
          <image>
             <Image url="@../res/left-arrow.png" />
          </image>
@@ -27,7 +27,7 @@
             <Font name="Bodoni MT Bold" size="36.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="moonIcon" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../res/dark-mode.png" />
                </image>
@@ -39,7 +39,7 @@
             <Font name="Bodoni MT Bold" size="36.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="signOutIcon" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../res/logout.png" />
                </image>

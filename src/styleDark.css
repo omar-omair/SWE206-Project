@@ -1,6 +1,10 @@
 .blackText {
-    -fx-text-color: #FFFFFF;
+    -fx-text-fill: White;
 }
 .background {
     -fx-background-color: #121212;
+}
+
+.back {
+    -fx-image: url(darkImages/left-arrow-removebg-preview.png);
 }

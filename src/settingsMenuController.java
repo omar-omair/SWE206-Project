@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.layout.*;
@@ -44,15 +45,31 @@ public class settingsMenuController {
     private AnchorPane pane;
 
     @FXML
+    private ImageView moonIcon;
+
+    @FXML
+    private ImageView signOutIcon;
+
+
+    @FXML
     public void initialize() {
+        if(dark == true) {
+            darkSwitch.setSelected(true);
+            darkSwitch.setText("ON");
+            pane.getStylesheets().remove("style.css");
+            pane.getStylesheets().add("styleDark.css");
+        }
+
         darkSwitch.setOnAction( e -> {
             if(dark == false) {
                 dark = true;
+                darkSwitch.setText("ON");
                 pane.getStylesheets().remove("style.css");
                 pane.getStylesheets().add("styleDark.css");
             }
             else {
                 dark = false;
+                darkSwitch.setText("OFF");
                 pane.getStylesheets().remove("styleDark.css");
                 pane.getStylesheets().add("style.css");
             }
