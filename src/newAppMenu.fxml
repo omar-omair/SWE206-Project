@@ -20,7 +20,7 @@
          <children>
             <VBox layoutX="83.0" layoutY="161.0" prefHeight="340.0" prefWidth="215.0" style="-fx-background-color: #3282B8;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="161.0">
                <children>
-                  <JFXButton fx:id="applicantsButton" alignment="BASELINE_LEFT" onAction="#changeToMain" prefHeight="72.0" prefWidth="205.0" styleClass="sideButton" text="Applicants" textFill="WHITE">
+                  <JFXButton fx:id="applicantsButton" alignment="BASELINE_LEFT" prefHeight="72.0" prefWidth="205.0" styleClass="sideButton" text="Applicants" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -94,13 +94,13 @@
             <AnchorPane layoutX="21.0" layoutY="5.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0F4C75;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="490.0" />
          </children>
       </AnchorPane>
-      <TextField fx:id="name" layoutX="400.0" layoutY="130.0" prefHeight="25.0" prefWidth="252.0" style="-fx-background-color: #BBE1FA;" />
+      <TextField fx:id="name" layoutX="400.0" layoutY="130.0" prefHeight="25.0" prefWidth="252.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #00A5F5;" />
       <Label layoutX="289.0" layoutY="134.0" prefHeight="17.0" prefWidth="46.0" text="Name" />
-      <TextField fx:id="id" layoutX="400.0" layoutY="170.0" prefHeight="25.0" prefWidth="252.0" style="-fx-background-color: #00A5F5;" />
+      <TextField fx:id="id" layoutX="400.0" layoutY="170.0" prefHeight="25.0" prefWidth="252.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #00A5F5;" />
       <Label layoutX="289.0" layoutY="174.0" prefHeight="17.0" prefWidth="46.0" text="ID" />
-      <TextField fx:id="years" layoutX="400.0" layoutY="255.0" prefHeight="25.0" prefWidth="252.0" style="-fx-background-color: #00A5F5;" />
+      <TextField fx:id="years" layoutX="400.0" layoutY="255.0" prefHeight="25.0" prefWidth="252.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #00A5F5;" />
       <Label layoutX="289.0" layoutY="215.0" prefHeight="17.0" prefWidth="85.0" text="Education Level" />
-      <TextField fx:id="EL" layoutX="400.0" layoutY="211.0" prefHeight="25.0" prefWidth="252.0" style="-fx-background-color: #BBE1FA;" />
+      <TextField fx:id="EL" layoutX="400.0" layoutY="211.0" prefHeight="25.0" prefWidth="252.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #00A5F5;" />
       <Label layoutX="288.0" layoutY="259.0" prefHeight="17.0" prefWidth="106.0" text="Years of experince" />
       <Label layoutX="401.0" layoutY="14.0" prefHeight="51.0" prefWidth="161.0" text="New Applicant">
          <font>

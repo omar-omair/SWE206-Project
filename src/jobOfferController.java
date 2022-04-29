@@ -2,6 +2,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXSlider;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -52,14 +53,27 @@ public class jobOfferController {
     private JFXButton unitsButton;
 
     public void initialize() {
+        applicantsButton.setOnAction(e -> {
+            try {
+           changeScene(e, "mainMenu.fxml");}
+           catch (Exception ex) {
+            ex.printStackTrace();
+           }
+        });
 
+        interviewsButton.setOnAction(e -> {
+            try {
+           changeScene(e, "interviewMenu.fxml");}
+           catch (Exception ex) {
+            ex.printStackTrace();
+           }
+        });
     }
     
-    public void changeToMain(ActionEvent event) throws IOException {
-        AnchorPane loader = FXMLLoader.load(getClass().getClassLoader().getResource("mainMenu.fxml"));
+    void changeScene(Event event, String fileName) throws IOException {
+        AnchorPane loader = FXMLLoader.load(getClass().getClassLoader().getResource(fileName));
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(loader));
         stage.show();
     }
-
 }

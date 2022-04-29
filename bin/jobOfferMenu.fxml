@@ -19,7 +19,7 @@
          <children>
             <VBox layoutX="83.0" layoutY="161.0" prefHeight="340.0" prefWidth="215.0" style="-fx-background-color: #3282B8;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="161.0">
                <children>
-                  <JFXButton fx:id="applicantsButton" alignment="BASELINE_LEFT" onAction="#changeToMain" prefHeight="72.0" prefWidth="205.0" styleClass="sideButton" text="Applicants" textFill="WHITE">
+                  <JFXButton fx:id="applicantsButton" alignment="BASELINE_LEFT" prefHeight="72.0" prefWidth="205.0" styleClass="sideButton" text="Applicants" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>

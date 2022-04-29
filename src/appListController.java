@@ -57,22 +57,36 @@ public class appListController {
     public void initialize() {
         offerButtonL.setOnAction(e -> {
             try {
-                AnchorPane loader = (AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("jobOfferMenu.fxml"));
-                Stage stage = (Stage)(offerButtonUN.getScene().getWindow());
-                stage.setScene(new Scene(loader));
-                stage.show();
-            }
-            catch (Exception ex) {
-                ex.printStackTrace();
-            }
+           changeScene(e, "jobOfferMenu.fxml");}
+           catch (Exception ex) {
+            ex.printStackTrace();
+           }
         });
+
+        applicantsButton.setOnAction(e -> {
+            try {
+           changeScene(e, "mainMenu.fxml");}
+           catch (Exception ex) {
+            ex.printStackTrace();
+           }
+        });
+
+        interviewsButton.setOnAction(e -> {
+            try {
+           changeScene(e, "interviewMenu.fxml");}
+           catch (Exception ex) {
+            ex.printStackTrace();
+           }
+        });
+
+
+
     }
 
-    public void changeToMain(ActionEvent event) throws IOException {
-        AnchorPane loader = FXMLLoader.load(getClass().getClassLoader().getResource("mainMenu.fxml"));
+    void changeScene(ActionEvent event, String fileName) throws IOException {
+        AnchorPane loader = FXMLLoader.load(getClass().getClassLoader().getResource(fileName));
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(loader));
         stage.show();
-        
     }
 }
