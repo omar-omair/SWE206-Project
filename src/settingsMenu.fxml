@@ -27,7 +27,7 @@
             <Font name="Bodoni MT Bold" size="36.0" />
          </font>
          <graphic>
-            <ImageView fx:id="moonIcon" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="moon" fx:id="moonIcon" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../res/dark-mode.png" />
                </image>
@@ -39,7 +39,7 @@
             <Font name="Bodoni MT Bold" size="36.0" />
          </font>
          <graphic>
-            <ImageView fx:id="signOutIcon" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="logout" fx:id="signOutIcon" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../res/logout.png" />
                </image>
