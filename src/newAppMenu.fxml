@@ -123,5 +123,10 @@
       </JFXRadioButton>
       <Button fx:id="addButton" layoutX="459.0" layoutY="356.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #3282B8; -fx-text-fill: #FFFFFF;" text="Add" visible="false" />
       <Button fx:id="addButtonL" layoutX="459.0" layoutY="356.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #808080; -fx-text-fill: #FFFFFF;" text="Add" />
+      <ImageView fx:id="back" fitHeight="22.0" fitWidth="22.0" layoutX="257.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="448.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="533.0" AnchorPane.topAnchor="30.0">
+         <image>
+            <Image url="@../res/left-arrow.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

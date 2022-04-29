@@ -52,6 +52,9 @@ public class jobOfferController {
     @FXML
     private JFXButton unitsButton;
 
+    @FXML
+    private ImageView back;
+
     public void initialize() {
         applicantsButton.setOnAction(e -> {
             try {
@@ -67,6 +70,14 @@ public class jobOfferController {
            catch (Exception ex) {
             ex.printStackTrace();
            }
+        });
+
+        back.setOnMouseClicked(e -> {
+            try {
+            changeScene(e, "appList.fxml");}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
         });
     }
     

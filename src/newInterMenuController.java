@@ -1,6 +1,8 @@
 import java.io.IOException;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -10,23 +12,52 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
-public class interviewMenuController {
+public class newInterMenuController {
+
+    @FXML
+    protected Button addButton;
+
+    @FXML
+    protected Button addButtonL;
 
     @FXML
     private JFXButton applicantsButton;
 
     @FXML
+    private ImageView back;
+
+    @FXML
+    private Button editButton;
+
+    @FXML
+    private Button editButtonL;
+
+    @FXML
+    protected Label editInter;
+
+    @FXML
     private JFXButton employeesButton;
 
     @FXML
-    private ImageView interListButton;
+    private JFXComboBox<?> firstInterviewer;
+
+    @FXML
+    private JFXComboBox<?> interviewee;
 
     @FXML
     private JFXButton interviewsButton;
 
     @FXML
-    private ImageView newInterButton;
+    private Label newInter;
+
+    @FXML
+    private JFXComboBox<?> result;
+
+    @FXML
+    private JFXComboBox<?> secondInterviewer;
 
     @FXML
     private ImageView settingsButton;
@@ -35,10 +66,22 @@ public class interviewMenuController {
     private AnchorPane slider;
 
     @FXML
+    private JFXComboBox<?> thirdInterviewer;
+
+    @FXML
     private JFXButton unitsButton;
+
+    protected static boolean edit = false;
     
     @FXML
     public void initialize() {
+
+        if(edit) {
+            editInter.setVisible(true);
+            newInter.setVisible(false);
+            addButtonL.setVisible(false);
+            editButtonL.setVisible(true);
+        }
 
         applicantsButton.setOnAction(e -> {
             try {
@@ -56,21 +99,17 @@ public class interviewMenuController {
            }
         });
 
-        interListButton.setOnMouseClicked(e -> {
+        back.setOnMouseClicked(e -> {
             try {
-           changeScene(e, "interList.fxml");}
-           catch (Exception ex) {
-            ex.printStackTrace();
-           }
-        });
-
-        newInterButton.setOnMouseClicked(e -> {
-            try {
-           newInterMenuController.edit = false;     
-           changeScene(e, "newInterMenu.fxml");}
-           catch (Exception ex) {
-            ex.printStackTrace();
-           }
+            if(!edit) {
+            changeScene(e, "interviewMenu.fxml");}
+            else {
+            changeScene(e, "interList.fxml");
+            }
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
         });
     }
 
@@ -82,4 +121,7 @@ public class interviewMenuController {
         stage.show();
     }
 
+   
+
 }
+

@@ -61,6 +61,9 @@ public class newAppController {
     private TextField years;
 
     @FXML
+    private ImageView back;
+
+    @FXML
     public void initialize() {
         applicantsButton.setOnAction(e -> {
             try {
@@ -76,6 +79,14 @@ public class newAppController {
            catch (Exception ex) {
             ex.printStackTrace();
            }
+        });
+
+        back.setOnMouseClicked(e -> {
+            try {
+            changeScene(e, "mainMenu.fxml");}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
         });
     }
     

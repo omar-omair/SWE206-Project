@@ -54,6 +54,10 @@ public class appListController {
     @FXML
     private Button offerButtonUN;
 
+    @FXML
+    private ImageView back;
+
+
     public void initialize() {
         offerButtonL.setOnAction(e -> {
             try {
@@ -79,11 +83,19 @@ public class appListController {
            }
         });
 
+        back.setOnMouseClicked(e -> {
+            try {
+            changeScene(e, "mainMenu.fxml");}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
 
 
     }
 
-    void changeScene(ActionEvent event, String fileName) throws IOException {
+    void changeScene(Event event, String fileName) throws IOException {
         AnchorPane loader = FXMLLoader.load(getClass().getClassLoader().getResource(fileName));
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(loader));
