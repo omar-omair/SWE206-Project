@@ -57,6 +57,12 @@ public class appListController {
     @FXML
     private ImageView back;
 
+    @FXML
+    private Button infoButtonL;
+
+    @FXML
+    private Button infoButtonUN;
+
 
     public void initialize() {
         offerButtonL.setOnAction(e -> {
@@ -91,7 +97,13 @@ public class appListController {
             }
         });
 
-
+        infoButtonL.setOnAction(e -> {
+            try {
+           changeScene(e, "infoMenu.fxml");}
+           catch (Exception ex) {
+            ex.printStackTrace();
+           }
+        });
 
     }
 
