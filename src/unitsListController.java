@@ -2,6 +2,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,15 +12,12 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
-import javafx.scene.Node;
-public class unitsMenuController {
+
+public class unitsListController {
     // Main menu variables
 
     @FXML
     private JFXButton applicantsButton;
-
-    @FXML
-    private ImageView closeButton;
 
     @FXML
     private JFXButton employeesButton;
@@ -34,18 +32,27 @@ public class unitsMenuController {
     private AnchorPane slider;
 
     @FXML
-    private JFXButton unitsButton;
+    private JFXButton unitsButton; 
+
+    @FXML
+    private Button editButtonL;
+
+    @FXML
+    private Button editButtonUN;
+
+    @FXML
+    private ImageView back;
+
+    @FXML
+    private Button removeButtonL;
+
+    @FXML
+    private Button removeButtonUN;
 
     @FXML
     private AnchorPane pane;
 
-    @FXML
-    private ImageView unitListButton;
 
-    @FXML
-    private ImageView newUnitButton;
-
-    @FXML
     public void initialize() {
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
@@ -59,7 +66,7 @@ public class unitsMenuController {
             ex.printStackTrace();
            }
         });
-         
+
         interviewsButton.setOnAction(e -> {
             try {
            changeScene(e, "interviewMenu.fxml");}
@@ -68,12 +75,12 @@ public class unitsMenuController {
            }
         });
 
-        unitsButton.setOnAction(e -> {
+        back.setOnMouseClicked(e -> {
             try {
-                changeScene(e, "unitsMenu.fxml");}
-                catch (Exception ex) {
-                 ex.printStackTrace();
-                }
+            changeScene(e, "unitsMenu.fxml");}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
         });
 
         settingsButton.setOnMouseClicked(e -> {
@@ -84,13 +91,14 @@ public class unitsMenuController {
             }
         });
 
-        unitListButton.setOnMouseClicked(e -> {
+        unitsButton.setOnAction(e -> {
             try {
-                changeScene(e, "unitList.fxml");}
-            catch (Exception ex) {
-                ex.printStackTrace();
-            }
+                changeScene(e, "unitsMenu.fxml");}
+                catch (Exception ex) {
+                 ex.printStackTrace();
+                }
         });
+
 
     }
 

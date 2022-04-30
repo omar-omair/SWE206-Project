@@ -90,13 +90,13 @@
          </children>
       </AnchorPane>
       <Label layoutX="377.0" layoutY="259.0" styleClass="blackText" text="Units List" />
-      <ImageView fx:id="appListButton" fitHeight="80.0" fitWidth="80.0" layoutX="360.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="unitListButton" fitHeight="80.0" fitWidth="80.0" layoutX="360.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/unit.png" />
          </image>
       </ImageView>
       <Label layoutX="568.0" layoutY="259.0" styleClass="blackText" text="New Unit" />
-      <ImageView fx:id="newAppButton" fitHeight="80.0" fitWidth="80.0" layoutX="551.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="newUnitButton" fitHeight="80.0" fitWidth="80.0" layoutX="551.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/add.png" />
          </image>
