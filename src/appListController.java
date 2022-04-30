@@ -121,6 +121,14 @@ public class appListController {
             }
         });
 
+        unitsButton.setOnAction(e -> {
+            try {
+                changeScene(e, "unitsMenu.fxml");}
+                catch (Exception ex) {
+                 ex.printStackTrace();
+                }
+        });
+
 
     }
 

@@ -104,6 +104,14 @@ public class interviewListController {
                 ex.printStackTrace();
             }
         });
+
+        unitsButton.setOnAction(e -> {
+            try {
+                changeScene(e, "unitsMenu.fxml");}
+                catch (Exception ex) {
+                 ex.printStackTrace();
+                }
+        });
     }
 
     

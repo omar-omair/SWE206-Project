@@ -50,3 +50,7 @@
 .back {
     -fx-image: url("../res/left-arrow.png");
 }
+
+.jfx-button{
+    -jfx-disable-visual-focus: true;
+}

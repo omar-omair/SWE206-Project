@@ -98,6 +98,14 @@ public class infoMenuController {
                 ex.printStackTrace();
             }
         });
+
+        unitsButton.setOnAction(e -> {
+            try {
+                changeScene(e, "unitsMenu.fxml");}
+                catch (Exception ex) {
+                 ex.printStackTrace();
+                }
+        });
     }
     
     void changeScene(Event event, String fileName) throws IOException {
