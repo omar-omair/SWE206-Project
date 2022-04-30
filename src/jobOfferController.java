@@ -90,6 +90,7 @@ public class jobOfferController {
 
         settingsButton.setOnMouseClicked(e -> {
             try {
+                settingsMenuController.prevMenu = "appList.fxml";
                 changeScene(e, "settingsMenu.fxml");}
             catch (Exception ex) {
                 ex.printStackTrace();

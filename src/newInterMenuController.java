@@ -122,6 +122,12 @@ public class newInterMenuController {
 
         settingsButton.setOnMouseClicked(e -> {
             try {
+                if(edit) {
+                    settingsMenuController.prevMenu = "interList.fxml";
+                }
+                else {
+                    settingsMenuController.prevMenu = "newInterMenu.fxml";
+                }
                 changeScene(e, "settingsMenu.fxml");}
             catch (Exception ex) {
                 ex.printStackTrace();

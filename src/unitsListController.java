@@ -44,12 +44,6 @@ public class unitsListController {
     private ImageView back;
 
     @FXML
-    private Button removeButtonL;
-
-    @FXML
-    private Button removeButtonUN;
-
-    @FXML
     private AnchorPane pane;
 
 
@@ -85,6 +79,7 @@ public class unitsListController {
 
         settingsButton.setOnMouseClicked(e -> {
             try {
+                settingsMenuController.prevMenu = "unitList.fxml";
                 changeScene(e, "settingsMenu.fxml");}
             catch (Exception ex) {
                 ex.printStackTrace();

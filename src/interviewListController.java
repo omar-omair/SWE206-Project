@@ -99,6 +99,7 @@ public class interviewListController {
 
         settingsButton.setOnMouseClicked(e -> {
             try {
+                settingsMenuController.prevMenu = "interList.fxml";
                 changeScene(e, "settingsMenu.fxml");}
             catch (Exception ex) {
                 ex.printStackTrace();

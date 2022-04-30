@@ -50,6 +50,7 @@ public class settingsMenuController {
     @FXML
     private ImageView signOutIcon;
 
+    protected static String prevMenu = "";
 
     @FXML
     public void initialize() {
@@ -85,7 +86,7 @@ public class settingsMenuController {
         
         back.setOnMouseClicked(e -> {
             try {
-            changeScene(e, "mainMenu.fxml");}
+            changeScene(e, prevMenu);}
             catch (Exception ex) {
                 ex.printStackTrace();
             }

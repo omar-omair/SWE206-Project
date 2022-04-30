@@ -99,6 +99,7 @@ public class newAppController {
 
         settingsButton.setOnMouseClicked(e -> {
             try {
+                settingsMenuController.prevMenu = "newAppMenu.fxml";
                 changeScene(e, "settingsMenu.fxml");}
             catch (Exception ex) {
                 ex.printStackTrace();

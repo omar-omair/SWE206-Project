@@ -83,6 +83,7 @@ public class interviewMenuController {
 
         settingsButton.setOnMouseClicked(e -> {
             try {
+                settingsMenuController.prevMenu = "interviewMenu.fxml";
                 changeScene(e, "settingsMenu.fxml");}
             catch (Exception ex) {
                 ex.printStackTrace();
