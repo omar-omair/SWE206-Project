@@ -30,6 +30,15 @@
     -fx-background-color: linear-gradient(to left, red, orange, yellow, green);
 }
 
+.date .text-field {
+    -fx-control-inner-background: white;
+}
+
+.date .selected {
+	-fx-background-color:#069bff;
+	-fx-text-fill: white;
+}
+
 #logout {
     -fx-image: url(../res/logout.png)
 }

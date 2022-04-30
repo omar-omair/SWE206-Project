@@ -58,7 +58,15 @@ public class infoMenuController {
     private TextField years;
 
     @FXML
+    private AnchorPane pane;
+
+    @FXML
     public void initialize() {
+        if(settingsMenuController.dark == true) {
+            pane.getStylesheets().remove("style.css");
+            pane.getStylesheets().add("styleDark.css");
+        }
+
         applicantsButton.setOnAction(e -> {
             try {
            changeScene(e, "mainMenu.fxml");}

@@ -42,6 +42,60 @@
     -fx-border-color: #069bff;
 }
 
+.comboBox {
+    -jfx-focus-color: #069bff;
+    -jfx-unfocus-color: White;
+    -fx-background-color:#121212;
+}
+
+.jfx-combo-box {
+    -fx-prompt-text-fill: white;
+    -fx-prompt-background-color: #121212;
+}
+
+
+
+.date .cell {
+    -fx-background-color: #242424;
+    -fx-text-fill: white;
+}
+
+
+.date .arrow-button {
+	-fx-background-color: #363636;
+}
+
+.date .cell:hover {
+	-fx-background-color: #069bff;
+
+}
+
+.date-picker-popup .month-year-pane {
+	-fx-background-color: #363636;
+}
+
+.date-picker-popup .month-year-pane .label {
+	-fx-text-fill: white;
+}
+
+.date .arrow-button .arrow {
+	-fx-background-color: white;
+}
+
+.date .selected {
+	-fx-background-color:#069bff;
+	-fx-text-fill: white;
+}
+
+.date .text-field {
+    -fx-control-inner-background: #121212;
+}
+
+.date-picker-popup .spinner .button .left-arrow,
+.date-picker-popup .spinner .button .right-arrow {
+	-fx-background-color: white;
+}
+
 #logout {
     -fx-image: url(darkImages/logout__1_-removebg-preview.png);
 }

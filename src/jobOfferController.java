@@ -55,7 +55,15 @@ public class jobOfferController {
     @FXML
     private ImageView back;
 
+    @FXML
+    private AnchorPane pane;
+
     public void initialize() {
+        if(settingsMenuController.dark == true) {
+            pane.getStylesheets().remove("style.css");
+            pane.getStylesheets().add("styleDark.css");
+        }
+
         applicantsButton.setOnAction(e -> {
             try {
            changeScene(e, "mainMenu.fxml");}

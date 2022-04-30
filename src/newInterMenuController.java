@@ -72,9 +72,17 @@ public class newInterMenuController {
     private JFXButton unitsButton;
 
     protected static boolean edit = false;
+
+    @FXML
+    private AnchorPane pane;
     
     @FXML
     public void initialize() {
+
+        if(settingsMenuController.dark == true) {
+            pane.getStylesheets().remove("style.css");
+            pane.getStylesheets().add("styleDark.css");
+        }
 
         if(edit) {
             editInter.setVisible(true);
