@@ -79,6 +79,14 @@ public class jobOfferController {
                 ex.printStackTrace();
             }
         });
+
+        settingsButton.setOnMouseClicked(e -> {
+            try {
+                changeScene(e, "settingsMenu.fxml");}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
     }
     
     void changeScene(Event event, String fileName) throws IOException {

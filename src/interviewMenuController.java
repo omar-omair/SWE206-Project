@@ -72,6 +72,14 @@ public class interviewMenuController {
             ex.printStackTrace();
            }
         });
+
+        settingsButton.setOnMouseClicked(e -> {
+            try {
+                changeScene(e, "settingsMenu.fxml");}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
     

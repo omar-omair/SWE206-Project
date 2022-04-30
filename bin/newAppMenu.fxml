@@ -14,11 +14,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="newAppController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="newAppController">
    <children>
-      <AnchorPane fx:id="slider" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #3282B8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="585.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="slider" prefHeight="200.0" prefWidth="200.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="585.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox layoutX="83.0" layoutY="161.0" prefHeight="340.0" prefWidth="215.0" style="-fx-background-color: #3282B8;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="161.0">
+            <VBox layoutX="83.0" layoutY="161.0" prefHeight="340.0" prefWidth="215.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="161.0">
                <children>
                   <JFXButton fx:id="applicantsButton" alignment="BASELINE_LEFT" prefHeight="72.0" prefWidth="205.0" styleClass="sideButton" text="Applicants" textFill="WHITE">
                      <graphic>
@@ -68,14 +68,14 @@
                         <Font name="Leelawadee UI" size="15.0" />
                      </font>
                   </JFXButton>
-                  <Label prefHeight="43.0" prefWidth="205.0" text="  Copyright © 2022 Omar, Ghaith, Waleed, Kumail." textFill="#0f4c75">
+                  <Label prefHeight="43.0" prefWidth="205.0" styleClass="blackText" text="  Copyright © 2022 Omar, Ghaith, Waleed, Kumail." textFill="#0f4c75">
                      <font>
                         <Font size="9.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
-            <ImageView fitHeight="94.0" fitWidth="124.0" layoutX="61.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="94.0" fitWidth="124.0" layoutX="61.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="user">
                <image>
                   <Image url="@../res/icon-g32f07143d_1920-modified.png" />
                </image>
@@ -85,30 +85,30 @@
                   <Font name="Eras Bold ITC" size="12.0" />
                </font>
             </Text>
-            <ImageView fx:id="settingsButton" fitHeight="25.0" fitWidth="25.0" layoutX="176.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="settingsButton" fitHeight="25.0" fitWidth="25.0" layoutX="176.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" styleClass="settings">
                <image>
                   <Image url="@../res/icons8-settings-50%20(1).png" />
                </image>
             </ImageView>
-            <AnchorPane layoutX="-18.0" layoutY="47.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0F4C75;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane layoutX="21.0" layoutY="5.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0F4C75;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="490.0" />
+            <AnchorPane layoutX="-18.0" layoutY="47.0" prefHeight="200.0" prefWidth="200.0" styleClass="sideBorder" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane layoutX="21.0" layoutY="5.0" prefHeight="200.0" prefWidth="200.0" styleClass="sideBorder" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="490.0" />
          </children>
       </AnchorPane>
-      <TextField fx:id="name" layoutX="400.0" layoutY="130.0" prefHeight="25.0" prefWidth="252.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #00A5F5;" />
-      <Label layoutX="289.0" layoutY="134.0" prefHeight="17.0" prefWidth="46.0" text="Name" />
-      <TextField fx:id="id" layoutX="400.0" layoutY="170.0" prefHeight="25.0" prefWidth="252.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #00A5F5;" />
-      <Label layoutX="289.0" layoutY="174.0" prefHeight="17.0" prefWidth="46.0" text="ID" />
-      <TextField fx:id="years" layoutX="400.0" layoutY="255.0" prefHeight="25.0" prefWidth="252.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #00A5F5;" />
-      <Label layoutX="289.0" layoutY="215.0" prefHeight="17.0" prefWidth="85.0" text="Education Level" />
-      <TextField fx:id="EL" layoutX="400.0" layoutY="211.0" prefHeight="25.0" prefWidth="252.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #00A5F5;" />
-      <Label layoutX="288.0" layoutY="259.0" prefHeight="17.0" prefWidth="106.0" text="Years of experince" />
-      <Label layoutX="401.0" layoutY="14.0" prefHeight="51.0" prefWidth="161.0" text="New Applicant">
+      <TextField fx:id="name" layoutX="400.0" layoutY="130.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" />
+      <Label layoutX="289.0" layoutY="134.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Name" />
+      <TextField fx:id="id" layoutX="400.0" layoutY="170.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" />
+      <Label layoutX="289.0" layoutY="174.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="ID" />
+      <TextField fx:id="years" layoutX="400.0" layoutY="255.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" />
+      <Label layoutX="289.0" layoutY="215.0" prefHeight="17.0" prefWidth="85.0" styleClass="blackText" text="Education Level" />
+      <TextField fx:id="EL" layoutX="400.0" layoutY="211.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" />
+      <Label layoutX="288.0" layoutY="259.0" prefHeight="17.0" prefWidth="106.0" styleClass="blackText" text="Years of experince" />
+      <Label layoutX="401.0" layoutY="14.0" prefHeight="51.0" prefWidth="161.0" styleClass="blackText" text="New Applicant">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="289.0" layoutY="301.0" prefHeight="17.0" prefWidth="46.0" text="Gender" />
-      <JFXRadioButton fx:id="male" layoutX="401.0" layoutY="301.0" text="Male">
+      <Label layoutX="289.0" layoutY="301.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Gender" />
+      <JFXRadioButton fx:id="male" layoutX="401.0" layoutY="301.0" styleClass="blackText" text="Male">
          <selectedColor>
             <Color green="0.6470588445663452" blue="0.9607843160629272" />
          </selectedColor>
@@ -116,14 +116,14 @@
             <ToggleGroup fx:id="Gender" />
          </toggleGroup>
       </JFXRadioButton>
-      <JFXRadioButton fx:id="female" layoutX="491.0" layoutY="301.0" text="Female" toggleGroup="$Gender">
+      <JFXRadioButton fx:id="female" layoutX="491.0" layoutY="301.0" styleClass="blackText" text="Female" toggleGroup="$Gender">
          <selectedColor>
             <Color green="0.6470588445663452" blue="0.9607843160629272" />
          </selectedColor>
       </JFXRadioButton>
       <Button fx:id="addButton" layoutX="459.0" layoutY="356.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #3282B8; -fx-text-fill: #FFFFFF;" text="Add" visible="false" />
       <Button fx:id="addButtonL" layoutX="459.0" layoutY="356.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #808080; -fx-text-fill: #FFFFFF;" text="Add" />
-      <ImageView fx:id="back" fitHeight="22.0" fitWidth="22.0" layoutX="257.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="448.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="533.0" AnchorPane.topAnchor="30.0">
+      <ImageView fx:id="back" fitHeight="22.0" fitWidth="22.0" layoutX="257.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" styleClass="back" AnchorPane.bottomAnchor="448.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="533.0" AnchorPane.topAnchor="30.0">
          <image>
             <Image url="@../res/left-arrow.png" />
          </image>

@@ -2,9 +2,51 @@
     -fx-text-fill: White;
 }
 .background {
-    -fx-background-color: #121212;
+    -fx-background-color: #181818;
 }
 
 .back {
     -fx-image: url(darkImages/left-arrow-removebg-preview.png);
 }
+
+.settings {
+    -fx-image: url(darkImages/settings.png)
+}
+
+.sidebar {
+    -fx-background-color: #242424;
+}
+
+.sideButton:hover {
+    -fx-border-width: 0px 4px 0px 0px;
+    -fx-border-color: #069bff;
+}
+
+.textField {
+    -fx-background-color: #121212;
+    -fx-border-color: #069bff;
+    -fx-text-fill:#FFFFFF
+}
+
+.sideBorder {
+    -fx-background-color: #202020;
+}
+
+.user {
+    -fx-image: url(darkImages/user-male-modified.png);
+}
+
+.list {
+    -fx-background-color: #121212;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #069bff;
+}
+
+#logout {
+    -fx-image: url(darkImages/logout__1_-removebg-preview.png);
+}
+
+#moon {
+    -fx-image: url(darkImages/moon.png);
+}
+

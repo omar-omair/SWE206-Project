@@ -11,11 +11,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appListController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appListController">
    <children>
-      <AnchorPane fx:id="slider" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #3282B8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="585.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="slider" prefHeight="200.0" prefWidth="200.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="585.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox layoutX="83.0" layoutY="161.0" prefHeight="340.0" prefWidth="215.0" style="-fx-background-color: #3282B8;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="161.0">
+            <VBox layoutX="83.0" layoutY="161.0" prefHeight="340.0" prefWidth="215.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="161.0">
                <children>
                   <JFXButton fx:id="applicantsButton" alignment="BASELINE_LEFT" prefHeight="72.0" prefWidth="205.0" styleClass="sideButton" text="Applicants" textFill="WHITE">
                      <graphic>
@@ -65,14 +65,14 @@
                         <Font name="Leelawadee UI" size="15.0" />
                      </font>
                   </JFXButton>
-                  <Label prefHeight="43.0" prefWidth="205.0" text="  Copyright © 2022 Omar, Ghaith, Waleed, Kumail." textFill="#0f4c75">
+                  <Label prefHeight="43.0" prefWidth="205.0" styleClass="blackText" text="  Copyright © 2022 Omar, Ghaith, Waleed, Kumail." textFill="#0f4c75">
                      <font>
                         <Font size="9.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
-            <ImageView fitHeight="94.0" fitWidth="124.0" layoutX="61.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="94.0" fitWidth="124.0" layoutX="61.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="user">
                <image>
                   <Image url="@../res/icon-g32f07143d_1920-modified.png" />
                </image>
@@ -82,13 +82,13 @@
                   <Font name="Eras Bold ITC" size="12.0" />
                </font>
             </Text>
-            <ImageView fx:id="settingsButton" fitHeight="25.0" fitWidth="25.0" layoutX="176.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="settingsButton" fitHeight="25.0" fitWidth="25.0" layoutX="176.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" styleClass="settings">
                <image>
                   <Image url="@../res/icons8-settings-50%20(1).png" />
                </image>
             </ImageView>
-            <AnchorPane layoutX="-18.0" layoutY="47.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0F4C75;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane layoutX="21.0" layoutY="5.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0F4C75;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="490.0" />
+            <AnchorPane layoutX="-18.0" layoutY="47.0" prefHeight="200.0" prefWidth="200.0" styleClass="sideBorder" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane layoutX="21.0" layoutY="5.0" prefHeight="200.0" prefWidth="200.0" styleClass="sideBorder" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="490.0" />
          </children>
       </AnchorPane>
       <Label layoutX="445.0" layoutY="14.0" text="Applicants List" textFill="#1c4fe6">
@@ -96,13 +96,13 @@
             <Font name="Bodoni MT Bold" size="17.0" />
          </font>
       </Label>
-      <JFXListView layoutX="258.0" layoutY="50.0" prefHeight="346.0" prefWidth="503.0" />
+      <JFXListView layoutX="258.0" layoutY="50.0" prefHeight="346.0" prefWidth="503.0" styleClass="list" />
       <Button fx:id="offerButtonL" layoutX="269.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Create a job offering" textFill="WHITE" AnchorPane.leftAnchor="269.0" />
       <Button fx:id="offerButtonUN" layoutX="269.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Create a job offering" textFill="WHITE" visible="false" />
       <Button fx:id="jobButtonL" layoutX="437.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Assign Job" textFill="WHITE" AnchorPane.leftAnchor="419.0" />
       <Button fx:id="removeButtonUN" layoutX="537.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Remove Applicant" textFill="WHITE" visible="false" AnchorPane.leftAnchor="560.0" />
       <Button fx:id="removeButtonL" layoutX="537.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Remove Applicant" textFill="WHITE" AnchorPane.leftAnchor="520.0" />
-      <ImageView fx:id="back" fitHeight="22.0" fitWidth="22.0" layoutX="257.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="464.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="531.0" AnchorPane.topAnchor="14.0">
+      <ImageView fx:id="back" fitHeight="22.0" fitWidth="22.0" layoutX="257.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" styleClass="back" AnchorPane.bottomAnchor="464.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="531.0" AnchorPane.topAnchor="14.0">
          <image>
             <Image url="@../res/left-arrow.png" />
          </image>

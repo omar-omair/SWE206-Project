@@ -48,7 +48,15 @@ public class appMenuController {
     private ImageView newAppButton;
 
     @FXML
+    private AnchorPane pane;
+
+    @FXML
     public void initialize() {
+        if(settingsMenuController.dark == true) {
+            pane.getStylesheets().remove("style.css");
+            pane.getStylesheets().add("styleDark.css");
+        }
+
          appListButton.setOnMouseClicked(e -> {
             try {    
                 changeScene(e, "appList.fxml");
@@ -81,6 +89,14 @@ public class appMenuController {
            catch (Exception ex) {
             ex.printStackTrace();
            }
+        });
+
+        settingsButton.setOnMouseClicked(e -> {
+            try {
+                changeScene(e, "settingsMenu.fxml");}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
         });
 
     }

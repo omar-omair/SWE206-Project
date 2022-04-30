@@ -3,6 +3,19 @@
     -fx-border-color: #0F4C75;
 }
 
+.sidebar {
+    -fx-background-color: #3282B8;
+}
+
+.textField {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color:#00A5F5;
+}
+
+
+.sideBorder {
+    -fx-background-color: #0F4C75;
+}
 .salary>.thumb {
     -fx-background-color: #0F4C75;
 }
@@ -15,4 +28,16 @@
 .salary>.track {
     -fx-prefHeight: 7px;
     -fx-background-color: linear-gradient(to left, red, orange, yellow, green);
+}
+
+#logout {
+    -fx-image: url(../res/logout.png)
+}
+
+#moon {
+    -fx-image: url(../res/dark-mode.png)
+}
+
+.back {
+    -fx-image: url("../res/left-arrow.png");
 }

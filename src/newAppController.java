@@ -64,7 +64,15 @@ public class newAppController {
     private ImageView back;
 
     @FXML
+    private AnchorPane pane;
+
+    @FXML
     public void initialize() {
+        if(settingsMenuController.dark == true) {
+            pane.getStylesheets().remove("style.css");
+            pane.getStylesheets().add("styleDark.css");
+        }
+        
         applicantsButton.setOnAction(e -> {
             try {
            changeScene(e, "mainMenu.fxml");}
@@ -84,6 +92,14 @@ public class newAppController {
         back.setOnMouseClicked(e -> {
             try {
             changeScene(e, "mainMenu.fxml");}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        settingsButton.setOnMouseClicked(e -> {
+            try {
+                changeScene(e, "settingsMenu.fxml");}
             catch (Exception ex) {
                 ex.printStackTrace();
             }

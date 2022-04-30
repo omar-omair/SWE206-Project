@@ -63,8 +63,16 @@ public class appListController {
     @FXML
     private Button infoButtonUN;
 
+    @FXML
+    private AnchorPane pane;
+
 
     public void initialize() {
+        if(settingsMenuController.dark == true) {
+            pane.getStylesheets().remove("style.css");
+            pane.getStylesheets().add("styleDark.css");
+        }
+
         offerButtonL.setOnAction(e -> {
             try {
            changeScene(e, "jobOfferMenu.fxml");}
@@ -112,6 +120,7 @@ public class appListController {
                 ex.printStackTrace();
             }
         });
+
 
     }
 
