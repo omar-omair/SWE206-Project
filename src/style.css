@@ -44,7 +44,7 @@
 }
 
 #moon {
-    -fx-image: url(../res/dark-mode.png)
+    -fx-image: url(../res/sun.png)
 }
 
 .back {
