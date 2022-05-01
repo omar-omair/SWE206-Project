@@ -94,6 +94,24 @@ public class unitsListController {
                 }
         });
 
+        editButtonL.setOnMouseClicked(e -> {
+            try {
+                newUnitController.edit = true;
+                changeScene(e, "newUnitMenu.fxml");}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        employeesButton.setOnAction(e -> {
+            try {
+                changeScene(e, "employeeList.fxml");}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+
 
     }
 

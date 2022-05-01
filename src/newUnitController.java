@@ -1,85 +1,104 @@
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.IOException;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXRadioButton;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
-import com.jfoenix.controls.JFXButton;
-import javafx.scene.layout.*;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import java.io.IOException;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 
-public class appListController {
-    // Main menu variables
+public class newUnitController {
+    @FXML
+    private Button addButtonL;
+
+    @FXML
+    private Button addButtonUN;
 
     @FXML
     private JFXButton applicantsButton;
 
     @FXML
-    private ImageView closeButton;
+    private ImageView back;
+
+    @FXML
+    private JFXRadioButton department;
+
+    @FXML
+    private JFXRadioButton directorete;
+
+    @FXML
+    private JFXRadioButton division;
+
+    @FXML
+    private Button editButtonL;
+
+    @FXML
+    private Button editButtonUN;
+
+    @FXML
+    private Label editUnit;
 
     @FXML
     private JFXButton employeesButton;
 
     @FXML
+    private JFXCheckBox engineering;
+
+    @FXML
     private JFXButton interviewsButton;
+
+    @FXML
+    private ToggleGroup level;
+
+    @FXML
+    private JFXCheckBox managment;
+
+    @FXML
+    private TextField name;
+
+    @FXML
+    private Label newUnit;
+
+    @FXML
+    private AnchorPane pane;
 
     @FXML
     private ImageView settingsButton;
 
     @FXML
     private AnchorPane slider;
+    
+    protected static boolean edit = false;
 
     @FXML
-    private JFXButton unitsButton; 
+    private JFXButton unitsButton;
 
     @FXML
-    private Button jobButtonL;
-
-    @FXML
-    private Button jobButtonUN;
-
-    @FXML
-    private Button offerButtonL;
-
-    @FXML
-    private Button offerButtonUN;
-
-    @FXML
-    private ImageView back;
-
-    @FXML
-    private Button infoButtonL;
-
-    @FXML
-    private Button infoButtonUN;
-
-    @FXML
-    private AnchorPane pane;
-
-
     public void initialize() {
+
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");
         }
 
-        offerButtonL.setOnAction(e -> {
-            try {
-           changeScene(e, "jobOfferMenu.fxml");}
-           catch (Exception ex) {
-            ex.printStackTrace();
-           }
-        });
+        if(edit) {
+            editUnit.setVisible(true);
+            newUnit.setVisible(false);
+            addButtonL.setVisible(false);
+            editButtonL.setVisible(true);
+        }
 
         applicantsButton.setOnAction(e -> {
             try {
@@ -99,23 +118,25 @@ public class appListController {
 
         back.setOnMouseClicked(e -> {
             try {
-            changeScene(e, "mainMenu.fxml");}
+            if(!edit) {
+            changeScene(e, "unitsMenu.fxml");}
+            else {
+            changeScene(e, "unitList.fxml");
+            }
+            }
             catch (Exception ex) {
                 ex.printStackTrace();
             }
         });
 
-        infoButtonL.setOnAction(e -> {
-            try {
-           changeScene(e, "infoMenu.fxml");}
-           catch (Exception ex) {
-            ex.printStackTrace();
-           }
-        });
-
         settingsButton.setOnMouseClicked(e -> {
             try {
-                settingsMenuController.prevMenu = "appList.fxml";
+                if(edit) {
+                    settingsMenuController.prevMenu = "unitList.fxml";
+                }
+                else {
+                    settingsMenuController.prevMenu = "newUnitMenu.fxml";
+                }
                 changeScene(e, "settingsMenu.fxml");}
             catch (Exception ex) {
                 ex.printStackTrace();
@@ -137,14 +158,17 @@ public class appListController {
                 ex.printStackTrace();
             }
         });
-
-
     }
 
+    
     void changeScene(Event event, String fileName) throws IOException {
         AnchorPane loader = FXMLLoader.load(getClass().getClassLoader().getResource(fileName));
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(loader));
         stage.show();
     }
+
+   
+
 }
+

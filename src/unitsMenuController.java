@@ -93,6 +93,23 @@ public class unitsMenuController {
             }
         });
 
+        newUnitButton.setOnMouseClicked(e -> {
+            try {
+                newUnitController.edit = false;
+                changeScene(e, "newUnitMenu.fxml");}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        employeesButton.setOnAction(e -> {
+            try {
+                changeScene(e, "employeeList.fxml");}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
     }
 
     void changeScene(Event event, String fileName) throws IOException {

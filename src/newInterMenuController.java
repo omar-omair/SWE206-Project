@@ -141,6 +141,14 @@ public class newInterMenuController {
                  ex.printStackTrace();
                 }
         });
+
+        employeesButton.setOnAction(e -> {
+            try {
+                changeScene(e, "employeeList.fxml");}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
     

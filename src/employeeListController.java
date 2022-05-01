@@ -18,14 +18,18 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class appListController {
+public class employeeListController {
     // Main menu variables
 
+   
     @FXML
     private JFXButton applicantsButton;
 
     @FXML
-    private ImageView closeButton;
+    private Button editButtonL;
+
+    @FXML
+    private Button editButtonUN;
 
     @FXML
     private JFXButton employeesButton;
@@ -34,37 +38,22 @@ public class appListController {
     private JFXButton interviewsButton;
 
     @FXML
+    private AnchorPane pane;
+
+    @FXML
+    private Button removeButtonL;
+
+    @FXML
+    private Button removeButtonUN;
+
+    @FXML
     private ImageView settingsButton;
 
     @FXML
     private AnchorPane slider;
 
     @FXML
-    private JFXButton unitsButton; 
-
-    @FXML
-    private Button jobButtonL;
-
-    @FXML
-    private Button jobButtonUN;
-
-    @FXML
-    private Button offerButtonL;
-
-    @FXML
-    private Button offerButtonUN;
-
-    @FXML
-    private ImageView back;
-
-    @FXML
-    private Button infoButtonL;
-
-    @FXML
-    private Button infoButtonUN;
-
-    @FXML
-    private AnchorPane pane;
+    private JFXButton unitsButton;
 
 
     public void initialize() {
@@ -72,14 +61,6 @@ public class appListController {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");
         }
-
-        offerButtonL.setOnAction(e -> {
-            try {
-           changeScene(e, "jobOfferMenu.fxml");}
-           catch (Exception ex) {
-            ex.printStackTrace();
-           }
-        });
 
         applicantsButton.setOnAction(e -> {
             try {
@@ -97,25 +78,9 @@ public class appListController {
            }
         });
 
-        back.setOnMouseClicked(e -> {
-            try {
-            changeScene(e, "mainMenu.fxml");}
-            catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        });
-
-        infoButtonL.setOnAction(e -> {
-            try {
-           changeScene(e, "infoMenu.fxml");}
-           catch (Exception ex) {
-            ex.printStackTrace();
-           }
-        });
-
         settingsButton.setOnMouseClicked(e -> {
             try {
-                settingsMenuController.prevMenu = "appList.fxml";
+                settingsMenuController.prevMenu = "employeeList.fxml";
                 changeScene(e, "settingsMenu.fxml");}
             catch (Exception ex) {
                 ex.printStackTrace();
