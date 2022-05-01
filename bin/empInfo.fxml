@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="employeeListController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="empInfoController">
    <children>
       <AnchorPane fx:id="slider" prefHeight="200.0" prefWidth="200.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="585.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -91,15 +92,25 @@
             <AnchorPane layoutX="21.0" layoutY="5.0" prefHeight="200.0" prefWidth="200.0" styleClass="sideBorder" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="490.0" />
          </children>
       </AnchorPane>
-      <Label layoutX="445.0" layoutY="14.0" text="Employee info" textFill="#1c4fe6">
+      <Label layoutX="319.0" layoutY="129.0" prefHeight="17.0" prefWidth="36.0" styleClass="blackText" text="Name" AnchorPane.topAnchor="129.0" />
+      <Label layoutX="319.0" layoutY="169.0" prefHeight="17.0" prefWidth="36.0" styleClass="blackText" text="ID" AnchorPane.leftAnchor="319.0" AnchorPane.topAnchor="169.0" />
+      <Label layoutX="319.0" layoutY="209.0" prefHeight="17.0" prefWidth="36.0" styleClass="blackText" text="Unit" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="445.0" AnchorPane.topAnchor="209.0" />
+      <JFXComboBox fx:id="unit" layoutX="398.0" layoutY="204.0" prefHeight="25.0" prefWidth="252.0" styleClass="comboBox" AnchorPane.topAnchor="210.0" />
+      <Label layoutX="319.0" layoutY="249.0" prefHeight="17.0" prefWidth="22.0" styleClass="blackText" text="Job" AnchorPane.topAnchor="249.0" />
+      <JFXComboBox fx:id="job" layoutX="398.0" layoutY="248.0" prefHeight="25.0" prefWidth="252.0" styleClass="comboBox" AnchorPane.topAnchor="250.0" />
+      <ImageView fx:id="back" fitHeight="22.0" fitWidth="22.0" layoutX="245.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" styleClass="back" AnchorPane.bottomAnchor="448.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="533.0" AnchorPane.topAnchor="30.0">
+         <image>
+            <Image url="@../res/left-arrow.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="editInter" layoutX="415.0" layoutY="14.0" prefHeight="51.0" prefWidth="192.0" styleClass="blackText" text="Edit Employee info" AnchorPane.topAnchor="14.0">
          <font>
-            <Font name="Bodoni MT Bold" size="17.0" />
+            <Font size="22.0" />
          </font>
       </Label>
-      <JFXListView layoutX="258.0" layoutY="50.0" prefHeight="346.0" prefWidth="503.0" styleClass="list" />
-      <Button fx:id="editButtonL" layoutX="359.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Edit Employee info" textFill="WHITE" AnchorPane.leftAnchor="359.0" />
-      <Button fx:id="editButtonUN" layoutX="359.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Edit Employee info" textFill="WHITE" visible="false" />
-      <Button fx:id="removeButtonUN" layoutX="520.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Remove Employee" textFill="WHITE" visible="false" AnchorPane.leftAnchor="520.0" />
-      <Button fx:id="removeButtonL" layoutX="537.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Remove Employee" textFill="WHITE" AnchorPane.leftAnchor="520.0" />
+      <Button fx:id="editButtonL" layoutX="479.0" layoutY="331.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #808080; -fx-text-fill: #FFFFFF;" text="Edit" AnchorPane.bottomAnchor="144.0" AnchorPane.leftAnchor="479.0" AnchorPane.rightAnchor="256.0" AnchorPane.topAnchor="331.0" />
+      <Button fx:id="editButtonUN" layoutX="479.0" layoutY="331.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #3282B8; -fx-text-fill: #FFFFFF;" text="Edit" visible="false" AnchorPane.leftAnchor="479.0" AnchorPane.topAnchor="331.0" />
+      <TextField fx:id="name" layoutX="398.0" layoutY="130.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" />
+      <TextField fx:id="id" layoutX="398.0" layoutY="170.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" />
    </children>
 </AnchorPane>

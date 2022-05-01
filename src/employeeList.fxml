@@ -99,7 +99,7 @@
       <JFXListView layoutX="258.0" layoutY="50.0" prefHeight="346.0" prefWidth="503.0" styleClass="list" />
       <Button fx:id="editButtonL" layoutX="359.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Edit Employee info" textFill="WHITE" AnchorPane.leftAnchor="359.0" />
       <Button fx:id="editButtonUN" layoutX="359.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Edit Employee info" textFill="WHITE" visible="false" />
-      <Button fx:id="removeButtonUN" layoutX="520.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Remove Applicant" textFill="WHITE" visible="false" AnchorPane.leftAnchor="520.0" />
-      <Button fx:id="removeButtonL" layoutX="537.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Remove Applicant" textFill="WHITE" AnchorPane.leftAnchor="520.0" />
+      <Button fx:id="removeButtonUN" layoutX="520.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Remove Employee" textFill="WHITE" visible="false" AnchorPane.leftAnchor="520.0" />
+      <Button fx:id="removeButtonL" layoutX="537.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Remove Employee" textFill="WHITE" AnchorPane.leftAnchor="520.0" />
    </children>
 </AnchorPane>
