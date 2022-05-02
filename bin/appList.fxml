@@ -100,7 +100,7 @@
       <Button fx:id="offerButtonL" layoutX="269.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Create a job offering" textFill="WHITE" AnchorPane.leftAnchor="269.0" />
       <Button fx:id="offerButtonUN" layoutX="269.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Create a job offering" textFill="WHITE" visible="false" />
       <Button fx:id="jobButtonL" layoutX="437.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Assign Job" textFill="WHITE" AnchorPane.leftAnchor="419.0" />
-      <Button fx:id="removeButtonUN" layoutX="537.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Remove Applicant" textFill="WHITE" visible="false" AnchorPane.leftAnchor="560.0" />
+      <Button fx:id="removeButtonUN" layoutX="520.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Remove Applicant" textFill="WHITE" visible="false" AnchorPane.leftAnchor="520.0" />
       <Button fx:id="removeButtonL" layoutX="537.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Remove Applicant" textFill="WHITE" AnchorPane.leftAnchor="520.0" />
       <ImageView fx:id="back" fitHeight="22.0" fitWidth="22.0" layoutX="257.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" styleClass="back" AnchorPane.bottomAnchor="464.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="531.0" AnchorPane.topAnchor="14.0">
          <image>

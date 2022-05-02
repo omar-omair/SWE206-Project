@@ -5,6 +5,7 @@ public class Department extends Unit{
     private ArrayList<Band> jobBands = getJobBands();
     private ArrayList<Employee> employees = new ArrayList<>();
     private int unitCapacity;
+    private String level = "Department";
 
     public Department(String name, int unitCapacity) throws Exception {
         super(name,unitCapacity);

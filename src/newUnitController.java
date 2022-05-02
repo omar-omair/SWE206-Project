@@ -1,10 +1,13 @@
 import java.io.IOException;
 
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -18,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.util.Duration;
 
 public class newUnitController {
     @FXML
@@ -99,6 +103,12 @@ public class newUnitController {
             addButtonL.setVisible(false);
             editButtonL.setVisible(true);
         }
+        else {
+            editUnit.setVisible(false);
+            newUnit.setVisible(true);
+            addButtonL.setVisible(true);
+            editButtonL.setVisible(false);
+        }
 
         applicantsButton.setOnAction(e -> {
             try {
@@ -158,6 +168,32 @@ public class newUnitController {
                 ex.printStackTrace();
             }
         });
+
+        Timeline valueChecker = new Timeline(new KeyFrame(Duration.millis(1), z -> {
+            if(name.getText() == "" || level.getSelectedToggle() == null || (!managment.isSelected() && !engineering.isSelected())) {
+                if(edit) {
+                    editButtonL.setVisible(true);
+                    editButtonUN.setVisible(false);
+                }
+                else {
+                    addButtonL.setVisible(true);
+                    addButtonUN.setVisible(false);
+                }
+            }
+            else {
+                if(edit) {
+                    editButtonL.setVisible(false);
+                    editButtonUN.setVisible(true);
+                }
+                else {
+                    addButtonL.setVisible(false);
+                    addButtonUN.setVisible(true);
+                }
+            }
+        }));
+
+        valueChecker.setCycleCount(Timeline.INDEFINITE);
+        valueChecker.play();
     }
 
     

@@ -60,6 +60,8 @@ public class infoMenuController {
     @FXML
     private AnchorPane pane;
 
+    private Applicant applicant = App.appList.get(appListController.index);
+
     @FXML
     public void initialize() {
         if(settingsMenuController.dark == true) {
@@ -115,6 +117,13 @@ public class infoMenuController {
                 ex.printStackTrace();
             }
         });
+
+        name.setText(applicant.getName());
+        id.setText(applicant.getId());
+        years.setText(Integer.toString(applicant.getYearsOfExperience()));
+        EL.setText(applicant.getEducationLevel());
+        gender.setText(applicant.getGender());
+        status.setText(applicant.getStatus());
     }
     
     void changeScene(Event event, String fileName) throws IOException {

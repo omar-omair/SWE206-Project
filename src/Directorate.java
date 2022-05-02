@@ -6,6 +6,7 @@ public class Directorate extends Unit{
     private ArrayList<Department> departments = new ArrayList<>();
     private ArrayList<Employee> employees = new ArrayList<>();
     private int unitCapacity;
+    private String level = "Directorate";
 
     public Directorate(String name, int unitCapacity) throws Exception {
         super(name,unitCapacity);

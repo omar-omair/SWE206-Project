@@ -7,6 +7,7 @@ public class Applicant implements Serializable {
     private int yearsOfExperience;
     private Interview interview = null;
     private int offeredSalary = 0;
+    private static final long serialVersionUID = -4343060459389843856L;
 
     public Applicant(String name, String id, String gender, String educationLevel, int yearsOfExperience) throws Exception{
         if (!(name.toUpperCase().matches("[A-Z - ]+"))) throw new Exception("Invalid name");
@@ -42,6 +43,10 @@ public class Applicant implements Serializable {
 
     public String getGender() {
         return gender;
+    }
+
+    public int getOfferedSalary() {
+        return offeredSalary;
     }
 
     public void setEducationLevel(String educationLevel) {

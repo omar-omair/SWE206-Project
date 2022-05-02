@@ -128,5 +128,7 @@
             <Image url="@../res/left-arrow.png" />
          </image>
       </ImageView>
+      <Label fx:id="wrong" layoutX="242.0" layoutY="360.0" text="Somthing is wrong please try again" textFill="RED" visible="false" />
+      <Label fx:id="success" layoutX="288.0" layoutY="360.0" text="Applicant added sucessfully" textFill="#00dd42" visible="false" />
    </children>
 </AnchorPane>

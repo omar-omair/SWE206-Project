@@ -35,7 +35,7 @@ public class jobOfferController {
     private JFXButton interviewsButton;
 
     @FXML
-    private JFXComboBox<?> jobBox;
+    private JFXComboBox<Job> jobBox;
 
     @FXML
     private JFXSlider salarySlider;
@@ -57,6 +57,8 @@ public class jobOfferController {
 
     @FXML
     private AnchorPane pane;
+
+    private Applicant applicant = App.appList.get(appListController.index);
 
     public void initialize() {
         if(settingsMenuController.dark == true) {
@@ -112,6 +114,8 @@ public class jobOfferController {
                 ex.printStackTrace();
             }
         });
+
+        applicantName.setText(applicant.getName());
     }
     
     void changeScene(Event event, String fileName) throws IOException {

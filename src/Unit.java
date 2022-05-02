@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public abstract class Unit {
+public abstract class Unit implements Serializable {
     private int unitCapaciy;
     private ArrayList<Band> jobBands = new ArrayList<>();
     private String name;

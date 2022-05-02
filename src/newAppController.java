@@ -3,16 +3,20 @@ import java.io.IOException;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 
@@ -26,6 +30,9 @@ public class newAppController {
 
     @FXML
     private Button addButton;
+
+    @FXML
+    private Button addButtonL;
 
     @FXML
     private JFXButton applicantsButton;
@@ -65,6 +72,12 @@ public class newAppController {
 
     @FXML
     private AnchorPane pane;
+ 
+    @FXML
+    private Label wrong;
+
+    @FXML
+    private Label success;
 
     @FXML
     public void initialize() {
@@ -121,6 +134,50 @@ public class newAppController {
                 ex.printStackTrace();
             }
         });
+
+        addButton.setOnAction(e -> {
+            String gender;
+            if(male.isSelected()) {
+                gender = "male";
+            }
+            else {
+                gender = "female";
+            }
+            try {
+            App.appList.add(new Applicant(name.getText(), id.getText(), gender, EL.getText(), Integer.parseInt(years.getText())));
+            App.save(App.appList,"../appList.ser");
+            App.appList = App.read(App.appList, "../appList.ser");
+            years.setText("");
+            name.setText("");
+            EL.setText("");
+            id.setText("");
+            Gender.selectToggle(null);
+            success.setVisible(true);
+            wrong.setVisible(false);
+        }
+            catch (Exception ex) {
+                success.setVisible(false);
+                wrong.setVisible(true);
+            }
+        });
+
+        Timeline valueChecker = new Timeline(new KeyFrame(Duration.millis(1), z -> {
+            if(years.getText().equals("") || name.getText().equals("") || id.getText().equals("") || 
+                EL.getText().equals("") || (!male.isSelected() && !female.isSelected())) {
+                
+                addButtonL.setVisible(true);
+                addButton.setVisible(false);
+            }
+            else {
+                addButtonL.setVisible(false);
+                addButton.setVisible(true);
+            }
+
+        }));
+
+        valueChecker.setCycleCount(Timeline.INDEFINITE);
+        valueChecker.play();
+
     }
     
     void changeScene(Event event, String fileName) throws IOException {

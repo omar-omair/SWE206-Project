@@ -1,3 +1,7 @@
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import javafx.application.Application;
@@ -10,9 +14,12 @@ import javafx.scene.image.*;
 
 public class App extends Application{
     protected static ArrayList<Applicant> appList = new ArrayList<>();
+    protected static ArrayList<Unit> unitList = new ArrayList<>();
 
     public void start(Stage stage) throws Exception{
-        appList.add(new Applicant("Omar Alomair","202046100","Male","PHD",5));
+        appList = read(appList, "../appList.ser");
+        unitList = read(unitList, "../unitList.ser");
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
         Parent root = (Parent) loader.load();
         Scene scene = new Scene(root);
@@ -23,5 +30,20 @@ public class App extends Application{
     }
     public static void main(String[] args) throws Exception {
         launch();
+    }
+
+    public static <T> void save(ArrayList<T> list, String filepath) throws Exception {
+        FileOutputStream fos = new FileOutputStream(filepath);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(list);
+        oos.close();
+    }
+
+    public static <T> ArrayList<T> read(ArrayList<T> list, String filepath) throws Exception {
+        FileInputStream fis = new FileInputStream(filepath);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        list = (ArrayList<T>) ois.readObject();
+        ois.close();
+        return list;
     }
 }

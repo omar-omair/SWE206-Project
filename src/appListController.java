@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeTableColumn;
@@ -87,7 +88,13 @@ public class appListController {
     @FXML
     private TableColumn<Applicant, String> id;
 
-    protected static ObservableList<Applicant> appList = FXCollections.observableArrayList(App.appList);
+    @FXML
+    private Button removeButtonL;
+
+    @FXML
+    private Button removeButtonUN;
+
+    protected static int index;
 
     public void initialize() {
         if(settingsMenuController.dark == true) {
@@ -95,7 +102,7 @@ public class appListController {
             pane.getStylesheets().add("styleDark.css");
         }
 
-        offerButtonL.setOnAction(e -> {
+        offerButtonUN.setOnAction(e -> {
             try {
            changeScene(e, "jobOfferMenu.fxml");}
            catch (Exception ex) {
@@ -127,7 +134,7 @@ public class appListController {
             }
         });
 
-        infoButtonL.setOnAction(e -> {
+        infoButtonUN.setOnAction(e -> {
             try {
            changeScene(e, "infoMenu.fxml");}
            catch (Exception ex) {
@@ -160,10 +167,54 @@ public class appListController {
             }
         });
 
+        removeButtonUN.setOnAction(e -> {
+            try {
+                remove();
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+
+
+        table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         name.setCellValueFactory(new PropertyValueFactory<Applicant, String>("name"));
         id.setCellValueFactory(new PropertyValueFactory<Applicant, String>("id"));
         status.setCellValueFactory(new PropertyValueFactory<Applicant, String>("status"));
-        table.setItems(appList);
+        table.setItems(FXCollections.observableArrayList(App.appList));
+
+        table.getSelectionModel().selectedItemProperty().addListener(t -> {
+            Applicant picked = table.getSelectionModel().getSelectedItem();
+            index = table.getSelectionModel().getSelectedIndex();
+            
+            if(picked != null && picked.getOfferedSalary() > 0) {
+                jobButtonUN.setVisible(true);
+                jobButtonL.setVisible(false);
+            }
+            else {
+                jobButtonUN.setVisible(false);
+                jobButtonL.setVisible(true);
+            }
+
+            if(picked != null) {
+                infoButtonL.setVisible(false);
+                infoButtonUN.setVisible(true);
+                offerButtonL.setVisible(false);
+                offerButtonUN.setVisible(true);
+                removeButtonL.setVisible(false);
+                removeButtonUN.setVisible(true);
+            }
+
+            else {
+                infoButtonL.setVisible(true);
+                infoButtonUN.setVisible(false);
+                offerButtonL.setVisible(true);
+                offerButtonUN.setVisible(false);
+                removeButtonL.setVisible(true);
+                removeButtonUN.setVisible(false);
+            }
+        });
 
     }
 
@@ -172,5 +223,16 @@ public class appListController {
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(loader));
         stage.show();
+    }
+
+    void refresh() {
+        table.setItems(FXCollections.observableArrayList(App.appList));
+    }
+
+    void remove() throws Exception {
+        App.appList.remove(index);
+        App.save(App.appList,"../appList.ser");
+        App.appList = App.read(App.appList,"../appList.ser");
+        refresh();
     }
 }

@@ -1,3 +1,4 @@
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -6,6 +7,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.layout.*;
@@ -45,6 +50,16 @@ public class unitsListController {
 
     @FXML
     private AnchorPane pane;
+
+    @FXML
+    private TableColumn<Unit, String> level;
+
+    @FXML
+    private TableColumn<Unit, String> name;
+
+    @FXML
+    private TableView<Unit> table;
+
 
 
     public void initialize() {
@@ -111,7 +126,10 @@ public class unitsListController {
             }
         });
 
-
+        table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        name.setCellValueFactory(new PropertyValueFactory<Unit, String>("name"));
+        level.setCellValueFactory(new PropertyValueFactory<Unit, String>("level"));
+        table.setItems(FXCollections.observableArrayList(App.unitList));
 
     }
 
