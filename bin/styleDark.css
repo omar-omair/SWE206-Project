@@ -39,7 +39,6 @@
 .list {
     -fx-background-color: #121212;
     -fx-text-fill: #FFFFFF;
-    -fx-border-color: #069bff;
 }
 
 .comboBox {
@@ -106,5 +105,24 @@
 
 .jfx-button{
     -jfx-disable-visual-focus: true;
+}
+
+.table-view .table-cell{
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 10px;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #93f9b911;
+    -fx-text-background-color: red;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: #93f9b911;
+    -fx-text-fill:white;
+}
+.table-row-cell:even{
+    -fx-background-color: #1dbbdd11;
+    -fx-text-fill:white;
 }
 

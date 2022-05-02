@@ -1,8 +1,13 @@
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXTreeTableView;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -11,6 +16,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.layout.*;
@@ -66,6 +75,19 @@ public class appListController {
     @FXML
     private AnchorPane pane;
 
+    @FXML
+    private TableView<Applicant> table;
+
+    @FXML
+    private TableColumn<Applicant, String> status;
+
+    @FXML
+    private TableColumn<Applicant, String> name;
+
+    @FXML
+    private TableColumn<Applicant, String> id;
+
+    protected static ObservableList<Applicant> appList = FXCollections.observableArrayList(App.appList);
 
     public void initialize() {
         if(settingsMenuController.dark == true) {
@@ -138,6 +160,10 @@ public class appListController {
             }
         });
 
+        name.setCellValueFactory(new PropertyValueFactory<Applicant, String>("name"));
+        id.setCellValueFactory(new PropertyValueFactory<Applicant, String>("id"));
+        status.setCellValueFactory(new PropertyValueFactory<Applicant, String>("status"));
+        table.setItems(appList);
 
     }
 
