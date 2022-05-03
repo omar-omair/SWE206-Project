@@ -1,18 +1,25 @@
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXSlider;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.scene.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class jobOfferController {
 
@@ -47,7 +54,7 @@ public class jobOfferController {
     private AnchorPane slider;
 
     @FXML
-    private JFXComboBox<?> unitBox;
+    private JFXComboBox<Unit> unitBox;
 
     @FXML
     private JFXButton unitsButton;
@@ -61,6 +68,8 @@ public class jobOfferController {
     private Applicant applicant = App.appList.get(appListController.index);
 
     public void initialize() {
+        unitBox.setItems(FXCollections.observableArrayList(App.unitList));
+        jobBox.setItems(FXCollections.observableArrayList(App.jobs));
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");
@@ -115,7 +124,38 @@ public class jobOfferController {
             }
         });
 
+        createOfferUN.setOnAction(e -> {
+            try{
+            applicant.setOfferedSalary((int) salarySlider.getValue());
+            applicant.setOfferedUnit(unitBox.getSelectionModel().getSelectedItem());
+            applicant.setOfferedJob(jobBox.getSelectionModel().getSelectedItem());
+            applicant.createJobOffer();
+            changeScene(e, "appList.fxml");}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
         applicantName.setText(applicant.getName());
+
+        Timeline valueChecker = new Timeline(new KeyFrame(Duration.millis(1), z-> {
+            if(unitBox.getSelectionModel().getSelectedItem() != null && jobBox.getSelectionModel().getSelectedItem() != null) {
+                ArrayList<Integer> salary = applicant.calaculateSalary(jobBox.getSelectionModel().getSelectedItem(), unitBox.getSelectionModel().getSelectedItem());
+                createOfferButtonL.setVisible(false);
+                createOfferUN.setVisible(true);
+                salarySlider.setMin(salary.get(0));
+                salarySlider.setMax(salary.get(1));
+                salarySlider.setVisible(true);
+            }
+            else {
+                createOfferButtonL.setVisible(true);
+                createOfferUN.setVisible(false);
+                salarySlider.setVisible(false);
+            }
+        }));
+        
+        valueChecker.setCycleCount(Timeline.INDEFINITE);
+        valueChecker.play();
     }
     
     void changeScene(Event event, String fileName) throws IOException {

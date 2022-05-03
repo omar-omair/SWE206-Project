@@ -6,6 +6,7 @@ public class Directorate extends Unit{
     private ArrayList<Department> departments = new ArrayList<>();
     private ArrayList<Employee> employees = new ArrayList<>();
     private int unitCapacity;
+    private static final long serialVersionUID = 2007609530191952104L;
    
 
     public Directorate(String name, int unitCapacity) throws Exception {
@@ -22,16 +23,16 @@ public class Directorate extends Unit{
         return departments;
     }
 
-    public void changeToDepartment() throws Exception {
-        Department object = new Department(this.name,this.unitCapacity);
+    public Unit changeToDepartment() throws Exception {
+        Unit object = new Department(this.getName(), this.getUnitCapacity());
         for (Band jobBand: this.jobBands) object.addJobBand(jobBand);
-        Directorate directorate = Directorate.this;
-        directorate = null;
+        return object;
     }
-    public void changeToDivision() throws Exception {
-        Division division = new Division(this.name,this.unitCapacity );
+    public Unit changeToDivision() throws Exception {
+        Unit division = new Division(this.getName(), this.getUnitCapacity());
         for (Band jobBand: this.jobBands) division.addJobBand(jobBand);
-        Directorate directorate = Directorate.this;
-        directorate = null;
+        return division;
     }
+
+    public Directorate changeToDirectorate() throws Exception {return this;}
 }

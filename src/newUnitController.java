@@ -169,8 +169,7 @@ public class newUnitController {
             changeScene(e, "unitsMenu.fxml");}
             else {
             changeScene(e, "unitList.fxml");
-            }
-            }
+            }}
             catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -208,8 +207,30 @@ public class newUnitController {
 
         editButtonUN.setOnAction(e -> {
             try {
+                String levelPicked = ((JFXRadioButton) level.getSelectedToggle()).getText();
                 unit.setName(name.getText());
-                unit.setUnitCapaciy(Integer.parseInt(capacity.getText()));
+                unit.setUnitCapacity(Integer.parseInt(capacity.getText()));
+                if(engineering.isDisabled() == false && engineering.isSelected() == true) {
+                    unit.addJobBand(App.engineering);
+                }
+                if(managment.isDisabled() == false && managment.isSelected() == true) {
+                    unit.addJobBand(App.management);
+                }
+                if(!(levelPicked.equals(unit.getLevel()))) {
+                    if(levelPicked.equals("Division")) {
+                        App.unitList.set(unitsListController.index, unit.changeToDivision());
+                    }
+                    else if(levelPicked.equals("Department")) {
+                        App.unitList.set(unitsListController.index, unit.changeToDepartment());
+                    }
+                    else {
+                        App.unitList.set(unitsListController.index, unit.changeToDirectorate());
+                        
+                    }
+                }
+
+                App.save(App.unitList, "../unitList.ser");
+                changeScene(e, "unitList.fxml");
                 
             }
             catch (Exception ex) {
@@ -231,10 +252,10 @@ public class newUnitController {
                     nUnit = new Department(name.getText(),Integer.parseInt(capacity.getText()));
                 }
                 if(managment.isSelected()) {
-                    nUnit.addJobBand(new Band("Project Management"));
+                    nUnit.addJobBand(App.management);
                 }
                 if(engineering.isSelected()) {
-                    nUnit.addJobBand(new Band("Engineering"));
+                    nUnit.addJobBand(App.engineering);
                 }
                 App.unitList.add(nUnit);
                 App.save(App.unitList,"../unitList.ser");

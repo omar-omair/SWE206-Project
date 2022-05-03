@@ -83,9 +83,20 @@ public abstract class Unit implements Serializable {
         this.name = name.toUpperCase();
     }
 
-    public void setUnitCapaciy(int unitCapacity) throws Exception{
+    public void setUnitCapacity(int unitCapacity) throws Exception{
         if (unitCapacity <= 0) throw new Exception("Invalid unit capacity");
         this.unitCapacity = unitCapacity;
     }
 
+    public void setLevel(String level) throws Exception{
+        this.level = level.toUpperCase();
+    }
+
+    public abstract Unit changeToDepartment() throws Exception;
+    public abstract Unit changeToDivision() throws Exception;
+    public abstract Unit changeToDirectorate() throws Exception;
+
+    public String toString() {
+        return this.name;
+    }
 }

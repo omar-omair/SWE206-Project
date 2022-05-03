@@ -18,21 +18,21 @@ public class Division extends Unit {
     public void removeDirectorate(Directorate directorate){
         this.directorates.remove(directorate);
     }
-    public void changeToDirectorate() throws Exception {
-        Directorate object1 = new Directorate(this.name, this.unitCapacity);
+    public Unit changeToDirectorate() throws Exception {
+        Unit object1 = new Directorate(this.getName(), this.getUnitCapacity());
         for(Band jobBand:this.jobBands){
             object1.addJobBand(jobBand);
         }
-        Division division = Division.this;
-        division = null;
+        return object1;
     }
-    public void changeToDepartment() throws Exception {
-        Department object1 = new Department(this.name, this.unitCapacity);
+    public Unit changeToDepartment() throws Exception {
+        Unit object1 = new Department(this.getName(), this.getUnitCapacity());
         for (Band jobBand:this.jobBands){
             object1.addJobBand(jobBand);
         }
-        Division division = Division.this;
-        division = null;
+        return object1;
     }
+
+    public Unit changeToDivision() throws Exception {return this;}
 
 }

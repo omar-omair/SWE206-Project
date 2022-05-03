@@ -39,4 +39,8 @@ public class Job implements Serializable {
         if (basicSalary < 0) throw new Exception("Invalid salary");
         this.basicSalary = basicSalary;
     }
+
+    public String toString() {
+        return this.name;
+    }
 }

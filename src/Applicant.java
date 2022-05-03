@@ -7,6 +7,8 @@ public class Applicant implements Serializable {
     private int yearsOfExperience;
     private Interview interview = null;
     private int offeredSalary = 0;
+    private Unit offeredUnit;
+    private Job offeredJob;
     private static final long serialVersionUID = -4343060459389843856L;
 
     public Applicant(String name, String id, String gender, String educationLevel, int yearsOfExperience) throws Exception{
@@ -47,6 +49,14 @@ public class Applicant implements Serializable {
 
     public int getOfferedSalary() {
         return offeredSalary;
+    }
+
+    public Unit getOfferedUnit() {
+        return offeredUnit;
+    }
+
+    public Job getOfferedJob() {
+        return offeredJob;
     }
 
     public void setEducationLevel(String educationLevel) {
@@ -91,6 +101,16 @@ public class Applicant implements Serializable {
         }
         else return false;
     }
+    public void setOfferedSalary(int offeredSalary) {
+        this.offeredSalary = offeredSalary;
+    }
+    public void setOfferedUnit(Unit offeredUnit) {
+        this.offeredUnit = offeredUnit;
+    }
+    public void setOfferedJob(Job offeredJob) {
+        this.offeredJob = offeredJob;
+    }
+
     public ArrayList<Integer> calaculateSalary(Job job, Unit unit){
         ArrayList<Integer> salaryRange = new ArrayList<>();
         int minBasicSalary,maxBasicSalary,totalMinSalary,totalMaxSalary;
@@ -112,17 +132,15 @@ public class Applicant implements Serializable {
         salaryRange.add(totalMaxSalary);
         return salaryRange;
     }
-    public boolean assignJob(Job job, Unit unit) throws Exception {
-        if (unit.checkAvailability() > 0 && offeredSalary > 0){
-            Employee employee = new Employee(this.name, this.offeredSalary, this.gender, this.id, job, unit,this.yearsOfExperience);
+    public boolean assignJob() throws Exception {
+        if (offeredUnit.checkAvailability() > 0 && offeredSalary > 0){
+            Employee employee = new Employee(this.name, this.offeredSalary, this.gender, this.id, this.offeredJob, this.offeredUnit,this.yearsOfExperience);
             return true;
         }
         else return false;
     }
-    public boolean createJobOffer(Job job, int offeredSalary, Unit unit) throws Exception{
-        if (offeredSalary < 0) throw new Exception("Invalid salary");
-        if(unit.checkAvailability() > 0) {
-            this.offeredSalary = offeredSalary;
+    public boolean createJobOffer() throws Exception{
+        if(this.offeredUnit.checkAvailability() > 0) {
             setStatus("Approved");
             return true;
         }
