@@ -1,4 +1,6 @@
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable{
     private String name,gender, id;
     private int salary, yearsOfExperience;
     private Job job;

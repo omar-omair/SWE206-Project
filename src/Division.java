@@ -6,10 +6,9 @@ public class Division extends Unit {
     private ArrayList<Directorate> directorates;
     private ArrayList<Employee> employees = new ArrayList<>();
     private int unitCapacity;
-    private String level = "Division";
 
     public Division(String name, int unitCapacity) throws Exception {
-        super(name,unitCapacity);
+        super(name,unitCapacity,"Division");
     }
 
 

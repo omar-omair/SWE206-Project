@@ -6,10 +6,10 @@ public class Directorate extends Unit{
     private ArrayList<Department> departments = new ArrayList<>();
     private ArrayList<Employee> employees = new ArrayList<>();
     private int unitCapacity;
-    private String level = "Directorate";
+   
 
     public Directorate(String name, int unitCapacity) throws Exception {
-        super(name,unitCapacity);
+        super(name,unitCapacity,"Directorate");
     }
     public void addDepartment(Department department){
         this.departments.add(department);

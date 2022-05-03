@@ -60,6 +60,8 @@ public class unitsListController {
     @FXML
     private TableView<Unit> table;
 
+    protected static int index;
+
 
 
     public void initialize() {
@@ -109,7 +111,7 @@ public class unitsListController {
                 }
         });
 
-        editButtonL.setOnMouseClicked(e -> {
+        editButtonUN.setOnMouseClicked(e -> {
             try {
                 newUnitController.edit = true;
                 changeScene(e, "newUnitMenu.fxml");}
@@ -129,7 +131,22 @@ public class unitsListController {
         table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         name.setCellValueFactory(new PropertyValueFactory<Unit, String>("name"));
         level.setCellValueFactory(new PropertyValueFactory<Unit, String>("level"));
+
         table.setItems(FXCollections.observableArrayList(App.unitList));
+
+        table.getSelectionModel().selectedItemProperty().addListener(t -> {
+            Unit picked = table.getSelectionModel().getSelectedItem();
+            index = table.getSelectionModel().getSelectedIndex();
+            
+            if(picked != null) {
+                editButtonL.setVisible(false);
+                editButtonUN.setVisible(true);
+            }
+            else {
+                editButtonL.setVisible(true);
+                editButtonUN.setVisible(false);
+            }
+        });
 
     }
 

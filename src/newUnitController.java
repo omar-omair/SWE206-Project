@@ -40,7 +40,7 @@ public class newUnitController {
     private JFXRadioButton department;
 
     @FXML
-    private JFXRadioButton directorete;
+    private JFXRadioButton directorate;
 
     @FXML
     private JFXRadioButton division;
@@ -90,6 +90,18 @@ public class newUnitController {
     private JFXButton unitsButton;
 
     @FXML
+    private TextField capacity;
+
+    @FXML
+    private Label wrong;
+
+    @FXML
+    private Label success;
+
+
+    protected static Unit unit;
+
+    @FXML
     public void initialize() {
 
         if(settingsMenuController.dark == true) {
@@ -101,7 +113,32 @@ public class newUnitController {
             editUnit.setVisible(true);
             newUnit.setVisible(false);
             addButtonL.setVisible(false);
-            editButtonL.setVisible(true);
+            editButtonUN.setVisible(true);
+            unit = App.unitList.get(unitsListController.index);
+            name.setText(unit.getName());
+            capacity.setText(Integer.toString(unit.getUnitCapacity()));
+            
+            if(unit instanceof Department) {
+                department.setSelected(true);
+            }
+            else if(unit instanceof Division) {
+                division.setSelected(true);
+            }
+            else {
+                directorate.setSelected(true);
+            }
+
+            for(int i = 0; i < unit.getJobBands().size(); i++) {
+                if(unit.getJobBands().get(i).getName().equalsIgnoreCase("Project Management")) {
+                    managment.setSelected(true);
+                    managment.setDisable(true);
+                }
+                else if(unit.getJobBands().get(i).getName().equalsIgnoreCase("Engineering")) {
+                    engineering.setSelected(true);
+                    engineering.setDisable(true);
+                }
+            }
+
         }
         else {
             editUnit.setVisible(false);
@@ -169,8 +206,56 @@ public class newUnitController {
             }
         });
 
+        editButtonUN.setOnAction(e -> {
+            try {
+                unit.setName(name.getText());
+                unit.setUnitCapaciy(Integer.parseInt(capacity.getText()));
+                
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+        
+        addButtonUN.setOnAction(e -> {
+            try {
+                Unit nUnit;
+
+                if(division.isSelected()){
+                    nUnit = new Division(name.getText(),Integer.parseInt(capacity.getText()));
+                }
+                else if(directorate.isSelected()){
+                    nUnit = new Directorate(name.getText(),Integer.parseInt(capacity.getText()));
+                }
+                else{
+                    nUnit = new Department(name.getText(),Integer.parseInt(capacity.getText()));
+                }
+                if(managment.isSelected()) {
+                    nUnit.addJobBand(new Band("Project Management"));
+                }
+                if(engineering.isSelected()) {
+                    nUnit.addJobBand(new Band("Engineering"));
+                }
+                App.unitList.add(nUnit);
+                App.save(App.unitList,"../unitList.ser");
+                App.unitList = App.read(App.unitList, "../unitList.ser");
+                success.setVisible(true);
+                wrong.setVisible(false);
+
+                name.setText("");
+                capacity.setText("");
+                level.selectToggle(null);
+                engineering.setSelected(false);
+                managment.setSelected(false);
+            }
+            catch (Exception ex) {
+                success.setVisible(false);
+                wrong.setVisible(true);
+            }
+        });
+
         Timeline valueChecker = new Timeline(new KeyFrame(Duration.millis(1), z -> {
-            if(name.getText() == "" || level.getSelectedToggle() == null || (!managment.isSelected() && !engineering.isSelected())) {
+            if(name.getText().equals("") || capacity.getText().equals("") || level.getSelectedToggle() == null || (!managment.isSelected() && !engineering.isSelected())) {
                 if(edit) {
                     editButtonL.setVisible(true);
                     editButtonUN.setVisible(false);

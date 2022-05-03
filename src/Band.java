@@ -1,6 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Band {
+
+public class Band implements Serializable {
     private String name;
     private ArrayList<Unit> units;
     private ArrayList<Job> jobs = new ArrayList<>();

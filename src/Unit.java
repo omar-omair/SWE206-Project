@@ -2,15 +2,19 @@ import java.util.ArrayList;
 import java.io.Serializable;
 
 public abstract class Unit implements Serializable {
-    private int unitCapaciy;
+    private int unitCapacity;
     private ArrayList<Band> jobBands = new ArrayList<>();
     private String name;
     private ArrayList<Employee> employees = new ArrayList<>();
-    public Unit(String name, int unitCapaciy) throws Exception{
+    private static final long serialVersionUID = 1955480633460932831L;
+    private String level;
+
+    public Unit(String name, int unitCapacity, String level) throws Exception{
         if (!(name.toUpperCase().matches("[A-Z - ]+"))) throw new Exception("Invalid name");
-        if (unitCapaciy <= 0) throw new Exception("Invalid unit capacity");
+        if (unitCapacity <= 0) throw new Exception("Invalid unit capacity");
         this.name = name.toUpperCase();
-        this.unitCapaciy = unitCapaciy;
+        this.unitCapacity = unitCapacity;
+        this.level = level.toUpperCase();
     }
     public void addJobBand(Band band){
         this.jobBands.add(band);
@@ -19,12 +23,16 @@ public abstract class Unit implements Serializable {
         this.jobBands.remove(band);
     }
 
-    public int getUnitCapaciy() {
-        return unitCapaciy;
+    public int getUnitCapacity() {
+        return unitCapacity;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getLevel() {
+        return level;
     }
 
     public void setEmployees(ArrayList<Employee> employees) {
@@ -45,7 +53,7 @@ public abstract class Unit implements Serializable {
         this.employees.remove(employee);
     }
     public int checkAvailability(){
-        return this.unitCapaciy - employees.size();
+        return this.unitCapacity - employees.size();
     }
 
     public ArrayList<String> getEmployeesNames() {
@@ -75,9 +83,9 @@ public abstract class Unit implements Serializable {
         this.name = name.toUpperCase();
     }
 
-    public void setUnitCapaciy(int unitCapaciy) throws Exception{
-        if (unitCapaciy <= 0) throw new Exception("Invalid unit capacity");
-        this.unitCapaciy = unitCapaciy;
+    public void setUnitCapaciy(int unitCapacity) throws Exception{
+        if (unitCapacity <= 0) throw new Exception("Invalid unit capacity");
+        this.unitCapacity = unitCapacity;
     }
 
 }

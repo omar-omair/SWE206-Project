@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Interview {
+public class Interview implements Serializable {
     private String time, date;
     private String result = "hold";
     private Applicant interviewee;
