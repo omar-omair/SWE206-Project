@@ -60,6 +60,9 @@ public class infoMenuController {
     @FXML
     private AnchorPane pane;
 
+    @FXML
+    private Button toPDF;
+
     private Applicant applicant = App.appList.get(appListController.index);
 
     @FXML
@@ -113,6 +116,14 @@ public class infoMenuController {
         employeesButton.setOnAction(e -> {
             try {
                 changeScene(e, "employeeList.fxml");}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }); 
+
+        toPDF.setOnAction(e -> {
+            try {
+            applicant.toPDF();}
             catch (Exception ex) {
                 ex.printStackTrace();
             }

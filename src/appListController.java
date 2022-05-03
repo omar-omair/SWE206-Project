@@ -96,6 +96,8 @@ public class appListController {
 
     protected static int index;
 
+    protected static Applicant applicant;
+
     public void initialize() {
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
@@ -176,8 +178,19 @@ public class appListController {
             }
         });
 
+        jobButtonUN.setOnAction(e -> {
+        try {
+           if(applicant.checkFeasibility() == true) {
+
+           }
+        } 
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }  
+        });
 
 
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         name.setCellValueFactory(new PropertyValueFactory<Applicant, String>("name"));
         id.setCellValueFactory(new PropertyValueFactory<Applicant, String>("id"));
@@ -185,10 +198,10 @@ public class appListController {
         table.setItems(FXCollections.observableArrayList(App.appList));
 
         table.getSelectionModel().selectedItemProperty().addListener(t -> {
-            Applicant picked = table.getSelectionModel().getSelectedItem();
+            applicant = table.getSelectionModel().getSelectedItem();
             index = table.getSelectionModel().getSelectedIndex();
             
-            if(picked != null && picked.getOfferedSalary() > 0) {
+            if(applicant != null && applicant.getOfferedSalary() > 0) {
                 jobButtonUN.setVisible(true);
                 jobButtonL.setVisible(false);
             }
@@ -197,7 +210,7 @@ public class appListController {
                 jobButtonL.setVisible(true);
             }
 
-            if(picked != null) {
+            if(applicant != null) {
                 infoButtonL.setVisible(false);
                 infoButtonUN.setVisible(true);
                 offerButtonL.setVisible(false);

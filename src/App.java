@@ -15,20 +15,20 @@ import javafx.scene.image.*;
 public class App extends Application{
     protected static ArrayList<Applicant> appList = new ArrayList<>();
     protected static ArrayList<Unit> unitList = new ArrayList<>();
+    protected static ArrayList<Employee> employeeList = new ArrayList<>();
     
-    
-    protected static ArrayList<Job> jobs = new ArrayList<>();
     protected static Band management;
     protected static Band engineering;
     
     public void start(Stage stage) throws Exception{
         appList = read(appList, "../appList.ser");
         unitList = read(unitList, "../unitList.ser");
+        employeeList = read(employeeList, "../empList.ser");
 
         management = new Band("Project Management");
         engineering = new Band("Engineering");
 
-        jobs.add(new Job("Product manager", 7500, management));
+        management.addJob(new Job("Manager", 7500, management));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
         Parent root = (Parent) loader.load();

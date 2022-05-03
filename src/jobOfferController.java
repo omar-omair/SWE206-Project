@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -65,11 +66,30 @@ public class jobOfferController {
     @FXML
     private AnchorPane pane;
 
+    @FXML
+    private Label wrong;
+
     private Applicant applicant = App.appList.get(appListController.index);
 
     public void initialize() {
         unitBox.setItems(FXCollections.observableArrayList(App.unitList));
-        jobBox.setItems(FXCollections.observableArrayList(App.jobs));
+        
+        unitBox.getSelectionModel().selectedItemProperty().addListener(z-> {
+            ArrayList<Band> bands = unitBox.getSelectionModel().getSelectedItem().getJobBands();
+            ArrayList<Job> jobs = new ArrayList<>();
+
+            for(int i = 0; i < bands.size(); i++ ) {
+                if(bands.get(i).getName().equalsIgnoreCase("Project Management")) {
+                    jobs.addAll(bands.get(i).getJobs());
+                }
+                if(bands.get(i).getName().equalsIgnoreCase("Engineering")) {
+                    jobs.addAll(bands.get(i).getJobs());
+                }
+            }
+
+            jobBox.setItems(FXCollections.observableArrayList(jobs));
+        });
+
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");
@@ -126,13 +146,20 @@ public class jobOfferController {
 
         createOfferUN.setOnAction(e -> {
             try{
-            applicant.setOfferedSalary((int) salarySlider.getValue());
-            applicant.setOfferedUnit(unitBox.getSelectionModel().getSelectedItem());
-            applicant.setOfferedJob(jobBox.getSelectionModel().getSelectedItem());
-            applicant.createJobOffer();
-            changeScene(e, "appList.fxml");}
+                applicant.setOfferedUnit(unitBox.getSelectionModel().getSelectedItem());
+                
+            if(applicant.createJobOffer() == true) {
+                applicant.setOfferedSalary((int) salarySlider.getValue());
+                applicant.setOfferedJob(jobBox.getSelectionModel().getSelectedItem());
+                App.save(App.appList,"../appList.ser");
+                changeScene(e, "appList.fxml");
+                }
+            applicant.setOfferedUnit(null);
+            applicant.setStatus("Hold");
+            wrong.setVisible(true);
+            }
             catch (Exception ex) {
-                ex.printStackTrace();
+                wrong.setVisible(true);
             }
         });
 

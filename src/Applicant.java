@@ -1,5 +1,11 @@
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 public class Applicant implements Serializable {
     private String name, id, gender, educationLevel;
@@ -13,7 +19,7 @@ public class Applicant implements Serializable {
 
     public Applicant(String name, String id, String gender, String educationLevel, int yearsOfExperience) throws Exception{
         if (!(name.toUpperCase().matches("[A-Z - ]+"))) throw new Exception("Invalid name");
-        if (!(id.matches("[0-9]+"))) throw new Exception("Invalid ID");
+        if (!(id.matches("[0-9]+")) || !(id.length() == 10)) throw new Exception("Invalid ID");
         if (yearsOfExperience < 0) throw new Exception("Invalid years of experience");
         if(!(gender.equalsIgnoreCase("male") || gender.equalsIgnoreCase("female"))) throw new Exception("Invalid gender");
         this.name = name.toUpperCase();
@@ -132,18 +138,61 @@ public class Applicant implements Serializable {
         salaryRange.add(totalMaxSalary);
         return salaryRange;
     }
-    public boolean assignJob() throws Exception {
-        if (offeredUnit.checkAvailability() > 0 && offeredSalary > 0){
-            Employee employee = new Employee(this.name, this.offeredSalary, this.gender, this.id, this.offeredJob, this.offeredUnit,this.yearsOfExperience);
+    public boolean checkFeasibility() throws Exception {
+        if (this.getOfferedUnit().checkAvailability() > 0 && this.getOfferedSalary() > 0){
             return true;
         }
         else return false;
     }
+
+    public Employee assignJob() throws Exception{
+        Employee employee = new Employee(this.getName(), this.getOfferedSalary(), this.getGender(), this.getId(), this.getOfferedJob(), this.getOfferedUnit(),this.getYearsOfExperience());
+        return employee;
+    }
+
     public boolean createJobOffer() throws Exception{
-        if(this.offeredUnit.checkAvailability() > 0) {
+        if(this.getOfferedUnit().checkAvailability() > 0) {
             setStatus("Approved");
             return true;
         }
         else return false;
+    }
+
+    public void toPDF() throws IOException {
+        PDDocument document = new PDDocument();
+        PDPage pdPage = new PDPage();
+        document.addPage(pdPage);
+        PDPageContentStream content = new PDPageContentStream(document, pdPage);
+
+        PDImageXObject image1 = PDImageXObject.createFromFile("img_1.png", document);
+        content.drawImage(image1,0,0);
+
+        if (getGender().equalsIgnoreCase("Male")) {
+            PDImageXObject image = PDImageXObject.createFromFile("male profile.png", document);
+            content.drawImage(image, 15, pdPage.getTrimBox().getHeight() - 165, 150, 150);
+        }
+        else {
+            PDImageXObject image = PDImageXObject.createFromFile("female profile.png", document);
+            content.drawImage(image, 15, pdPage.getTrimBox().getHeight() - 165, 150, 150);
+        }
+        content.beginText();
+        content.setFont(PDType1Font.TIMES_ROMAN, 18);
+        content.setLeading(35);
+        content.newLineAtOffset(25,pdPage.getTrimBox().getHeight() - 250);
+        content.showText("Name:  " + getName());
+        content.newLine();
+        content.showText("ID:  " + getId());
+        content.newLine();
+        content.showText("Gender:  " + getGender());
+        content.newLine();
+        content.showText("Education level:  " + getEducationLevel());
+        content.newLine();
+        content.showText("Years of experience:  " + getYearsOfExperience());
+        content.newLine();
+        content.showText("Status:  " + getStatus());
+        content.endText();
+        content.close();
+        document.save("Applicants pdf/" + this.name + " " + this.id +".pdf");
+
     }
 }

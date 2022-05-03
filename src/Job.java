@@ -10,7 +10,6 @@ public class Job implements Serializable {
         if(basicSalary < 0) throw new Exception("Invalid salary");
         this.name = name.toUpperCase();
         this.band = band;
-        band.addJob(Job.this);
         this.basicSalary = basicSalary;
     }
 

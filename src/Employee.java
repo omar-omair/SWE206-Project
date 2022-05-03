@@ -20,6 +20,7 @@ public class Employee implements Serializable{
         this.id = id;
         this.job = job;
         this.unit = unit;
+        this.yearsOfExperience = yearsOfExperience;
         unit.addEmployee(Employee.this);
     }
 
@@ -57,6 +58,10 @@ public class Employee implements Serializable{
     public void setSalary(int salary) throws Exception {
         if (salary < 0) throw new Exception("Invalid salary");
         this.salary = salary;
+    }
+
+    public void setYearsOfExperience(int yearsOfExperience) throws Exception {
+        this.yearsOfExperience = yearsOfExperience;
     }
 
     public Job getJob() {
@@ -116,5 +121,9 @@ public class Employee implements Serializable{
 
     public void setInterview(Interview interview) {
         this.interview = interview;
+    }
+
+    public int getYearsOfExperience() {
+        return yearsOfExperience;
     }
 }
