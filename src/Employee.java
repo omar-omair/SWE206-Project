@@ -174,4 +174,8 @@ public class Employee implements Serializable{
         document.save("Employees pdf/" + this.name + " " + this.id +".pdf");
 
     }
+
+    public String toString() {
+        return this.name;
+    }
 }

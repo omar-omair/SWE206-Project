@@ -95,10 +95,4 @@ public abstract class Unit implements Serializable {
     public String toString() {
         return this.name;
     }
-
-//     public boolean equals(Object o) {
-//         Unit other = (Unit) o;
-//         String name = other.getName();
-//         return (this.getName().equalsIgnoreCase(name));
-//     }
 }

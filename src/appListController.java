@@ -189,7 +189,6 @@ public class appListController {
             if(applicant.checkFeasibility() == true) {
             Employee employee = applicant.assignJob();
             App.employeeList.add(employee);
-            employee.getUnit().addEmployee(employee);
             App.save(App.employeeList,"../empList.ser");
             App.employeeList = App.read(App.employeeList, "../empList.ser");
             remove();

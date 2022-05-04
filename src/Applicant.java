@@ -195,4 +195,8 @@ public class Applicant implements Serializable {
         document.save("Applicants pdf/" + this.name + " " + this.id +".pdf");
 
     }
+
+    public String toString() {
+        return this.name;
+    }
 }

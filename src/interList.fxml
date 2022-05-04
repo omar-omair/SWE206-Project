@@ -99,21 +99,19 @@
       </Label>
       <Button fx:id="editButtonL" layoutX="354.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Edit Interview" textFill="WHITE" />
       <Button fx:id="editButtonUN" layoutX="354.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Edit Interview" textFill="WHITE" visible="false" />
-      <Button fx:id="removeButtonL" layoutX="528.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Cancel Interview" textFill="WHITE" />
-      <Button fx:id="removeButtonUN" layoutX="528.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Cancel Interview" textFill="WHITE" visible="false" />
+      <Button fx:id="removeButtonL" layoutX="528.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Remove Interview" textFill="WHITE" />
+      <Button fx:id="removeButtonUN" layoutX="528.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Remove Interview" textFill="WHITE" visible="false" />
       <ImageView fx:id="back" fitHeight="22.0" fitWidth="22.0" layoutX="247.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="back" AnchorPane.bottomAnchor="464.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="531.0" AnchorPane.topAnchor="14.0">
          <image>
             <Image url="@../res/left-arrow.png" />
          </image>
       </ImageView>
-      <TableView fx:id="table" layoutX="224.0" layoutY="54.0" prefHeight="350.0" prefWidth="568.0">
+      <TableView fx:id="table" layoutX="249.0" layoutY="54.0" prefHeight="350.0" prefWidth="496.0">
         <columns>
-          <TableColumn fx:id="appName" prefWidth="109.5" text="Applicant's Name" />
-          <TableColumn fx:id="date" prefWidth="70.0" text="Date" />
-            <TableColumn fx:id="firstInterviewer" prefWidth="99.5" text="1st interviewer" />
-            <TableColumn fx:id="secondInterviewer" prefWidth="107.5" text="2nd interviewer" />
-            <TableColumn fx:id="thirdInterviewer" prefWidth="96.0" text="3rd interviewer" />
-            <TableColumn fx:id="status" prefWidth="84.5" text="Status" />
+          <TableColumn fx:id="appName" prefWidth="131.5" text="Applicant's Name" />
+          <TableColumn fx:id="date" prefWidth="138.0" text="Date" />
+            <TableColumn fx:id="mainInterviewer" prefWidth="149.0" text="Main interviewer" />
+            <TableColumn fx:id="status" prefWidth="76.5" text="Status" />
         </columns>
       </TableView>
    </children>

@@ -1,11 +1,14 @@
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -92,6 +95,12 @@ public class newInterMenuController {
     
     @FXML
     public void initialize() {
+        ArrayList<String> results = new ArrayList<String>();
+        results.add("HOLD");
+        results.add("PASS");
+        results.add("FAIL");
+        result.setItems(FXCollections.observableArrayList(results));
+
 
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
@@ -103,6 +112,11 @@ public class newInterMenuController {
             newInter.setVisible(false);
             addButtonL.setVisible(false);
             editButtonL.setVisible(true);
+        }
+
+        else {
+            result.setDisable(true);
+            result.getSelectionModel().select(0);
         }
 
         applicantsButton.setOnAction(e -> {
@@ -207,15 +221,18 @@ public class newInterMenuController {
             }
 
         };
-
         date.setDayCellFactory(callB);
+
+        firstInterviewer.setItems(FXCollections.observableArrayList(App.employeeList));
+        interviewee.setItems(FXCollections.observableArrayList(App.appList));
 
         Timeline valueChecker = new Timeline(new KeyFrame(Duration.millis(1), z -> {
             if(interviewee.getSelectionModel().getSelectedItem() == null || firstInterviewer.getSelectionModel().getSelectedItem() == null || 
-            result.getSelectionModel().getSelectedItem() == null || date.getValue() != null || time.getText().equals("")) { 
+            result.getSelectionModel().getSelectedItem() == null || date.getValue() == null || time.getText().equals("")) { 
                 if(edit) {
                     editButtonL.setVisible(true);
                     editButton.setVisible(false);
+                    
                 }
                 else {
                     addButtonL.setVisible(true);
@@ -232,23 +249,34 @@ public class newInterMenuController {
                     addButton.setVisible(true);
                 }
             }
-
-            if(firstInterviewer.getSelectionModel().getSelectedItem() == null) {
-                secondInterviewer.setEditable(false);
-            }
-            else {
-                secondInterviewer.setEditable(true);
-            }
-
-            if(secondInterviewer.getSelectionModel().getSelectedItem() == null) {
-                thirdInterviewer.setEditable(false);
-            }
-            else {
-                thirdInterviewer.setEditable(true);
-            }
+           
         }));
-        valueChecker.play();
+        
         valueChecker.setCycleCount(Timeline.INDEFINITE);
+        valueChecker.play();
+
+        firstInterviewer.getSelectionModel().selectedItemProperty().addListener(z-> {
+            secondInterviewer.getSelectionModel().clearSelection();
+
+            if(firstInterviewer.getSelectionModel().getSelectedItem() != null) {
+                secondInterviewer.setItems(FXCollections.observableArrayList(firstInterviewer.getItems()));
+                secondInterviewer.getItems().remove(firstInterviewer.getSelectionModel().getSelectedItem());
+            }      
+
+        });
+
+        secondInterviewer.getSelectionModel().selectedItemProperty().addListener(z-> {
+            thirdInterviewer.getSelectionModel().clearSelection();
+
+            if(secondInterviewer.getSelectionModel().getSelectedItem() != null) {
+                thirdInterviewer.setItems(FXCollections.observableArrayList(secondInterviewer.getItems()));
+                thirdInterviewer.getItems().remove(secondInterviewer.getSelectionModel().getSelectedItem());
+            }      
+
+        });
+
+        
+
     }
 
     
@@ -262,4 +290,5 @@ public class newInterMenuController {
    
 
 }
+
 
