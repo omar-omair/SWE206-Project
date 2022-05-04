@@ -117,5 +117,6 @@
             <TableColumn fx:id="status" editable="false" minWidth="0.0" prefWidth="153.5" text="Status" />
         </columns>
       </TableView>
+      <Label fx:id="wrong" layoutX="440.0" layoutY="455.0" text="Unit is full" textFill="RED" visible="false" />
    </children>
 </AnchorPane>

@@ -65,9 +65,6 @@ public class employeeListController {
 
     @FXML
     private TableColumn<Employee, String> name;
-    
-    @FXML
-    private TableColumn<Employee, String> gender;
 
     @FXML
     private TableColumn<Employee, String> id;
@@ -80,6 +77,12 @@ public class employeeListController {
 
     @FXML
     private TableColumn<Employee, Unit> unit;
+
+    @FXML
+    private Button infoButtonL;
+
+    @FXML
+    private Button infoButtonUN;
 
     protected static int index;
 
@@ -146,19 +149,31 @@ public class employeeListController {
             App.employeeList.remove(index);
             App.save(App.employeeList,"../empList.ser");
             App.employeeList = App.read(App.employeeList, "../empList.ser");
+            table.setItems(FXCollections.observableArrayList(App.employeeList));
             }
             catch (Exception ex) {
                 ex.printStackTrace();
             }
         });
+
+        infoButtonUN.setOnAction(e -> {
+            try {
+                infoMenuController.employeeInfo = true;
+                changeScene(e, "infoMenu.fxml");
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
         
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         name.setCellValueFactory(new PropertyValueFactory<Employee, String>("name"));
-        gender.setCellValueFactory(new PropertyValueFactory<Employee, String>("gender"));
         job.setCellValueFactory(new PropertyValueFactory<Employee, Job>("job"));
         unit.setCellValueFactory(new PropertyValueFactory<Employee, Unit>("unit"));
         id.setCellValueFactory(new PropertyValueFactory<Employee, String>("id"));
+        salary.setCellValueFactory(new PropertyValueFactory<Employee,Integer>("salary"));
         table.setItems(FXCollections.observableArrayList(App.employeeList));
 
         table.getSelectionModel().selectedItemProperty().addListener(t -> {
@@ -169,12 +184,16 @@ public class employeeListController {
                 removeButtonL.setVisible(false);
                 editButtonUN.setVisible(true);
                 editButtonL.setVisible(false);
+                infoButtonUN.setVisible(true);
+                infoButtonL.setVisible(false);
             }
             else{
                 removeButtonUN.setVisible(false);
                 removeButtonL.setVisible(true);
                 editButtonUN.setVisible(false);
                 editButtonL.setVisible(true);
+                infoButtonUN.setVisible(false);
+                infoButtonL.setVisible(true);
             }
         });
 

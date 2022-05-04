@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.time.LocalDate;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -12,10 +13,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafx.util.Duration;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -188,6 +191,24 @@ public class newInterMenuController {
                 ex.printStackTrace();
             }
         });
+
+        Callback<DatePicker, DateCell> callB = new Callback<DatePicker, DateCell>() {
+            @Override
+            public DateCell call(final DatePicker param) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        LocalDate today = LocalDate.now();
+                        setDisable(empty || item.compareTo(today) < 0);
+                    }
+
+                };
+            }
+
+        };
+
+        date.setDayCellFactory(callB);
 
         Timeline valueChecker = new Timeline(new KeyFrame(Duration.millis(1), z -> {
             if(interviewee.getSelectionModel().getSelectedItem() == null || firstInterviewer.getSelectionModel().getSelectedItem() == null || 

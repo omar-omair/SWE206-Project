@@ -1,4 +1,11 @@
 import java.io.Serializable;
+import java.io.IOException;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
 
 public class Employee implements Serializable{
     private String name,gender, id;
@@ -6,6 +13,7 @@ public class Employee implements Serializable{
     private Job job;
     private Interview interview;
     private Unit unit;
+    private static final long serialVersionUID = -5450079122335455803L;
 
 
     public Employee(String name, int salary, String gender, String id, Job job, Unit unit,int yearsOfExperience) throws Exception{
@@ -125,5 +133,45 @@ public class Employee implements Serializable{
 
     public int getYearsOfExperience() {
         return yearsOfExperience;
+    }
+
+    public void toPDF() throws IOException {
+        PDDocument document = new PDDocument();
+        PDPage pdPage = new PDPage();
+        document.addPage(pdPage);
+        PDPageContentStream content = new PDPageContentStream(document, pdPage);
+
+        PDImageXObject image1 = PDImageXObject.createFromFile("img_1.png", document);
+        content.drawImage(image1,0,0);
+
+        if (getGender().equalsIgnoreCase("Male")) {
+            PDImageXObject image = PDImageXObject.createFromFile("male profile.png", document);
+            content.drawImage(image, 15, pdPage.getTrimBox().getHeight() - 165, 150, 150);
+        }
+        else {
+            PDImageXObject image = PDImageXObject.createFromFile("female profile.png", document);
+            content.drawImage(image, 15, pdPage.getTrimBox().getHeight() - 165, 150, 150);
+        }
+        content.beginText();
+        content.setFont(PDType1Font.TIMES_ROMAN, 18);
+        content.setLeading(35);
+        content.newLineAtOffset(25,pdPage.getTrimBox().getHeight() - 250);
+        content.showText("Name:  " + getName());
+        content.newLine();
+        content.showText("ID:  " + getId());
+        content.newLine();
+        content.showText("Gender:  " + getGender());
+        content.newLine();
+        content.showText("Unit:  " + getUnit().getName());
+        content.newLine();
+        content.showText("Years of experience:  " + getYearsOfExperience());
+        content.newLine();
+        content.showText("Salary:  " + getSalary());
+        content.newLine();
+        content.showText("Job:  " + getJob().getName());
+        content.endText();
+        content.close();
+        document.save("Employees pdf/" + this.name + " " + this.id +".pdf");
+
     }
 }

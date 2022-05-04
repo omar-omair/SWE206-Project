@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -94,6 +95,9 @@ public class appListController {
     @FXML
     private Button removeButtonUN;
 
+    @FXML
+    private Label wrong;
+
     protected static int index;
 
     protected static Applicant applicant;
@@ -138,6 +142,7 @@ public class appListController {
 
         infoButtonUN.setOnAction(e -> {
             try {
+           infoMenuController.employeeInfo = false;
            changeScene(e, "infoMenu.fxml");}
            catch (Exception ex) {
             ex.printStackTrace();
@@ -178,15 +183,24 @@ public class appListController {
             }
         });
 
+    
         jobButtonUN.setOnAction(e -> {
-        try {
-           if(applicant.checkFeasibility() == true) {
-
-           }
-        } 
-        catch (Exception ex) {
-            ex.printStackTrace();
-        }  
+            try {
+            if(applicant.checkFeasibility() == true) {
+            Employee employee = applicant.assignJob();
+            App.employeeList.add(employee);
+            employee.getUnit().addEmployee(employee);
+            App.save(App.employeeList,"../empList.ser");
+            App.employeeList = App.read(App.employeeList, "../empList.ser");
+            remove();
+            }
+            else {
+                wrong.setVisible(true);
+            }
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
         });
 
 
@@ -242,5 +256,7 @@ public class appListController {
         App.appList.remove(index);
         App.save(App.appList,"../appList.ser");
         App.appList = App.read(App.appList,"../appList.ser");
+        table.setItems(FXCollections.observableArrayList(App.appList));
     }
+
 }

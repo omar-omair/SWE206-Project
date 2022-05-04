@@ -8,6 +8,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
@@ -63,13 +64,62 @@ public class infoMenuController {
     @FXML
     private Button toPDF;
 
-    private Applicant applicant = App.appList.get(appListController.index);
+    @FXML
+    private Label eduLabel;
+
+    @FXML
+    private Label infoLabel;
+    
+    @FXML
+    private Label jobLabel;
+
+    @FXML
+    private Label statusLabel;
+
+    @FXML
+    private Label yearsLabel;
+
+    @FXML
+    private TextField job;
+
+    private Applicant applicant;
+
+    private Employee employee;
+
+    protected static Boolean employeeInfo = false;
 
     @FXML
     public void initialize() {
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");
+        }
+
+        if(employeeInfo) {
+            employee = App.employeeList.get(employeeListController.index);
+            eduLabel.setText("Unit");
+            infoLabel.setText("Employee info");
+            statusLabel.setText("salary");
+            jobLabel.setVisible(true);
+            job.setVisible(true);
+            EL.setText(employee.getUnit().toString());
+            name.setText(employee.getName());
+            id.setText(employee.getId());
+            years.setText(Integer.toString(employee.getYearsOfExperience()));
+            gender.setText(employee.getGender());
+            status.setText(Integer.toString(employee.getSalary()));
+            job.setText(employee.getJob().toString());
+
+        }
+
+        else {
+            applicant = App.appList.get(appListController.index);
+            name.setText(applicant.getName());
+            id.setText(applicant.getId());
+            years.setText(Integer.toString(applicant.getYearsOfExperience()));
+            EL.setText(applicant.getEducationLevel());
+            gender.setText(applicant.getGender());
+            status.setText(applicant.getStatus());
         }
 
         applicantsButton.setOnAction(e -> {
@@ -113,6 +163,25 @@ public class infoMenuController {
                 }
         });
 
+        
+        toPDF.setOnAction(e -> {
+            try {
+            if(employeeInfo) {employee.toPDF();}
+            else {applicant.toPDF();}}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        back.setOnMouseClicked(e -> {
+            try {
+            if(employeeInfo) {changeScene(e, "employeeList.fxml");}
+            else{changeScene(e, "appList.fxml");}}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
         employeesButton.setOnAction(e -> {
             try {
                 changeScene(e, "employeeList.fxml");}
@@ -121,20 +190,6 @@ public class infoMenuController {
             }
         }); 
 
-        toPDF.setOnAction(e -> {
-            try {
-            applicant.toPDF();}
-            catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        });
-
-        name.setText(applicant.getName());
-        id.setText(applicant.getId());
-        years.setText(Integer.toString(applicant.getYearsOfExperience()));
-        EL.setText(applicant.getEducationLevel());
-        gender.setText(applicant.getGender());
-        status.setText(applicant.getStatus());
     }
     
     void changeScene(Event event, String fileName) throws IOException {

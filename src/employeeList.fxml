@@ -97,19 +97,20 @@
             <Font name="Bodoni MT Bold" size="17.0" />
          </font>
       </Label>
-      <Button fx:id="editButtonL" layoutX="359.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Edit Employee info" textFill="WHITE" AnchorPane.leftAnchor="359.0" />
-      <Button fx:id="editButtonUN" layoutX="359.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Edit Employee info" textFill="WHITE" visible="false" />
-      <Button fx:id="removeButtonUN" layoutX="520.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Remove Employee" textFill="WHITE" visible="false" AnchorPane.leftAnchor="520.0" />
-      <Button fx:id="removeButtonL" layoutX="537.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Remove Employee" textFill="WHITE" AnchorPane.leftAnchor="520.0" />
-      <TableView fx:id="table" layoutX="246.0" layoutY="59.0" prefHeight="329.0" prefWidth="532.0" styleClass="list">
+      <Button fx:id="editButtonL" layoutX="293.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Edit Employee info" textFill="WHITE" AnchorPane.leftAnchor="293.0" />
+      <Button fx:id="editButtonUN" layoutX="293.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Edit Employee info" textFill="WHITE" visible="false" />
+      <Button fx:id="removeButtonUN" layoutX="457.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Remove Employee" textFill="WHITE" visible="false" AnchorPane.leftAnchor="457.0" />
+      <Button fx:id="removeButtonL" layoutX="457.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Remove Employee" textFill="WHITE" AnchorPane.leftAnchor="457.0" />
+      <TableView fx:id="table" layoutX="226.0" layoutY="47.0" prefHeight="358.0" prefWidth="560.0" styleClass="list">
         <columns>
-          <TableColumn fx:id="name" prefWidth="116.0" text="Full Name" />
-            <TableColumn fx:id="id" prefWidth="106.0" text="ID" />
-          <TableColumn fx:id="gender" prefWidth="81.5" text="Gender" />
-            <TableColumn fx:id="job" prefWidth="111.0" text="Job" />
-            <TableColumn fx:id="unit" prefWidth="116.0" text="Unit" />
-            <TableColumn fx:id="salary" prefWidth="114.5" text="Salary" />
+          <TableColumn fx:id="name" prefWidth="113.5" text="Full Name" />
+            <TableColumn fx:id="id" prefWidth="91.5" text="ID" />
+            <TableColumn fx:id="job" prefWidth="129.0" text="Job" />
+            <TableColumn fx:id="unit" prefWidth="137.0" text="Unit" />
+            <TableColumn fx:id="salary" prefWidth="88.0" text="Salary" />
         </columns>
       </TableView>
+      <Button fx:id="infoButtonL" layoutX="620.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="View Info" textFill="WHITE" />
+      <Button fx:id="infoButtonUN" layoutX="620.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="View Info" textFill="WHITE" visible="false" />
    </children>
 </AnchorPane>

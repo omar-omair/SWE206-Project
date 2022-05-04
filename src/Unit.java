@@ -43,13 +43,9 @@ public abstract class Unit implements Serializable {
             if (employee == employee1) throw new Exception("Employee already exists in unit");
         }
         this.employees.add(employee);
-        addJobBand(employee.getJob().getBand());
-        if (employee.getUnit() != Unit.this) employee.getUnit().removeEmployee(employee);
-        employee.setUnit(Unit.this);
 
     }
     public void removeEmployee(Employee employee) throws Exception{
-        if (this.employees.size() == 1) throw new Exception("This is the last employee in the unit");
         this.employees.remove(employee);
     }
     public int checkAvailability(){
@@ -99,4 +95,10 @@ public abstract class Unit implements Serializable {
     public String toString() {
         return this.name;
     }
+
+//     public boolean equals(Object o) {
+//         Unit other = (Unit) o;
+//         String name = other.getName();
+//         return (this.getName().equalsIgnoreCase(name));
+//     }
 }
