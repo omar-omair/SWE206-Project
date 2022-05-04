@@ -6,6 +6,9 @@ public class Interview implements Serializable {
     private String result = "hold";
     private Applicant interviewee;
     private ArrayList<Employee> interviewers = new ArrayList<>();
+    private String firstInterviewerName;
+    private String secondInterviewerName;
+    private String thirdInterviewerName;
 
     public Interview(String time, String date){
         this.time = time.toUpperCase();
@@ -30,6 +33,28 @@ public class Interview implements Serializable {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public void setFirstInterviewerName() {
+        this.firstInterviewerName = interviewers.get(0).getName();
+    }
+
+    public void setSecondInterviewerName() {
+        if(interviewers.get(1) == null) {
+            this.secondInterviewerName = "None";
+        }
+        else {
+            this.secondInterviewerName = interviewers.get(1).getName();
+        }
+    }
+
+    public void setThirdInterviewerName() {
+        if(interviewers.get(2) == null) {
+            this.thirdInterviewerName = "None";
+        }
+        else {
+            this.thirdInterviewerName = interviewers.get(2).getName();
+        }
     }
 
     public Applicant getInterviewee() {

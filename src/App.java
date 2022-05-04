@@ -16,6 +16,7 @@ public class App extends Application{
     protected static ArrayList<Applicant> appList = new ArrayList<>();
     protected static ArrayList<Unit> unitList = new ArrayList<>();
     protected static ArrayList<Employee> employeeList = new ArrayList<>();
+    protected static ArrayList<Interview> interList = new ArrayList<>();
     
     protected static Band management;
     protected static Band engineering;
@@ -24,6 +25,7 @@ public class App extends Application{
         appList = read(appList, "../appList.ser");
         unitList = read(unitList, "../unitList.ser");
         employeeList = read(employeeList, "../empList.ser");
+        interList = read(interList, "../interList.ser");
 
         management = new Band("Project Management");
         engineering = new Band("Engineering");

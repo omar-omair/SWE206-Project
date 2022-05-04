@@ -151,7 +151,9 @@ public class jobOfferController {
             if(applicant.createJobOffer() == true) {
                 applicant.setOfferedSalary((int) salarySlider.getValue());
                 applicant.setOfferedJob(jobBox.getSelectionModel().getSelectedItem());
+                applicant.createJobOffer();
                 App.save(App.appList,"../appList.ser");
+                App.appList = App.read(App.appList, "../appList.ser");
                 changeScene(e, "appList.fxml");
                 }
             applicant.setOfferedUnit(null);

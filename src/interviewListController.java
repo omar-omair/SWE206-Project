@@ -8,6 +8,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -54,6 +58,27 @@ public class interviewListController {
 
     @FXML
     private AnchorPane pane;
+
+    @FXML
+    private TableColumn<Interview, String> appName;
+
+    @FXML
+    private TableColumn<Interview, String> status;
+
+    @FXML
+    private TableColumn<Interview, String> date;
+
+    @FXML
+    private TableColumn<Interview, String> firstInterviewer;
+
+    @FXML
+    private TableColumn<Interview, String> secondInterviewer;
+
+    @FXML
+    private TableColumn<Interview, String> thirdInterviewer;
+
+    @FXML
+    private TableView<Interview> table;
 
     @FXML
     public void initialize() {
@@ -121,6 +146,13 @@ public class interviewListController {
                 ex.printStackTrace();
             }
         });
+
+        // table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        // table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        // status.setCellValueFactory(new PropertyValueFactory<Interview, String>("status"));
+        // date.setCellValueFactory(new PropertyValueFactory<Interview, String>("date"));
+        // status.setCellValueFactory(new PropertyValueFactory<Applicant, String>("status"));
+        // table.setItems(FXCollections.observableArrayList(App.appList));
     }
 
     

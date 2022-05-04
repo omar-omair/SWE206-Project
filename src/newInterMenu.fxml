@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -92,9 +93,9 @@
             <AnchorPane layoutX="21.0" layoutY="5.0" prefHeight="200.0" prefWidth="200.0" styleClass="sideBorder" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="490.0" />
          </children>
       </AnchorPane>
-      <Label layoutX="232.0" layoutY="134.0" prefHeight="17.0" prefWidth="65.0" styleClass="blackText" text="Interviewee" AnchorPane.topAnchor="135.0" />
-      <Label layoutX="232.0" layoutY="174.0" prefHeight="17.0" prefWidth="161.0" styleClass="blackText" text="First Interviewer" AnchorPane.leftAnchor="232.0" AnchorPane.topAnchor="175.0" />
-      <Label layoutX="232.0" layoutY="216.0" prefHeight="17.0" prefWidth="161.0" styleClass="blackText" text="Second Interviewer (Optional)" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="407.0" AnchorPane.topAnchor="215.0" />
+      <Label layoutX="234.0" layoutY="103.0" prefHeight="17.0" prefWidth="65.0" styleClass="blackText" text="Interviewee" AnchorPane.topAnchor="103.0" />
+      <Label layoutX="234.0" layoutY="143.0" prefHeight="17.0" prefWidth="161.0" styleClass="blackText" text="First Interviewer" AnchorPane.leftAnchor="234.0" AnchorPane.topAnchor="143.0" />
+      <Label layoutX="234.0" layoutY="183.0" prefHeight="17.0" prefWidth="161.0" styleClass="blackText" text="Second Interviewer (Optional)" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="405.0" AnchorPane.topAnchor="183.0" />
       <Label fx:id="newInter" layoutX="401.0" layoutY="14.0" prefHeight="51.0" prefWidth="161.0" styleClass="blackText" text="New Interview" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="22.0" />
@@ -102,20 +103,20 @@
       </Label>
       <Button fx:id="addButton" layoutX="462.0" layoutY="413.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #3282B8; -fx-text-fill: #FFFFFF;" text="Add" visible="false" />
       <Button fx:id="addButtonL" layoutX="462.0" layoutY="413.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #808080; -fx-text-fill: #FFFFFF;" text="Add" AnchorPane.leftAnchor="462.0" AnchorPane.topAnchor="413.0" />
-      <JFXComboBox fx:id="interviewee" layoutX="400.0" layoutY="130.0" prefHeight="25.0" prefWidth="252.0" styleClass="comboBox" AnchorPane.topAnchor="130.0" />
-      <JFXComboBox fx:id="firstInterviewer" layoutX="400.0" layoutY="170.0" prefHeight="25.0" prefWidth="252.0" styleClass="comboBox" AnchorPane.topAnchor="170.0" />
-      <JFXComboBox fx:id="secondInterviewer" layoutX="398.0" layoutY="204.0" prefHeight="25.0" prefWidth="252.0" styleClass="comboBox" AnchorPane.topAnchor="210.0" />
-      <Label layoutX="232.0" layoutY="260.0" prefHeight="17.0" prefWidth="161.0" styleClass="blackText" text="Third Interviewer (Optional)" AnchorPane.topAnchor="255.0" />
-      <JFXComboBox fx:id="thirdInterviewer" layoutX="398.0" layoutY="248.0" prefHeight="25.0" prefWidth="252.0" styleClass="comboBox" AnchorPane.topAnchor="250.0" />
-      <Label layoutX="232.0" layoutY="287.0" prefHeight="17.0" prefWidth="161.0" styleClass="blackText" text="Result" AnchorPane.topAnchor="295.0" />
-      <JFXComboBox fx:id="result" layoutX="398.0" layoutY="275.0" prefHeight="25.0" prefWidth="252.0" styleClass="comboBox" AnchorPane.leftAnchor="398.0" AnchorPane.topAnchor="290.0" />
+      <JFXComboBox fx:id="interviewee" layoutX="402.0" layoutY="98.0" prefHeight="25.0" prefWidth="252.0" styleClass="comboBox" AnchorPane.topAnchor="98.0" />
+      <JFXComboBox fx:id="firstInterviewer" layoutX="402.0" layoutY="138.0" prefHeight="25.0" prefWidth="252.0" styleClass="comboBox" AnchorPane.topAnchor="138.0" />
+      <JFXComboBox fx:id="secondInterviewer" layoutX="400.0" layoutY="178.0" prefHeight="25.0" prefWidth="252.0" styleClass="comboBox" AnchorPane.topAnchor="178.0" />
+      <Label layoutX="234.0" layoutY="223.0" prefHeight="17.0" prefWidth="161.0" styleClass="blackText" text="Third Interviewer (Optional)" AnchorPane.topAnchor="223.0" />
+      <JFXComboBox fx:id="thirdInterviewer" layoutX="400.0" layoutY="218.0" prefHeight="25.0" prefWidth="252.0" styleClass="comboBox" AnchorPane.topAnchor="218.0" />
+      <Label layoutX="234.0" layoutY="263.0" prefHeight="17.0" prefWidth="161.0" styleClass="blackText" text="Result" AnchorPane.topAnchor="263.0" />
+      <JFXComboBox fx:id="result" layoutX="400.0" layoutY="258.0" prefHeight="25.0" prefWidth="252.0" styleClass="comboBox" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="258.0" />
       <ImageView fx:id="back" fitHeight="22.0" fitWidth="22.0" layoutX="245.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" styleClass="back" AnchorPane.bottomAnchor="448.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="533.0" AnchorPane.topAnchor="30.0">
          <image>
             <Image url="@../res/left-arrow.png" />
          </image>
       </ImageView>
-      <DatePicker layoutX="398.0" layoutY="331.0" prefHeight="25.0" prefWidth="252.0" styleClass="date" AnchorPane.leftAnchor="398.0" AnchorPane.topAnchor="331.0" />
-      <Label layoutX="232.0" layoutY="335.0" prefHeight="17.0" prefWidth="161.0" styleClass="blackText" text="Date" />
+      <DatePicker fx:id="date" layoutX="402.0" layoutY="360.0" prefHeight="25.0" prefWidth="252.0" styleClass="date" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="360.0" />
+      <Label layoutX="234.0" layoutY="364.0" prefHeight="17.0" prefWidth="161.0" styleClass="blackText" text="Date" />
       <Label fx:id="editInter" layoutX="401.0" layoutY="65.0" prefHeight="51.0" prefWidth="161.0" styleClass="blackText" text="Edit interview" visible="false" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="22.0" />
@@ -123,5 +124,7 @@
       </Label>
       <Button fx:id="editButtonL" layoutX="556.0" layoutY="426.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #808080; -fx-text-fill: #FFFFFF;" text="Edit" visible="false" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="462.0" AnchorPane.rightAnchor="273.0" AnchorPane.topAnchor="413.0" />
       <Button fx:id="editButton" layoutX="472.0" layoutY="423.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #3282B8; -fx-text-fill: #FFFFFF;" text="Edit" visible="false" AnchorPane.leftAnchor="462.0" AnchorPane.topAnchor="413.0" />
+      <Label layoutX="234.0" layoutY="314.0" prefHeight="17.0" prefWidth="161.0" styleClass="blackText" text="Time" />
+      <TextField fx:id="time" layoutX="402.0" layoutY="309.0" prefHeight="27.0" prefWidth="252.0" styleClass="textField" />
    </children>
 </AnchorPane>

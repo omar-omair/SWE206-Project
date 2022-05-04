@@ -3,6 +3,8 @@ import java.io.IOException;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -10,10 +12,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class newInterMenuController {
 
@@ -42,10 +47,10 @@ public class newInterMenuController {
     private JFXButton employeesButton;
 
     @FXML
-    private JFXComboBox<?> firstInterviewer;
+    private JFXComboBox<Employee> firstInterviewer;
 
     @FXML
-    private JFXComboBox<?> interviewee;
+    private JFXComboBox<Applicant> interviewee;
 
     @FXML
     private JFXButton interviewsButton;
@@ -54,10 +59,10 @@ public class newInterMenuController {
     private Label newInter;
 
     @FXML
-    private JFXComboBox<?> result;
+    private JFXComboBox<String> result;
 
     @FXML
-    private JFXComboBox<?> secondInterviewer;
+    private JFXComboBox<Employee> secondInterviewer;
 
     @FXML
     private ImageView settingsButton;
@@ -66,15 +71,21 @@ public class newInterMenuController {
     private AnchorPane slider;
 
     @FXML
-    private JFXComboBox<?> thirdInterviewer;
+    private JFXComboBox<Employee> thirdInterviewer;
 
     @FXML
     private JFXButton unitsButton;
 
-    protected static boolean edit = false;
+    @FXML
+    private DatePicker date;
 
     @FXML
     private AnchorPane pane;
+
+    @FXML
+    private TextField time;
+
+    protected static boolean edit = false;
     
     @FXML
     public void initialize() {
@@ -149,6 +160,74 @@ public class newInterMenuController {
                 ex.printStackTrace();
             }
         });
+
+        addButton.setOnAction(e -> {
+            try {
+            Employee firstInter = firstInterviewer.getSelectionModel().getSelectedItem();
+            Employee secondInter = secondInterviewer.getSelectionModel().getSelectedItem();
+            Employee thirdInter = thirdInterviewer.getSelectionModel().getSelectedItem();
+
+            Interview interview = new Interview(date.getValue().toString(),time.getText());
+            interview.addInterviewer(firstInter);
+            if(secondInter != null) {
+                interview.addInterviewer(secondInter);
+            }
+            if(thirdInter != null) {
+                interview.addInterviewer(thirdInter);
+            }
+
+            interview.setFirstInterviewerName();
+            interview.setSecondInterviewerName();
+            interview.setThirdInterviewerName();
+            interview.setInterviewee(interviewee.getSelectionModel().getSelectedItem());
+            App.interList.add(interview);
+            App.save(App.interList,"../interList.ser");
+            App.interList = App.read(App.interList,"../interList.ser");
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        Timeline valueChecker = new Timeline(new KeyFrame(Duration.millis(1), z -> {
+            if(interviewee.getSelectionModel().getSelectedItem() == null || firstInterviewer.getSelectionModel().getSelectedItem() == null || 
+            result.getSelectionModel().getSelectedItem() == null || date.getValue() != null || time.getText().equals("")) { 
+                if(edit) {
+                    editButtonL.setVisible(true);
+                    editButton.setVisible(false);
+                }
+                else {
+                    addButtonL.setVisible(true);
+                    addButton.setVisible(false);
+                }
+            }
+            else {
+                if(edit) {
+                    editButtonL.setVisible(false);
+                    editButton.setVisible(true);
+                }
+                else {
+                    addButtonL.setVisible(false);
+                    addButton.setVisible(true);
+                }
+            }
+
+            if(firstInterviewer.getSelectionModel().getSelectedItem() == null) {
+                secondInterviewer.setEditable(false);
+            }
+            else {
+                secondInterviewer.setEditable(true);
+            }
+
+            if(secondInterviewer.getSelectionModel().getSelectedItem() == null) {
+                thirdInterviewer.setEditable(false);
+            }
+            else {
+                thirdInterviewer.setEditable(true);
+            }
+        }));
+        valueChecker.play();
+        valueChecker.setCycleCount(Timeline.INDEFINITE);
     }
 
     

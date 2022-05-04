@@ -238,14 +238,9 @@ public class appListController {
         stage.show();
     }
 
-    void refresh() {
-        table.setItems(FXCollections.observableArrayList(App.appList));
-    }
-
     void remove() throws Exception {
         App.appList.remove(index);
         App.save(App.appList,"../appList.ser");
         App.appList = App.read(App.appList,"../appList.ser");
-        refresh();
     }
 }

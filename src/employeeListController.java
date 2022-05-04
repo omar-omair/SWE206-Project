@@ -3,6 +3,7 @@ import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -11,6 +12,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.layout.*;
@@ -55,6 +60,30 @@ public class employeeListController {
     @FXML
     private JFXButton unitsButton;
 
+    @FXML
+    private TableColumn<Employee, Job> job;
+
+    @FXML
+    private TableColumn<Employee, String> name;
+    
+    @FXML
+    private TableColumn<Employee, String> gender;
+
+    @FXML
+    private TableColumn<Employee, String> id;
+    
+    @FXML
+    private TableColumn<Employee, Integer> salary;
+
+    @FXML
+    private TableView<Employee> table;
+
+    @FXML
+    private TableColumn<Employee, Unit> unit;
+
+    protected static int index;
+
+    protected static Employee employee;
 
     public void initialize() {
         if(settingsMenuController.dark == true) {
@@ -103,11 +132,49 @@ public class employeeListController {
             }
         });
 
-        editButtonL.setOnAction(e -> {
+        editButtonUN.setOnAction(e -> {
             try {
                 changeScene(e, "empInfo.fxml");}
             catch (Exception ex) {
                 ex.printStackTrace();
+            }
+        });
+
+
+        removeButtonUN.setOnAction(e -> {
+            try {
+            App.employeeList.remove(index);
+            App.save(App.employeeList,"../empList.ser");
+            App.employeeList = App.read(App.employeeList, "../empList.ser");
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+        
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        name.setCellValueFactory(new PropertyValueFactory<Employee, String>("name"));
+        gender.setCellValueFactory(new PropertyValueFactory<Employee, String>("gender"));
+        job.setCellValueFactory(new PropertyValueFactory<Employee, Job>("job"));
+        unit.setCellValueFactory(new PropertyValueFactory<Employee, Unit>("unit"));
+        id.setCellValueFactory(new PropertyValueFactory<Employee, String>("id"));
+        table.setItems(FXCollections.observableArrayList(App.employeeList));
+
+        table.getSelectionModel().selectedItemProperty().addListener(t -> {
+            employee = table.getSelectionModel().getSelectedItem();
+            index = table.getSelectionModel().getSelectedIndex();
+            if(employee != null) {
+                removeButtonUN.setVisible(true);
+                removeButtonL.setVisible(false);
+                editButtonUN.setVisible(true);
+                editButtonL.setVisible(false);
+            }
+            else{
+                removeButtonUN.setVisible(false);
+                removeButtonL.setVisible(true);
+                editButtonUN.setVisible(false);
+                editButtonL.setVisible(true);
             }
         });
 
