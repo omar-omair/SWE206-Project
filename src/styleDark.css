@@ -52,47 +52,50 @@
 }
 
 
-
-.date .cell {
-    -fx-background-color: #242424;
+.date-picker .arrow-button {
+	-fx-background-color: #0F4C75;
+	-fx-background-radius: 0;
+}
+.date-picker .arrow-button:hover {
+	-fx-background-color: #069bff;
+}
+.date-picker .arrow-button .arrow {
+	-fx-background-color: white;
+}
+.date-picker .cell {
+	-fx-background-color: #202020;
     -fx-text-fill: white;
 }
-
-
-.date .arrow-button {
-	-fx-background-color: #363636;
+.date-picker .cell:hover {
+	-fx-text-fill: #069bff;
 }
 
-.date .cell:hover {
-	-fx-background-color: #069bff;
-
+.date-picker .selected {
+	-fx-background-color: #0F4C75;
+	-fx-text-fill: white;
 }
-
+.date-picker-popup  {
+	-fx-border-color: transparent;
+}
 .date-picker-popup .month-year-pane {
-	-fx-background-color: #363636;
+	-fx-background-color: linear-gradient(to bottom, #1B262C, #0F4C75);
 }
-
 .date-picker-popup .month-year-pane .label {
 	-fx-text-fill: white;
 }
-
-.date .arrow-button .arrow {
-	-fx-background-color: white;
+.date-picker-popup .week-number-cell {
+	-fx-text-fill: #0F4C75;
 }
-
-.date .selected {
-	-fx-background-color:#069bff;
-	-fx-text-fill: white;
-}
-
-.date .text-field {
-    -fx-control-inner-background: #121212;
-}
-
 .date-picker-popup .spinner .button .left-arrow,
 .date-picker-popup .spinner .button .right-arrow {
 	-fx-background-color: white;
 }
+
+.date-picker .text-field {
+    -fx-control-inner-background: #121212 ;
+}
+
+
 
 #logout {
     -fx-image: url(darkImages/logout__1_-removebg-preview.png);
