@@ -193,4 +193,10 @@ public class Employee implements Serializable{
     public String toString() {
         return this.name;
     }
+
+    public boolean equals(Object o) {
+        if(o == null) return false;
+        Employee other = (Employee) o;
+        return (this.getId().equals(other.getId()));
+    }
 }

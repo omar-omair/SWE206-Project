@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXButton;
@@ -91,7 +92,14 @@ public class newInterMenuController {
     @FXML
     private TextField time;
 
+    @FXML
+    private Label wrong;
+
+    @FXML
+    private Label success;
+
     protected static boolean edit = false;
+    protected static Interview interview;
     
     @FXML
     public void initialize() {
@@ -100,6 +108,28 @@ public class newInterMenuController {
         results.add("PASS");
         results.add("FAIL");
         result.setItems(FXCollections.observableArrayList(results));
+        firstInterviewer.setItems(FXCollections.observableArrayList(App.employeeList));
+        interviewee.setItems(FXCollections.observableArrayList(App.appList));
+
+        firstInterviewer.getSelectionModel().selectedItemProperty().addListener(z-> {
+            secondInterviewer.getSelectionModel().clearSelection();
+
+            if(firstInterviewer.getSelectionModel().getSelectedItem() != null) {
+                secondInterviewer.setItems(FXCollections.observableArrayList(firstInterviewer.getItems()));
+                secondInterviewer.getItems().remove(firstInterviewer.getSelectionModel().getSelectedItem());
+            }      
+
+        });
+
+        secondInterviewer.getSelectionModel().selectedItemProperty().addListener(z-> {
+            thirdInterviewer.getSelectionModel().clearSelection();
+
+            if(secondInterviewer.getSelectionModel().getSelectedItem() != null) {
+                thirdInterviewer.setItems(FXCollections.observableArrayList(secondInterviewer.getItems()));
+                thirdInterviewer.getItems().remove(secondInterviewer.getSelectionModel().getSelectedItem());
+            }      
+
+        });
 
 
         if(settingsMenuController.dark == true) {
@@ -108,10 +138,49 @@ public class newInterMenuController {
         }
 
         if(edit) {
+            interview = App.interList.get(interviewListController.index);
             editInter.setVisible(true);
             newInter.setVisible(false);
             addButtonL.setVisible(false);
             editButtonL.setVisible(true);
+            interviewee.setEditable(false);
+            int firstInterviewerIndex = App.employeeList.indexOf(interview.getInterviewers().get(0));
+            int secondInterviewerIndex = App.employeeList.indexOf(interview.getInterviewers().get(1)) -2;
+            int thirdInterviewerIndex = App.employeeList.indexOf(interview.getInterviewers().get(2)) -3;
+            
+            interviewee.getSelectionModel().select(App.appList.indexOf(interview.getInterviewee()));
+            firstInterviewer.getSelectionModel().select(firstInterviewerIndex);
+
+            if(secondInterviewerIndex == -2) {
+                secondInterviewerIndex = 0;
+            }
+            else if(firstInterviewerIndex == App.employeeList.size() - 1) {
+                secondInterviewerIndex += 2;
+            }
+            else {
+                secondInterviewerIndex++;
+            }
+
+            if(thirdInterviewerIndex == -3) {
+                thirdInterviewerIndex = 0;
+            }
+            else if(secondInterviewerIndex == App.employeeList.size() - 2) {
+                thirdInterviewerIndex += 3;
+            }
+            else {
+                thirdInterviewerIndex++;
+            }
+
+
+            secondInterviewer.getSelectionModel().select(secondInterviewerIndex);
+            thirdInterviewer.getSelectionModel().select(thirdInterviewerIndex);
+
+
+            time.setText(interview.getTime());
+            result.getSelectionModel().select(0);
+            LocalDate interDate = LocalDate.parse(interview.getDate());
+            date.setValue(interDate);
+
         }
 
         else {
@@ -184,7 +253,7 @@ public class newInterMenuController {
             Employee secondInter = secondInterviewer.getSelectionModel().getSelectedItem();
             Employee thirdInter = thirdInterviewer.getSelectionModel().getSelectedItem();
 
-            Interview interview = new Interview(date.getValue().toString(),time.getText());
+            Interview interview = new Interview(time.getText(), date.getValue().toString());
             interview.addInterviewer(firstInter);
             if(secondInter != null) {
                 interview.addInterviewer(secondInter);
@@ -192,18 +261,30 @@ public class newInterMenuController {
             if(thirdInter != null) {
                 interview.addInterviewer(thirdInter);
             }
-
-            interview.setFirstInterviewerName();
-            interview.setSecondInterviewerName();
-            interview.setThirdInterviewerName();
+            interview.setInterviewersName();
             interview.setInterviewee(interviewee.getSelectionModel().getSelectedItem());
+            interview.setResult(result.getSelectionModel().getSelectedItem());
+
             App.interList.add(interview);
             App.save(App.interList,"../interList.ser");
             App.interList = App.read(App.interList,"../interList.ser");
+
+            interviewee.getSelectionModel().clearSelection();
+            firstInterviewer.getSelectionModel().clearSelection();
+            time.clear();
+            date.setValue(null);
+            wrong.setVisible(false);
+            success.setVisible(true);
+
             }
             catch (Exception ex) {
-                ex.printStackTrace();
+                wrong.setVisible(true);
+                wrong.setText(ex.getMessage());
             }
+        }); 
+
+        editButton.setOnAction(e-> {
+            
         });
 
         Callback<DatePicker, DateCell> callB = new Callback<DatePicker, DateCell>() {
@@ -222,9 +303,6 @@ public class newInterMenuController {
 
         };
         date.setDayCellFactory(callB);
-
-        firstInterviewer.setItems(FXCollections.observableArrayList(App.employeeList));
-        interviewee.setItems(FXCollections.observableArrayList(App.appList));
 
         Timeline valueChecker = new Timeline(new KeyFrame(Duration.millis(1), z -> {
             if(interviewee.getSelectionModel().getSelectedItem() == null || firstInterviewer.getSelectionModel().getSelectedItem() == null || 
@@ -254,27 +332,6 @@ public class newInterMenuController {
         
         valueChecker.setCycleCount(Timeline.INDEFINITE);
         valueChecker.play();
-
-        firstInterviewer.getSelectionModel().selectedItemProperty().addListener(z-> {
-            secondInterviewer.getSelectionModel().clearSelection();
-
-            if(firstInterviewer.getSelectionModel().getSelectedItem() != null) {
-                secondInterviewer.setItems(FXCollections.observableArrayList(firstInterviewer.getItems()));
-                secondInterviewer.getItems().remove(firstInterviewer.getSelectionModel().getSelectedItem());
-            }      
-
-        });
-
-        secondInterviewer.getSelectionModel().selectedItemProperty().addListener(z-> {
-            thirdInterviewer.getSelectionModel().clearSelection();
-
-            if(secondInterviewer.getSelectionModel().getSelectedItem() != null) {
-                thirdInterviewer.setItems(FXCollections.observableArrayList(secondInterviewer.getItems()));
-                thirdInterviewer.getItems().remove(secondInterviewer.getSelectionModel().getSelectedItem());
-            }      
-
-        });
-
         
 
     }
