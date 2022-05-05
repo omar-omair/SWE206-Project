@@ -199,4 +199,10 @@ public class Applicant implements Serializable {
     public String toString() {
         return this.name;
     }
+
+    public boolean equals(Object o) {
+        if(o == null) return false;
+        Applicant other = (Applicant) o;
+        return (this.getId().equals(other.getId()));
+    }
 }

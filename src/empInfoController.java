@@ -164,6 +164,7 @@ public class empInfoController {
             employee.getUnit().removeEmployee(employee);
             employee.setUnit(nUnit);
             employee.getUnit().addEmployee(employee);
+            employee.setSalary((int) salarySlider.getValue());
             App.save(App.employeeList, "../empList.ser");
             App.employeeList = App.read(App.employeeList, "../empList.ser");
             changeScene(e, "employeeList.fxml");

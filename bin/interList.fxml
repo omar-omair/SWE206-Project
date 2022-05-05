@@ -106,12 +106,13 @@
             <Image url="@../res/left-arrow.png" />
          </image>
       </ImageView>
-      <TableView fx:id="table" layoutX="249.0" layoutY="54.0" prefHeight="350.0" prefWidth="496.0">
+      <TableView fx:id="table" layoutX="224.0" layoutY="56.0" prefHeight="350.0" prefWidth="567.0">
         <columns>
           <TableColumn fx:id="appName" prefWidth="131.5" text="Applicant's Name" />
-          <TableColumn fx:id="date" prefWidth="138.0" text="Date" />
-            <TableColumn fx:id="mainInterviewer" prefWidth="149.0" text="Main interviewer" />
-            <TableColumn fx:id="status" prefWidth="76.5" text="Status" />
+          <TableColumn fx:id="date" prefWidth="111.0" text="Date" />
+            <TableColumn fx:id="time" prefWidth="52.5" text="Time" />
+            <TableColumn fx:id="mainInterviewer" prefWidth="176.0" text="Main interviewer" />
+            <TableColumn fx:id="result" prefWidth="95.0" text="Result" />
         </columns>
       </TableView>
    </children>

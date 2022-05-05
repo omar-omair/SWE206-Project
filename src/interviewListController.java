@@ -3,6 +3,7 @@ import java.io.IOException;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 
+import javafx.collections.FXCollections;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -63,22 +64,23 @@ public class interviewListController {
     private TableColumn<Interview, String> appName;
 
     @FXML
-    private TableColumn<Interview, String> status;
+    private TableColumn<Interview, String> result;
 
     @FXML
     private TableColumn<Interview, String> date;
 
     @FXML
-    private TableColumn<Interview, String> firstInterviewer;
+    private TableColumn<Interview, String> mainInterviewer;
 
     @FXML
-    private TableColumn<Interview, String> secondInterviewer;
-
-    @FXML
-    private TableColumn<Interview, String> thirdInterviewer;
+    private TableColumn<Interview, String> time;
 
     @FXML
     private TableView<Interview> table;
+
+    protected static Interview interview;
+
+    protected static int index;
 
     @FXML
     public void initialize() {
@@ -112,7 +114,7 @@ public class interviewListController {
             }
         });
 
-        editButtonL.setOnMouseClicked(e -> {
+        editButtonUN.setOnMouseClicked(e -> {
             try {
            newInterMenuController.edit = true;
            changeScene(e, "newInterMenu.fxml");
@@ -147,12 +149,43 @@ public class interviewListController {
             }
         });
 
-        // table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        // table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        // status.setCellValueFactory(new PropertyValueFactory<Interview, String>("status"));
-        // date.setCellValueFactory(new PropertyValueFactory<Interview, String>("date"));
-        // status.setCellValueFactory(new PropertyValueFactory<Applicant, String>("status"));
-        // table.setItems(FXCollections.observableArrayList(App.appList));
+        removeButtonUN.setOnAction(e -> {
+            try {
+            App.interList.remove(index);
+            App.save(App.interList,"../interList.ser");
+            App.interList = App.read(App.interList, "../interList.ser");
+            table.setItems(FXCollections.observableArrayList(App.interList));
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        result.setCellValueFactory(new PropertyValueFactory<Interview, String>("result"));
+        date.setCellValueFactory(new PropertyValueFactory<Interview, String>("date"));
+        appName.setCellValueFactory(new PropertyValueFactory<Interview, String>("interviewee"));
+        mainInterviewer.setCellValueFactory(new PropertyValueFactory<Interview, String>("firstInterviewerName"));
+        time.setCellValueFactory(new PropertyValueFactory<Interview, String>("time"));
+        table.setItems(FXCollections.observableArrayList(App.interList));
+
+        table.getSelectionModel().selectedItemProperty().addListener(z-> {
+            interview = table.getSelectionModel().getSelectedItem();
+            index = table.getSelectionModel().getSelectedIndex();
+            if(interview != null) {
+                removeButtonUN.setVisible(true);
+                removeButtonL.setVisible(false);
+                editButtonUN.setVisible(true);
+                editButtonL.setVisible(false);
+            }
+            else {
+                removeButtonUN.setVisible(false);
+                removeButtonL.setVisible(true);
+                editButtonUN.setVisible(false);
+                editButtonL.setVisible(true);
+            }
+        });
     }
 
     

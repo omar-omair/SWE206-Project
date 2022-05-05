@@ -115,7 +115,7 @@
             <Image url="@../res/left-arrow.png" />
          </image>
       </ImageView>
-      <DatePicker fx:id="date" layoutX="402.0" layoutY="360.0" prefHeight="25.0" prefWidth="252.0" styleClass="date" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="360.0" />
+      <DatePicker fx:id="date" editable="false" layoutX="402.0" layoutY="360.0" prefHeight="25.0" prefWidth="252.0" styleClass="date" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="360.0" />
       <Label layoutX="234.0" layoutY="364.0" prefHeight="17.0" prefWidth="161.0" styleClass="blackText" text="Date" />
       <Label fx:id="editInter" layoutX="401.0" layoutY="65.0" prefHeight="51.0" prefWidth="161.0" styleClass="blackText" text="Edit interview" visible="false" AnchorPane.topAnchor="14.0">
          <font>
@@ -126,5 +126,7 @@
       <Button fx:id="editButton" layoutX="472.0" layoutY="423.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #3282B8; -fx-text-fill: #FFFFFF;" text="Edit" visible="false" AnchorPane.leftAnchor="462.0" AnchorPane.topAnchor="413.0" />
       <Label layoutX="234.0" layoutY="314.0" prefHeight="17.0" prefWidth="161.0" styleClass="blackText" text="Time" />
       <TextField fx:id="time" layoutX="402.0" layoutY="309.0" prefHeight="27.0" prefWidth="252.0" styleClass="textField" />
+      <Label fx:id="wrong" layoutX="333.0" layoutY="417.0" text="Invalid time format" textFill="RED" visible="false" />
+      <Label fx:id="success" layoutX="290.0" layoutY="417.0" text="Interview created sucessfully" textFill="#00f821" visible="false" />
    </children>
 </AnchorPane>

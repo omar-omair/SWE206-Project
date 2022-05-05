@@ -9,12 +9,17 @@ public class Interview implements Serializable {
     private String firstInterviewerName;
     private String secondInterviewerName;
     private String thirdInterviewerName;
+    public final static long serialVersionUID = 657149927321931533L;
 
-    public Interview(String time, String date){
-        this.time = time.toUpperCase();
+    public Interview(String time, String date) throws Exception{
+        String hour = time.substring(0, 2);
+        if (!(hour.matches("[0-9]+")) || time.length() != 5 || Integer.parseInt(hour) < 0 || Integer.parseInt(hour) >= 24 || time.charAt(2) != ':'
+        || time.charAt(3) < '0' || time.charAt(3) > '5' || time.charAt(4) < '0' || time.charAt(4) > '9')
+            throw new Exception("Invalid time format");
+        this.time = time;
         this.date = date.toUpperCase();
     }
-
+    
     public void setInterviewee(Applicant interviewee) {
         this.interviewee = interviewee;
     }
@@ -31,30 +36,34 @@ public class Interview implements Serializable {
         this.result = result;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setTime(String time) throws Exception {
+        String hour = time.substring(0, 2);
+        if (!(hour.matches("[0-9]+")) || time.length() != 5 || Integer.parseInt(hour) < 0 || Integer.parseInt(hour) >= 24 || time.charAt(2) != ':'
+        || time.charAt(3) < '0' || time.charAt(3) > '5' || time.charAt(4) < '0' || time.charAt(4) > '9')
+            throw new Exception("Invalid time format");
+        else {
+            this.time = time;
+        }
     }
 
-    public void setFirstInterviewerName() {
+    public void setInterviewersName() {
         this.firstInterviewerName = interviewers.get(0).getName();
-    }
 
-    public void setSecondInterviewerName() {
         if(interviewers.get(1) == null) {
             this.secondInterviewerName = "None";
         }
         else {
             this.secondInterviewerName = interviewers.get(1).getName();
         }
-    }
 
-    public void setThirdInterviewerName() {
         if(interviewers.get(2) == null) {
             this.thirdInterviewerName = "None";
         }
         else {
             this.thirdInterviewerName = interviewers.get(2).getName();
         }
+
+
     }
 
     public Applicant getInterviewee() {
@@ -64,6 +73,11 @@ public class Interview implements Serializable {
     public ArrayList<Employee> getInterviewers() {
         return interviewers;
     }
+
+    public String getFirstInterviewerName() {
+        return firstInterviewerName;
+    }
+
     public ArrayList<String> getInterviewersNames(){
         ArrayList<String> interviewers = new ArrayList<>();
         for (Employee interviewer:this.interviewers) interviewers.add(interviewer.getName());
