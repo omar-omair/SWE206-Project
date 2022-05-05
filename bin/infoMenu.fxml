@@ -92,26 +92,26 @@
          </children>
       </AnchorPane>
       <TextField fx:id="name" editable="false" layoutX="411.0" layoutY="97.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" />
-      <Label layoutX="300.0" layoutY="101.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Name" />
+      <Label fx:id="nameLabel" layoutX="276.0" layoutY="102.0" prefHeight="17.0" prefWidth="129.0" styleClass="blackText" text="Name" />
       <TextField fx:id="id" editable="false" layoutX="411.0" layoutY="137.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" />
-      <Label layoutX="300.0" layoutY="141.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="ID" />
+      <Label fx:id="idLabel" layoutX="276.0" layoutY="142.0" prefHeight="17.0" prefWidth="135.0" styleClass="blackText" text="ID" />
       <TextField fx:id="years" editable="false" layoutX="411.0" layoutY="222.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" AnchorPane.topAnchor="222.0" />
-      <Label fx:id="eduLabel" layoutX="300.0" layoutY="182.0" prefHeight="17.0" prefWidth="85.0" styleClass="blackText" text="Education Level" />
+      <Label fx:id="eduLabel" layoutX="276.0" layoutY="183.0" prefHeight="17.0" prefWidth="129.0" styleClass="blackText" text="Education Level" />
       <TextField fx:id="EL" editable="false" layoutX="411.0" layoutY="178.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" AnchorPane.topAnchor="178.0" />
-      <Label fx:id="yearsLabel" layoutX="299.0" layoutY="226.0" prefHeight="17.0" prefWidth="106.0" styleClass="blackText" text="Years of experince" AnchorPane.topAnchor="226.0" />
+      <Label fx:id="yearsLabel" layoutX="276.0" layoutY="227.0" prefHeight="17.0" prefWidth="129.0" styleClass="blackText" text="Years of experince" AnchorPane.topAnchor="227.0" />
       <Label fx:id="infoLabel" layoutX="401.0" layoutY="14.0" prefHeight="51.0" prefWidth="161.0" styleClass="blackText" text="Applicant Info">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="300.0" layoutY="268.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Gender" AnchorPane.topAnchor="268.0" />
+      <Label fx:id="genderLabel" layoutX="277.0" layoutY="268.0" prefHeight="17.0" prefWidth="123.0" styleClass="blackText" text="Gender" AnchorPane.topAnchor="268.0" />
       <ImageView fx:id="back" fitHeight="22.0" fitWidth="22.0" layoutX="257.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" styleClass="back" AnchorPane.bottomAnchor="448.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="533.0" AnchorPane.topAnchor="30.0">
          <image>
             <Image url="@../res/left-arrow.png" />
          </image>
       </ImageView>
       <TextField fx:id="gender" editable="false" layoutX="411.0" layoutY="263.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" AnchorPane.topAnchor="263.0" />
-      <Label fx:id="statusLabel" layoutX="300.0" layoutY="310.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Status" AnchorPane.topAnchor="310.0" />
+      <Label fx:id="statusLabel" layoutX="277.0" layoutY="308.0" prefHeight="17.0" prefWidth="123.0" styleClass="blackText" text="Status" AnchorPane.topAnchor="308.0" />
       <TextField fx:id="status" editable="false" layoutX="412.0" layoutY="303.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" AnchorPane.topAnchor="303.0" />
       <Button fx:id="toPDF" layoutX="446.0" layoutY="396.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" style="-fx-background-color: #3282B8;" text="To PDF" textFill="WHITE" />
       <Label fx:id="jobLabel" layoutX="300.0" layoutY="349.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Job" visible="false" />

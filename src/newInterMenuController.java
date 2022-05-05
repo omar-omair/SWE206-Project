@@ -99,6 +99,7 @@ public class newInterMenuController {
     private Label success;
 
     protected static boolean edit = false;
+
     protected static Interview interview;
     
     @FXML
@@ -143,7 +144,7 @@ public class newInterMenuController {
             newInter.setVisible(false);
             addButtonL.setVisible(false);
             editButtonL.setVisible(true);
-            interviewee.setEditable(false);
+            interviewee.setDisable(true);
             int firstInterviewerIndex = App.employeeList.indexOf(interview.getInterviewers().get(0));
             int secondInterviewerIndex = App.employeeList.indexOf(interview.getInterviewers().get(1)) -2;
             int thirdInterviewerIndex = App.employeeList.indexOf(interview.getInterviewers().get(2)) -3;

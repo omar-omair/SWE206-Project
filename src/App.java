@@ -37,6 +37,9 @@ public class App extends Application{
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("  login");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.sizeToScene();
         stage.getIcons().add(new Image(App.class.getResourceAsStream("icon.png")));
         stage.show();
     }

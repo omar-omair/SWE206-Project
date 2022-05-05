@@ -46,6 +46,12 @@ public class interviewListController {
     private Button removeButtonUN;
 
     @FXML
+    private Button infoButtonL;
+
+    @FXML
+    private Button infoButtonUN;
+
+    @FXML
     private ImageView settingsButton;
 
     @FXML
@@ -161,6 +167,17 @@ public class interviewListController {
             }
         });
 
+        infoButtonUN.setOnAction(e -> {
+            try {
+                infoMenuController.employeeInfo = false;
+                infoMenuController.interviewInfo = true;
+                changeScene(e, "infoMenu.fxml");
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         result.setCellValueFactory(new PropertyValueFactory<Interview, String>("result"));
@@ -178,12 +195,17 @@ public class interviewListController {
                 removeButtonL.setVisible(false);
                 editButtonUN.setVisible(true);
                 editButtonL.setVisible(false);
+                infoButtonUN.setVisible(true);
+                infoButtonL.setVisible(false);
             }
             else {
                 removeButtonUN.setVisible(false);
                 removeButtonL.setVisible(true);
                 editButtonUN.setVisible(false);
                 editButtonL.setVisible(true);
+                infoButtonUN.setVisible(false);
+                infoButtonL.setVisible(true);
+
             }
         });
     }

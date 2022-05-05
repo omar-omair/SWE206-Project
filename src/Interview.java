@@ -80,7 +80,9 @@ public class Interview implements Serializable {
 
     public ArrayList<String> getInterviewersNames(){
         ArrayList<String> interviewers = new ArrayList<>();
-        for (Employee interviewer:this.interviewers) interviewers.add(interviewer.getName());
+        interviewers.add(this.firstInterviewerName);
+        interviewers.add(this.secondInterviewerName);
+        interviewers.add(this.thirdInterviewerName);
         return interviewers;
     }
 

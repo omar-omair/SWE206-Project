@@ -38,7 +38,6 @@
 
 .list {
     -fx-background-color: #121212;
-    -fx-text-fill: #FFFFFF;
 }
 
 .comboBox {
@@ -113,11 +112,19 @@
 
 .table-row-cell:odd{
     -fx-background-color: #222222;
-    -fx-text-fill: white;
+    -fx-text-background-color: white;
 }
 .table-row-cell:even{
     -fx-background-color: #202020;
     -fx-text-background-color: white;
+}
+
+.table-row-cell:selected {
+    -fx-text-background-color:#069bff;
+}
+
+.table-row-cell:hover {
+    -fx-text-background-color:#BBE1FA;
 }
 
 
@@ -130,7 +137,7 @@
 }
 
 .table-view .column-header-background{
-    -fx-background-color: linear-gradient(to bottom, #1dbbdd44, #93f9b944);
+    -fx-background-color: linear-gradient(to bottom, #1B262C, #0F4C75);
 }
 
 .table-view .column-header {
@@ -171,8 +178,19 @@
 }
 
 .table-view .virtual-flow .scroll-bar:vertical .thumb{
-    -fx-background-color:  linear-gradient(to bottom, #1dbbdd44, #93f9b944);
+    -fx-background-color:  linear-gradient(to bottom, #1B262C, #0F4C75);
 }
 .table-view .virtual-flow .scroll-bar:horizontal .thumb {
-    -fx-background-color:  linear-gradient(to right, #1dbbdd44, #93f9b944);
+    -fx-background-color:  linear-gradient(to right, #1B262C, #0F4C75);
 }
+
+.jfx-combo-box .list-cell{
+    -fx-background-color: #121212;
+    -fx-text-fill: white;
+
+}
+
+.jfx-combo-box .list-cell:hover{ 
+    -fx-text-fill: #069bff;
+}
+

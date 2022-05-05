@@ -143,6 +143,7 @@ public class appListController {
         infoButtonUN.setOnAction(e -> {
             try {
            infoMenuController.employeeInfo = false;
+           infoMenuController.interviewInfo = false;
            changeScene(e, "infoMenu.fxml");}
            catch (Exception ex) {
             ex.printStackTrace();

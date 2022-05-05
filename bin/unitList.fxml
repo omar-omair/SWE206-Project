@@ -104,7 +104,7 @@
             <Image url="@../res/left-arrow.png" />
          </image>
       </ImageView>
-      <TableView fx:id="table" layoutX="269.0" layoutY="57.0" prefHeight="336.0" prefWidth="462.0" styleClass="list">
+      <TableView fx:id="table" layoutX="279.0" layoutY="57.0" prefHeight="336.0" prefWidth="462.0" styleClass="list">
          <columns>
             <TableColumn fx:id="name" prefWidth="322.5" text="Name" />
             <TableColumn fx:id="level" prefWidth="138.5" text="Level" />

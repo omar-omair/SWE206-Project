@@ -97,16 +97,16 @@
             <Font name="Bodoni MT Bold" size="17.0" />
          </font>
       </Label>
-      <Button fx:id="editButtonL" layoutX="354.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Edit Interview" textFill="WHITE" />
-      <Button fx:id="editButtonUN" layoutX="354.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Edit Interview" textFill="WHITE" visible="false" />
-      <Button fx:id="removeButtonL" layoutX="528.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Remove Interview" textFill="WHITE" />
-      <Button fx:id="removeButtonUN" layoutX="528.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Remove Interview" textFill="WHITE" visible="false" />
+      <Button fx:id="editButtonL" layoutX="332.0" layoutY="423.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Edit Interview" textFill="WHITE" />
+      <Button fx:id="editButtonUN" layoutX="332.0" layoutY="423.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Edit Interview" textFill="WHITE" visible="false" />
+      <Button fx:id="removeButtonL" layoutX="451.0" layoutY="423.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Remove Interview" textFill="WHITE" />
+      <Button fx:id="removeButtonUN" layoutX="451.0" layoutY="423.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Remove Interview" textFill="WHITE" visible="false" />
       <ImageView fx:id="back" fitHeight="22.0" fitWidth="22.0" layoutX="247.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="back" AnchorPane.bottomAnchor="464.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="531.0" AnchorPane.topAnchor="14.0">
          <image>
             <Image url="@../res/left-arrow.png" />
          </image>
       </ImageView>
-      <TableView fx:id="table" layoutX="224.0" layoutY="56.0" prefHeight="350.0" prefWidth="567.0">
+      <TableView fx:id="table" layoutX="224.0" layoutY="56.0" prefHeight="350.0" prefWidth="567.0" styleClass="list">
         <columns>
           <TableColumn fx:id="appName" prefWidth="131.5" text="Applicant's Name" />
           <TableColumn fx:id="date" prefWidth="111.0" text="Date" />
@@ -115,5 +115,7 @@
             <TableColumn fx:id="result" prefWidth="95.0" text="Result" />
         </columns>
       </TableView>
+      <Button fx:id="infoButtonL" layoutX="596.0" layoutY="423.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="View info" textFill="WHITE" />
+      <Button fx:id="infoButtonUN" layoutX="596.0" layoutY="423.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="View info" textFill="WHITE" visible="false" />
    </children>
 </AnchorPane>

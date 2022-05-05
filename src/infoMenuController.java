@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -80,13 +81,26 @@ public class infoMenuController {
     private Label yearsLabel;
 
     @FXML
+    private Label genderLabel;
+
+    @FXML
+    private Label nameLabel;
+
+    @FXML
+    private Label idLabel;
+
+    @FXML
     private TextField job;
 
     private Applicant applicant;
 
     private Employee employee;
 
+    private Interview interview;
+
     protected static Boolean employeeInfo = false;
+
+    protected static Boolean interviewInfo = false;
 
     @FXML
     public void initialize() {
@@ -109,6 +123,27 @@ public class infoMenuController {
             gender.setText(employee.getGender());
             status.setText(Integer.toString(employee.getSalary()));
             job.setText(employee.getJob().toString());
+
+        }
+
+        else if(interviewInfo) {
+            interview = App.interList.get(interviewListController.index);
+            infoLabel.setText("Interview info");
+            nameLabel.setText("Interviewee's name");
+            idLabel.setText("First interviewer's name");
+            eduLabel.setText("Second interviewer's name");
+            yearsLabel.setText("Third interviewer's name");
+            genderLabel.setText("Date");
+            statusLabel.setText("Result");
+            eduLabel.setFont(new Font(10.5));
+            yearsLabel.setFont(new Font(11));
+            name.setText(interview.getInterviewee().getName());
+            id.setText(interview.getInterviewersNames().get(0));
+            EL.setText(interview.getInterviewersNames().get(1));
+            years.setText(interview.getInterviewersNames().get(2));
+            gender.setText(interview.getDate() + " at " + interview.getTime());
+            status.setText(interview.getResult());
+            toPDF.setVisible(false);
 
         }
 
@@ -176,6 +211,7 @@ public class infoMenuController {
         back.setOnMouseClicked(e -> {
             try {
             if(employeeInfo) {changeScene(e, "employeeList.fxml");}
+            else if(interviewInfo) {changeScene(e, "interList.fxml");}
             else{changeScene(e, "appList.fxml");}}
             catch (Exception ex) {
                 ex.printStackTrace();

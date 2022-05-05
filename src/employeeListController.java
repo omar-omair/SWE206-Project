@@ -159,6 +159,7 @@ public class employeeListController {
         infoButtonUN.setOnAction(e -> {
             try {
                 infoMenuController.employeeInfo = true;
+                infoMenuController.interviewInfo = false;
                 changeScene(e, "infoMenu.fxml");
             }
             catch (Exception ex) {

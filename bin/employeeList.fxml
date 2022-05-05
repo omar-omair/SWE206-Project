@@ -101,7 +101,7 @@
       <Button fx:id="editButtonUN" layoutX="293.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Edit Employee info" textFill="WHITE" visible="false" />
       <Button fx:id="removeButtonUN" layoutX="457.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Remove Employee" textFill="WHITE" visible="false" AnchorPane.leftAnchor="457.0" />
       <Button fx:id="removeButtonL" layoutX="457.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Remove Employee" textFill="WHITE" AnchorPane.leftAnchor="457.0" />
-      <TableView fx:id="table" layoutX="226.0" layoutY="47.0" prefHeight="358.0" prefWidth="560.0" styleClass="list">
+      <TableView fx:id="table" layoutX="227.0" layoutY="47.0" prefHeight="358.0" prefWidth="560.0" styleClass="list">
         <columns>
           <TableColumn fx:id="name" prefWidth="113.5" text="Full Name" />
             <TableColumn fx:id="id" prefWidth="91.5" text="ID" />
