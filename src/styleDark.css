@@ -184,8 +184,14 @@
     -fx-background-color:  linear-gradient(to right, #1B262C, #0F4C75);
 }
 
-.jfx-combo-box .list-cell{
-    -fx-background-color: #121212;
+.jfx-combo-box .list-cell:even{
+    -fx-background-color: #181818;
+    -fx-text-fill: white;
+
+}
+
+.jfx-combo-box .list-cell:odd{
+    -fx-background-color: #222222;
     -fx-text-fill: white;
 
 }
@@ -193,4 +199,8 @@
 .jfx-combo-box .list-cell:hover{ 
     -fx-text-fill: #069bff;
 }
+
+.jfx-combo-box .arrow {
+    -fx-background-color: #3282B8
+}   
 
