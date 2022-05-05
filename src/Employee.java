@@ -115,6 +115,21 @@ public class Employee implements Serializable{
         else return false;
     }
 
+    public int calculateMaxSalary(Job job, Unit unit){
+        int maxBasicSalary, totalMaxSalary;
+        if (unit instanceof Division){
+            maxBasicSalary = job.getBasicSalary() + 500 * (this.yearsOfExperience + 2) + 1000;
+        }
+        else if(unit instanceof Directorate){
+            maxBasicSalary = job.getBasicSalary() + 500 * (this.yearsOfExperience + 2) + 500;
+        }
+        else {
+            maxBasicSalary = job.getBasicSalary() + 500 * (this.yearsOfExperience + 2);
+        }
+        totalMaxSalary = (int) (maxBasicSalary + 0.25 * maxBasicSalary + 0.1 * maxBasicSalary);
+        return totalMaxSalary;
+    }
+
     public Unit getUnit() {
         return unit;
     }

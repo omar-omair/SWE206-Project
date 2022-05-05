@@ -75,11 +75,15 @@ public class empInfoController {
     @FXML
     private JFXSlider salarySlider;
 
+    @FXML
+    private Label wrong;
+
     private Employee employee = App.employeeList.get(employeeListController.index);
 
     @FXML
     public void initialize() {
 
+        int oldYears = employee.getYearsOfExperience();
         unitBox.setItems(FXCollections.observableArrayList(App.unitList));
         unitBox.getSelectionModel().selectedItemProperty().addListener(z-> {
             ArrayList<Band> bands = unitBox.getSelectionModel().getSelectedItem().getJobBands();
@@ -120,7 +124,8 @@ public class empInfoController {
 
         back.setOnMouseClicked(e -> {
             try {
-                changeScene(e, "employeeList.fxml");}
+                changeScene(e, "employeeList.fxml");
+                employee.setYearsOfExperience(oldYears);}
                 catch (Exception ex) {
                  ex.printStackTrace();
             }
@@ -194,9 +199,17 @@ public class empInfoController {
         unitBox.getSelectionModel().select(unitIndex);
         jobBox.getSelectionModel().select(jobIndex);
 
+        salarySlider.visibleProperty().addListener(t-> {
+            if(salarySlider.isVisible() == true) {
+                salarySlider.setMin((int) (employee.getSalary() - (employee.getSalary() * 0.10)));
+                salarySlider.setMax(employee.calculateMaxSalary(employee.getJob(), employee.getUnit()));
+                salarySlider.setValue(employee.getSalary());
+            }
+        });
+
         Timeline valueChecker = new Timeline(new KeyFrame(Duration.millis(1), z -> {
-            if(name.equals("") || years.equals("") || unitBox.getSelectionModel().getSelectedItem() == null 
-            || jobBox.getSelectionModel().getSelectedItem() == null) {
+            if(name.getText().equals("") || years.getText().equals("") || unitBox.getSelectionModel().getSelectedItem() == null 
+            || jobBox.getSelectionModel().getSelectedItem() == null || wrong.isVisible() == true) {
                 editButtonL.setVisible(true);
                 editButtonUN.setVisible(false);
                 salarySlider.setVisible(false);
@@ -206,10 +219,25 @@ public class empInfoController {
                 editButtonL.setVisible(false);
                 editButtonUN.setVisible(true);
                 salarySlider.setVisible(true);
-                salarySlider.setMin(employee.getSalary() - (employee.getSalary() * 0.15));
-                salarySlider.setMax(employee.calculateSalary(employee.getJob(), employee.getUnit()));
             }
         }));
+
+        years.textProperty().addListener(z-> {
+            try {
+            if(!years.getText().equals("")) {
+                employee.setYearsOfExperience(Integer.parseInt(years.getText()));
+                wrong.setVisible(false);
+            }
+            if(!years.getText().equals("") && Integer.parseInt(years.getText()) < oldYears) {
+                wrong.setText("putting less years than what the employee started with isn't allowed");
+                wrong.setVisible(true);
+            }
+            }
+            catch (Exception ex) {
+                wrong.setText("Invalid input for years of experience please try Again.");
+                wrong.setVisible(true);
+            }
+        });
 
         valueChecker.setCycleCount(Timeline.INDEFINITE);
         valueChecker.play();

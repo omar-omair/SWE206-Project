@@ -113,6 +113,7 @@
       <Button fx:id="editButtonUN" layoutX="479.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #3282B8; -fx-text-fill: #FFFFFF;" text="Edit" visible="false" AnchorPane.leftAnchor="479.0" AnchorPane.topAnchor="360.0" />
       <TextField fx:id="name" editable="false" layoutX="398.0" layoutY="130.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" />
       <TextField fx:id="years" layoutX="398.0" layoutY="170.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" />
-      <JFXSlider fx:id="salarySlider" layoutX="393.0" layoutY="306.0" majorTickUnit="500.0" max="0.0" minorTickCount="100" prefHeight="38.0" prefWidth="263.0" showTickLabels="true" showTickMarks="true" styleClass="salary" visible="false" />
+      <JFXSlider fx:id="salarySlider" layoutX="393.0" layoutY="306.0" majorTickUnit="1000.0" max="0.0" minorTickCount="200" prefHeight="38.0" prefWidth="263.0" showTickLabels="true" showTickMarks="true" styleClass="salary" visible="false" />
+      <Label fx:id="wrong" layoutX="287.0" layoutY="398.0" text="putting less years than what the employee started with isn't allowed" textFill="RED" visible="false" />
    </children>
 </AnchorPane>
