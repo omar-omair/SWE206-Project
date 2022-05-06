@@ -175,6 +175,11 @@ public class employeeListController {
         unit.setCellValueFactory(new PropertyValueFactory<Employee, Unit>("unit"));
         id.setCellValueFactory(new PropertyValueFactory<Employee, String>("id"));
         salary.setCellValueFactory(new PropertyValueFactory<Employee,Integer>("salary"));
+        name.setResizable(false);
+        id.setResizable(false);
+        job.setResizable(false);
+        unit.setResizable(false);
+        salary.setResizable(false);
         table.setItems(FXCollections.observableArrayList(App.employeeList));
 
         table.getSelectionModel().selectedItemProperty().addListener(t -> {

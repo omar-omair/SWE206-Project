@@ -203,12 +203,14 @@ public class appListController {
             }
         });
 
-
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         name.setCellValueFactory(new PropertyValueFactory<Applicant, String>("name"));
         id.setCellValueFactory(new PropertyValueFactory<Applicant, String>("id"));
         status.setCellValueFactory(new PropertyValueFactory<Applicant, String>("status"));
+        name.setResizable(false);
+        id.setResizable(false);
+        status.setResizable(false);
         table.setItems(FXCollections.observableArrayList(App.appList));
 
         table.getSelectionModel().selectedItemProperty().addListener(t -> {

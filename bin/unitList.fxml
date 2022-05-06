@@ -109,6 +109,9 @@
             <TableColumn fx:id="name" prefWidth="322.5" text="Name" />
             <TableColumn fx:id="level" prefWidth="138.5" text="Level" />
          </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
    </children>
 </AnchorPane>

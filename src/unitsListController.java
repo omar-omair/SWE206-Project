@@ -128,6 +128,7 @@ public class unitsListController {
             }
         });
 
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         name.setCellValueFactory(new PropertyValueFactory<Unit, String>("name"));
         level.setCellValueFactory(new PropertyValueFactory<Unit, String>("level"));

@@ -207,30 +207,44 @@ public class newUnitController {
 
         editButtonUN.setOnAction(e -> {
             try {
-                String levelPicked = ((JFXRadioButton) level.getSelectedToggle()).getText();
-                unit.setName(name.getText());
-                unit.setUnitCapacity(Integer.parseInt(capacity.getText()));
-                if(engineering.isDisabled() == false && engineering.isSelected() == true) {
-                    unit.addJobBand(App.engineering);
+                Boolean uniqueName = true;
+                for (int i = 0; i < App.unitList.size(); i++) {
+                    if(name.getText().equalsIgnoreCase(App.unitList.get(i).getName()) && i != unitsListController.index) {
+                        uniqueName = false;
+                    }
                 }
-                if(managment.isDisabled() == false && managment.isSelected() == true) {
-                    unit.addJobBand(App.management);
-                }
-                if(!(levelPicked.equals(unit.getLevel()))) {
-                    if(levelPicked.equals("Division")) {
-                        App.unitList.set(unitsListController.index, unit.changeToDivision());
+                if(uniqueName) {
+                    String levelPicked = ((JFXRadioButton) level.getSelectedToggle()).getText();
+                    unit.setName(name.getText());
+                    unit.setUnitCapacity(Integer.parseInt(capacity.getText()));
+                    if(engineering.isDisabled() == false && engineering.isSelected() == true) {
+                        unit.addJobBand(App.engineering);
                     }
-                    else if(levelPicked.equals("Department")) {
-                        App.unitList.set(unitsListController.index, unit.changeToDepartment());
+                    if(managment.isDisabled() == false && managment.isSelected() == true) {
+                        unit.addJobBand(App.management);
                     }
-                    else {
-                        App.unitList.set(unitsListController.index, unit.changeToDirectorate());
-                        
+                    if(!(levelPicked.equals(unit.getLevel()))) {
+                        if(levelPicked.equals("Division")) {
+                            App.unitList.set(unitsListController.index, unit.changeToDivision());
+                        }
+                        else if(levelPicked.equals("Department")) {
+                            App.unitList.set(unitsListController.index, unit.changeToDepartment());
+                        }
+                        else {
+                            App.unitList.set(unitsListController.index, unit.changeToDirectorate());
+                            
+                        }
                     }
+
+                    App.save(App.unitList, "../unitList.ser");
+                    changeScene(e, "unitList.fxml");
                 }
 
-                App.save(App.unitList, "../unitList.ser");
-                changeScene(e, "unitList.fxml");
+                else {
+                    success.setVisible(false);
+                    wrong.setVisible(true);
+                    wrong.setText("A unit with this name already exists");
+                }
                 
             }
             catch (Exception ex) {
@@ -240,34 +254,49 @@ public class newUnitController {
         
         addButtonUN.setOnAction(e -> {
             try {
-                Unit nUnit;
+                boolean uniqueName = true;
+                for (int i = 0; i < App.unitList.size(); i++) {
+                    if(name.getText().equalsIgnoreCase(App.unitList.get(i).getName())) {
+                        uniqueName = false;
+                    }
+                }
 
-                if(division.isSelected()){
-                    nUnit = new Division(name.getText(),Integer.parseInt(capacity.getText()));
-                }
-                else if(directorate.isSelected()){
-                    nUnit = new Directorate(name.getText(),Integer.parseInt(capacity.getText()));
-                }
-                else{
-                    nUnit = new Department(name.getText(),Integer.parseInt(capacity.getText()));
-                }
-                if(managment.isSelected()) {
-                    nUnit.addJobBand(App.management);
-                }
-                if(engineering.isSelected()) {
-                    nUnit.addJobBand(App.engineering);
-                }
-                App.unitList.add(nUnit);
-                App.save(App.unitList,"../unitList.ser");
-                App.unitList = App.read(App.unitList, "../unitList.ser");
-                success.setVisible(true);
-                wrong.setVisible(false);
+                if(uniqueName) {
+                    Unit nUnit;
 
-                name.setText("");
-                capacity.setText("");
-                level.selectToggle(null);
-                engineering.setSelected(false);
-                managment.setSelected(false);
+                    if(division.isSelected()){
+                        nUnit = new Division(name.getText(),Integer.parseInt(capacity.getText()));
+                    }
+                    else if(directorate.isSelected()){
+                        nUnit = new Directorate(name.getText(),Integer.parseInt(capacity.getText()));
+                    }
+                    else{
+                        nUnit = new Department(name.getText(),Integer.parseInt(capacity.getText()));
+                    }
+                    if(managment.isSelected()) {
+                        nUnit.addJobBand(App.management);
+                    }
+                    if(engineering.isSelected()) {
+                        nUnit.addJobBand(App.engineering);
+                    }
+                    App.unitList.add(nUnit);
+                    App.save(App.unitList,"../unitList.ser");
+                    App.unitList = App.read(App.unitList, "../unitList.ser");
+                    success.setVisible(true);
+                    wrong.setVisible(false);
+
+                    name.setText("");
+                    capacity.setText("");
+                    level.selectToggle(null);
+                    engineering.setSelected(false);
+                    managment.setSelected(false);
+                }
+
+                else {
+                    success.setVisible(false);
+                    wrong.setVisible(true);
+                    wrong.setText("A unit with this name already exists");
+                }
             }
             catch (Exception ex) {
                 success.setVisible(false);

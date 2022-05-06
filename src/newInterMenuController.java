@@ -146,37 +146,40 @@ public class newInterMenuController {
             editButtonL.setVisible(true);
             interviewee.setDisable(true);
             int firstInterviewerIndex = App.employeeList.indexOf(interview.getInterviewers().get(0));
-            int secondInterviewerIndex = App.employeeList.indexOf(interview.getInterviewers().get(1)) -2;
-            int thirdInterviewerIndex = App.employeeList.indexOf(interview.getInterviewers().get(2)) -3;
+            
             
             interviewee.getSelectionModel().select(App.appList.indexOf(interview.getInterviewee()));
             firstInterviewer.getSelectionModel().select(firstInterviewerIndex);
 
-            if(secondInterviewerIndex == -2) {
-                secondInterviewerIndex = 0;
-            }
-            else if(firstInterviewerIndex == App.employeeList.size() - 1) {
-                secondInterviewerIndex += 2;
-            }
-            else {
-                secondInterviewerIndex++;
-            }
+        //     if(interview.getInterviewers().size() > 1){
+        //     int secondInterviewerIndex = App.employeeList.indexOf(interview.getInterviewers().get(1)) -2;
 
-            if(thirdInterviewerIndex == -3) {
-                thirdInterviewerIndex = 0;
-            }
-            else if(secondInterviewerIndex == App.employeeList.size() - 2) {
-                thirdInterviewerIndex += 3;
-            }
-            else {
-                thirdInterviewerIndex++;
-            }
+        //     if(secondInterviewerIndex == -2) {
+        //         secondInterviewerIndex = 0;
+        //     }
+        //     else if(firstInterviewerIndex == App.employeeList.size() - 1) {
+        //         secondInterviewerIndex += 2;
+        //     }
+        //     else {
+        //         secondInterviewerIndex++;
+        //     }
+        //     secondInterviewer.getSelectionModel().select(secondInterviewerIndex);
 
+        //     if(interview.getInterviewers().size() > 2) {
+        //     int thirdInterviewerIndex = App.employeeList.indexOf(interview.getInterviewers().get(2)) -3;
 
-            secondInterviewer.getSelectionModel().select(secondInterviewerIndex);
-            thirdInterviewer.getSelectionModel().select(thirdInterviewerIndex);
-
-
+        //     if(thirdInterviewerIndex == -3) {
+        //         thirdInterviewerIndex = 0;
+        //     }
+        //     else if(secondInterviewerIndex == App.employeeList.size() - 2) {
+        //         thirdInterviewerIndex += 3;
+        //     }
+        //     else {
+        //         thirdInterviewerIndex++;
+        //     }
+        //     thirdInterviewer.getSelectionModel().select(thirdInterviewerIndex);
+        // }
+        // }
             time.setText(interview.getTime());
             result.getSelectionModel().select(0);
             LocalDate interDate = LocalDate.parse(interview.getDate());
@@ -281,11 +284,37 @@ public class newInterMenuController {
             catch (Exception ex) {
                 wrong.setVisible(true);
                 wrong.setText(ex.getMessage());
+                ex.printStackTrace();
             }
         }); 
 
         editButton.setOnAction(e-> {
-            
+            try {
+            interview.clearInterviewers();
+            Employee firstInter = firstInterviewer.getSelectionModel().getSelectedItem();
+            Employee secondInter = secondInterviewer.getSelectionModel().getSelectedItem();
+            Employee thirdInter = thirdInterviewer.getSelectionModel().getSelectedItem();
+            interview.addInterviewer(firstInter);
+            if(secondInter != null) {
+                interview.addInterviewer(secondInter);
+            }
+            if(thirdInter != null) {
+                interview.addInterviewer(thirdInter);
+            }
+            interview.setInterviewersName();
+            interview.setResult(result.getSelectionModel().getSelectedItem());
+            interview.setTime(time.getText());
+            interview.setDate(date.getValue().toString());
+
+            App.interList.add(interview);
+            App.save(App.interList,"../interList.ser");
+            App.interList = App.read(App.interList,"../interList.ser");
+            changeScene(e, "interList.fxml");
+            }
+            catch (Exception ex) {
+                wrong.setVisible(true);
+            }
+
         });
 
         Callback<DatePicker, DateCell> callB = new Callback<DatePicker, DateCell>() {

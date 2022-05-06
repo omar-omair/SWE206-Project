@@ -18,9 +18,9 @@ public class Applicant implements Serializable {
     private static final long serialVersionUID = -4343060459389843856L;
 
     public Applicant(String name, String id, String gender, String educationLevel, int yearsOfExperience) throws Exception{
-        if (!(name.toUpperCase().matches("[A-Z - ]+"))) throw new Exception("Invalid name");
-        if (!(id.matches("[0-9]+")) || !(id.length() == 10)) throw new Exception("Invalid ID");
-        if (yearsOfExperience < 0) throw new Exception("Invalid years of experience");
+        if (!(name.toUpperCase().matches("[A-Z - ]+"))) throw new Exception("Invalid Name");
+        if (!(id.matches("[0-9]+")) || !(id.length() == 10)) throw new Exception("ID must be 10 characters long");
+        if (yearsOfExperience < 0) throw new Exception("years of experience must be positive");
         if(!(gender.equalsIgnoreCase("male") || gender.equalsIgnoreCase("female"))) throw new Exception("Invalid gender");
         this.name = name.toUpperCase();
         this.id = id;

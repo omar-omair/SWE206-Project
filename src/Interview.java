@@ -49,14 +49,14 @@ public class Interview implements Serializable {
     public void setInterviewersName() {
         this.firstInterviewerName = interviewers.get(0).getName();
 
-        if(interviewers.get(1) == null) {
+        if(interviewers.size() == 2) {
             this.secondInterviewerName = "None";
         }
         else {
             this.secondInterviewerName = interviewers.get(1).getName();
         }
 
-        if(interviewers.get(2) == null) {
+        if(interviewers.size() == 3) {
             this.thirdInterviewerName = "None";
         }
         else {
@@ -84,6 +84,10 @@ public class Interview implements Serializable {
         interviewers.add(this.secondInterviewerName);
         interviewers.add(this.thirdInterviewerName);
         return interviewers;
+    }
+
+    public void clearInterviewers() {
+        interviewers.clear();
     }
 
     public String getDate() {

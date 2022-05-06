@@ -15,6 +15,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.Node;
@@ -144,6 +147,21 @@ public class newAppController {
                 gender = "female";
             }
             try {
+            Boolean uniqueID = true;
+
+            for(int i = 0; i < App.appList.size(); i++) {
+                if(id.getText().equals(App.appList.get(i).getId())) {
+                    uniqueID = false;
+                }
+            }
+
+            for(int i = 0; i < App.employeeList.size(); i++) {
+                if(id.getText().equals(App.employeeList.get(i).getId())) {
+                    uniqueID = false;
+                }
+            }
+            
+            if(uniqueID) {
             App.appList.add(new Applicant(name.getText(), id.getText(), gender, EL.getText(), Integer.parseInt(years.getText())));
             App.save(App.appList,"../appList.ser");
             App.appList = App.read(App.appList, "../appList.ser");
@@ -153,11 +171,25 @@ public class newAppController {
             id.setText("");
             Gender.selectToggle(null);
             success.setVisible(true);
-            wrong.setVisible(false);
+            wrong.setVisible(false);}
+
+            else {
+                wrong.setVisible(true);
+                success.setVisible(false);
+                wrong.setText("Duplicate IDs are not allowed");
+            }
         }
+            catch(NumberFormatException ex) {
+                wrong.setVisible(true);
+                success.setVisible(false);
+                wrong.setText("invalid input for years of experience");
+                wrong.setLayoutX(wrong.getLayoutX() - 10);
+            }
+
             catch (Exception ex) {
                 success.setVisible(false);
                 wrong.setVisible(true);
+                wrong.setText(ex.getMessage());
             }
         });
 
