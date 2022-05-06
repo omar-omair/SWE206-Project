@@ -185,6 +185,11 @@ public class interviewListController {
         appName.setCellValueFactory(new PropertyValueFactory<Interview, String>("interviewee"));
         mainInterviewer.setCellValueFactory(new PropertyValueFactory<Interview, String>("firstInterviewerName"));
         time.setCellValueFactory(new PropertyValueFactory<Interview, String>("time"));
+        appName.setResizable(false);
+        result.setResizable(false);
+        mainInterviewer.setResizable(false);
+        time.setResizable(false);
+        date.setResizable(false);
         table.setItems(FXCollections.observableArrayList(App.interList));
 
         table.getSelectionModel().selectedItemProperty().addListener(z-> {
