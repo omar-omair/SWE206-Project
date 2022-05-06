@@ -26,7 +26,7 @@ public class App extends Application{
         unitList = read(unitList, "../unitList.ser");
         employeeList = read(employeeList, "../empList.ser");
         interList = read(interList, "../interList.ser");
-
+        
         management = new Band("Project Management");
         engineering = new Band("Engineering");
 

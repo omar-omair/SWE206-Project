@@ -49,14 +49,14 @@ public class Interview implements Serializable {
     public void setInterviewersName() {
         this.firstInterviewerName = interviewers.get(0).getName();
 
-        if(interviewers.size() == 2) {
+        if(interviewers.size() == 1) {
             this.secondInterviewerName = "None";
         }
         else {
             this.secondInterviewerName = interviewers.get(1).getName();
         }
 
-        if(interviewers.size() == 3) {
+        if(interviewers.size() == 2) {
             this.thirdInterviewerName = "None";
         }
         else {

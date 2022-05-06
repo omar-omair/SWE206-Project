@@ -45,6 +45,12 @@ public class unitsListController {
     private ImageView back;
 
     @FXML
+    private Button infoButtonL;
+
+    @FXML
+    private Button infoButtonUN;
+
+    @FXML
     private AnchorPane pane;
 
     @FXML
@@ -52,6 +58,12 @@ public class unitsListController {
 
     @FXML
     private TableColumn<Unit, String> name;
+
+    @FXML
+    private TableColumn<Unit, Integer> spots;
+
+    @FXML
+    private TableColumn<Unit, String> superior;
 
     @FXML
     private TableView<Unit> table;
@@ -128,7 +140,8 @@ public class unitsListController {
         table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         name.setCellValueFactory(new PropertyValueFactory<Unit, String>("name"));
         level.setCellValueFactory(new PropertyValueFactory<Unit, String>("level"));
-
+        superior.setCellValueFactory(new PropertyValueFactory<Unit,String>("superior"));
+        spots.setCellValueFactory(new PropertyValueFactory<Unit, Integer>("availableSpots"));
         table.setItems(FXCollections.observableArrayList(App.unitList));
 
         table.getSelectionModel().selectedItemProperty().addListener(t -> {

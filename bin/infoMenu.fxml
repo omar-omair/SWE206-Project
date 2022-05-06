@@ -114,7 +114,7 @@
       <Label fx:id="statusLabel" layoutX="277.0" layoutY="308.0" prefHeight="17.0" prefWidth="123.0" styleClass="blackText" text="Status" AnchorPane.topAnchor="308.0" />
       <TextField fx:id="status" editable="false" layoutX="412.0" layoutY="303.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" AnchorPane.topAnchor="303.0" />
       <Button fx:id="toPDF" layoutX="446.0" layoutY="396.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" style="-fx-background-color: #3282B8;" text="To PDF" textFill="WHITE" />
-      <Label fx:id="jobLabel" layoutX="300.0" layoutY="349.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Job" visible="false" />
+      <Label fx:id="jobLabel" layoutX="277.0" layoutY="349.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Job" visible="false" />
       <TextField fx:id="job" editable="false" layoutX="411.0" layoutY="344.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" visible="false" />
    </children>
 </AnchorPane>

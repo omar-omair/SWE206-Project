@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -96,14 +97,14 @@
          </children>
       </AnchorPane>
       <TextField fx:id="name" layoutX="400.0" layoutY="130.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" AnchorPane.leftAnchor="400.0" />
-      <Label layoutX="323.0" layoutY="135.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Name" />
+      <Label layoutX="267.0" layoutY="135.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Name" AnchorPane.leftAnchor="270.0" />
       <Label fx:id="newUnit" layoutX="456.0" layoutY="14.0" prefHeight="51.0" prefWidth="94.0" styleClass="blackText" text="New Unit">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="320.0" layoutY="219.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Level" />
-      <JFXRadioButton fx:id="division" layoutX="398.0" layoutY="219.0" styleClass="blackText" text="Division" AnchorPane.rightAnchor="333.0">
+      <Label layoutX="267.0" layoutY="224.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Level" AnchorPane.leftAnchor="270.0" />
+      <JFXRadioButton fx:id="division" layoutX="395.0" layoutY="224.0" styleClass="blackText" text="Division" AnchorPane.rightAnchor="336.0">
          <selectedColor>
             <Color green="0.6470588445663452" blue="0.9607843160629272" />
          </selectedColor>
@@ -111,36 +112,38 @@
             <ToggleGroup fx:id="level" />
          </toggleGroup>
       </JFXRadioButton>
-      <JFXRadioButton fx:id="directorate" layoutX="488.0" layoutY="219.0" styleClass="blackText" text="Directorate" toggleGroup="$level">
+      <JFXRadioButton fx:id="directorate" layoutX="485.0" layoutY="224.0" styleClass="blackText" text="Directorate" toggleGroup="$level">
          <selectedColor>
             <Color green="0.6470588445663452" blue="0.9607843160629272" />
          </selectedColor>
       </JFXRadioButton>
-      <Button fx:id="addButtonUN" layoutX="459.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #3282B8; -fx-text-fill: #FFFFFF;" text="Add" visible="false" />
-      <Button fx:id="addButtonL" layoutX="459.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #808080; -fx-text-fill: #FFFFFF;" text="Add" />
+      <Button fx:id="addButtonUN" layoutX="456.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #3282B8; -fx-text-fill: #FFFFFF;" text="Add" visible="false" />
+      <Button fx:id="addButtonL" layoutX="456.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #808080; -fx-text-fill: #FFFFFF;" text="Add" />
       <ImageView fx:id="back" fitHeight="22.0" fitWidth="22.0" layoutX="257.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" styleClass="back" AnchorPane.bottomAnchor="448.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="533.0" AnchorPane.topAnchor="30.0">
          <image>
             <Image url="@../res/left-arrow.png" />
          </image>
       </ImageView>
-      <JFXRadioButton fx:id="department" layoutX="595.0" layoutY="219.0" styleClass="blackText" text="Department" toggleGroup="$level">
+      <JFXRadioButton fx:id="department" layoutX="592.0" layoutY="224.0" styleClass="blackText" text="Department" toggleGroup="$level">
          <selectedColor>
             <Color green="0.6470588445663452" blue="0.9607843160629272" />
          </selectedColor>
       </JFXRadioButton>
-      <JFXCheckBox fx:id="managment" checkedColor="#00a5f5" layoutX="398.0" layoutY="263.0" styleClass="blackText" text="Project Managment" AnchorPane.rightAnchor="272.5" />
-      <JFXCheckBox fx:id="engineering" checkedColor="#00a5f5" layoutX="560.0" layoutY="263.0" styleClass="blackText" text="Engineering" />
-      <Label layoutX="320.0" layoutY="264.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Bands" />
-      <Button fx:id="editButtonL" layoutX="459.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #808080; -fx-text-fill: #FFFFFF;" text="Edit" visible="false" />
-      <Button fx:id="editButtonUN" layoutX="459.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #3282B8; -fx-text-fill: #FFFFFF;" text="Edit" visible="false" />
+      <JFXCheckBox fx:id="managment" checkedColor="#00a5f5" layoutX="395.0" layoutY="264.0" styleClass="blackText" text="Project Managment" AnchorPane.rightAnchor="275.5" />
+      <JFXCheckBox fx:id="engineering" checkedColor="#00a5f5" layoutX="557.0" layoutY="264.0" styleClass="blackText" text="Engineering" />
+      <Label layoutX="267.0" layoutY="265.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Bands" AnchorPane.leftAnchor="267.0" />
+      <Button fx:id="editButtonL" layoutX="456.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #808080; -fx-text-fill: #FFFFFF;" text="Edit" visible="false" />
+      <Button fx:id="editButtonUN" layoutX="456.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #3282B8; -fx-text-fill: #FFFFFF;" text="Edit" visible="false" />
       <Label fx:id="editUnit" layoutX="456.0" layoutY="16.0" prefHeight="51.0" prefWidth="94.0" styleClass="blackText" text="Edit Unit" visible="false">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="320.0" layoutY="176.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Capacity" />
-      <TextField fx:id="capacity" layoutX="398.0" layoutY="171.0" prefHeight="27.0" prefWidth="252.0" styleClass="textField" AnchorPane.leftAnchor="400.0" />
-      <Label fx:id="wrong" layoutX="253.0" layoutY="324.0" text="Somthing is wrong please try again" textFill="RED" visible="false" />
-      <Label fx:id="success" layoutX="295.0" layoutY="324.0" text="Unit added sucessfully" textFill="#00dd42" visible="false" />
+      <Label layoutX="267.0" layoutY="176.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Capacity" AnchorPane.leftAnchor="270.0" />
+      <TextField fx:id="capacity" layoutX="398.0" layoutY="171.0" prefHeight="27.0" prefWidth="252.0" styleClass="textField" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="148.0" />
+      <Label fx:id="wrong" layoutX="245.0" layoutY="364.0" text="Somthing is wrong please try again" textFill="RED" visible="false" />
+      <Label fx:id="success" layoutX="279.0" layoutY="364.0" text="Unit added sucessfully" textFill="#00dd42" visible="false" />
+      <Label fx:id="superiorLabel" layoutX="270.0" layoutY="307.0" prefHeight="17.0" prefWidth="106.0" styleClass="blackText" text="Superior (Optional)" AnchorPane.leftAnchor="270.0" />
+      <JFXComboBox fx:id="superior" layoutX="402.0" layoutY="303.0" prefHeight="25.0" prefWidth="252.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="148.0" />
    </children>
 </AnchorPane>

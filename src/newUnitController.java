@@ -1,8 +1,9 @@
 import java.io.IOException;
-
+import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
 
 import javafx.animation.KeyFrame;
@@ -96,8 +97,13 @@ public class newUnitController {
     @FXML
     private Label success;
 
-
     protected static Unit unit;
+
+    @FXML
+    private JFXComboBox<Unit> superior;
+
+    @FXML
+    private Label superiorLabel;
 
     @FXML
     public void initialize() {
@@ -106,6 +112,45 @@ public class newUnitController {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");
         }
+
+        level.selectedToggleProperty().addListener(z-> {
+            if(division.isSelected()){
+                superior.setVisible(false);
+                superiorLabel.setVisible(false);
+            }
+            else if(directorate.isSelected()) {
+                superior.setVisible(true);
+                superiorLabel.setVisible(true);
+                ArrayList<Unit> divisions = new ArrayList<Unit>();
+                for (int i = 0; i < App.unitList.size(); i++) {
+                    if(App.unitList.get(i) instanceof Division) {
+                        divisions.add(App.unitList.get(i));
+                    }
+                }
+
+                superior.getSelectionModel().clearSelection();
+                superior.getItems().clear();
+                superior.getItems().addAll(divisions);
+            }
+            else if(department.isSelected()) {
+                superior.setVisible(true);
+                superiorLabel.setVisible(true);
+                ArrayList<Unit> directorates = new ArrayList<Unit>();
+                for (int i = 0; i < App.unitList.size(); i++) {
+                    if(App.unitList.get(i) instanceof Directorate) {
+                        directorates.add(App.unitList.get(i));
+                    }
+                }
+
+                superior.getSelectionModel().clearSelection();
+                superior.getItems().clear();
+                superior.getItems().addAll(directorates);
+            }
+            else {
+                superior.getSelectionModel().clearSelection();
+                superior.getItems().clear();
+            }
+        });
 
         if(edit) {
             editUnit.setVisible(true);
@@ -215,6 +260,7 @@ public class newUnitController {
                     String levelPicked = ((JFXRadioButton) level.getSelectedToggle()).getText();
                     unit.setName(name.getText());
                     unit.setUnitCapacity(Integer.parseInt(capacity.getText()));
+                    Unit superiorUnit = superior.getSelectionModel().getSelectedItem();
                     if(engineering.isDisabled() == false && engineering.isSelected() == true) {
                         unit.addJobBand(App.engineering);
                     }
@@ -223,13 +269,15 @@ public class newUnitController {
                     }
                     if(!(levelPicked.equals(unit.getLevel()))) {
                         if(levelPicked.equals("Division")) {
-                            App.unitList.set(unitsListController.index, unit.changeToDivision());
+                            App.unitList.set(unitsListController.index, unit.changeToDivision("Independent"));
                         }
                         else if(levelPicked.equals("Department")) {
-                            App.unitList.set(unitsListController.index, unit.changeToDepartment());
+                            if(superiorUnit == null) {App.unitList.set(unitsListController.index, unit.changeToDepartment("Independent"));}
+                           else { App.unitList.set(unitsListController.index, unit.changeToDepartment(superior.getSelectionModel().getSelectedItem().getName()));}
                         }
                         else {
-                            App.unitList.set(unitsListController.index, unit.changeToDirectorate());
+                            if(superiorUnit == null) {App.unitList.set(unitsListController.index, unit.changeToDirectorate("Independent"));}
+                            else { App.unitList.set(unitsListController.index, unit.changeToDirectorate(superior.getSelectionModel().getSelectedItem().getName()));}
                             
                         }
                     }
@@ -261,15 +309,25 @@ public class newUnitController {
 
                 if(uniqueName) {
                     Unit nUnit;
+                    Unit superiorUnit = superior.getSelectionModel().getSelectedItem();
 
                     if(division.isSelected()){
-                        nUnit = new Division(name.getText(),Integer.parseInt(capacity.getText()));
+                        nUnit = new Division(name.getText(),Integer.parseInt(capacity.getText()),"Independent");
                     }
+
                     else if(directorate.isSelected()){
-                        nUnit = new Directorate(name.getText(),Integer.parseInt(capacity.getText()));
+                        if(superiorUnit == null) {
+                        nUnit = new Directorate(name.getText(),Integer.parseInt(capacity.getText()), "Independent");}
+                        else {
+                            nUnit = new Directorate(name.getText(),Integer.parseInt(capacity.getText()), superiorUnit.getName());
+                        }
                     }
                     else{
-                        nUnit = new Department(name.getText(),Integer.parseInt(capacity.getText()));
+                        if(superiorUnit == null) {
+                            nUnit = new Department(name.getText(),Integer.parseInt(capacity.getText()), "Independent");}
+                            else {
+                                nUnit = new Department(name.getText(),Integer.parseInt(capacity.getText()), superiorUnit.getName());
+                            }
                     }
                     if(managment.isSelected()) {
                         nUnit.addJobBand(App.management);
@@ -294,11 +352,13 @@ public class newUnitController {
                     success.setVisible(false);
                     wrong.setVisible(true);
                     wrong.setText("A unit with this name already exists");
+
                 }
             }
             catch (Exception ex) {
                 success.setVisible(false);
                 wrong.setVisible(true);
+                ex.printStackTrace();
             }
         });
 

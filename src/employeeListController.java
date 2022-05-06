@@ -138,6 +138,7 @@ public class employeeListController {
 
         removeButtonUN.setOnAction(e -> {
             try {
+            employee.getUnit().removeEmployee(employee);
             App.employeeList.remove(index);
             App.save(App.employeeList,"../empList.ser");
             App.employeeList = App.read(App.employeeList, "../empList.ser");

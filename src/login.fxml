@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller">
    <children>
       <AnchorPane layoutY="138.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0F4C75;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -42,8 +42,8 @@
             <Font name="Agency FB" size="15.0" />
          </font>
       </Button>
-      <JFXPasswordField fx:id="passwordText" layoutX="538.0" layoutY="354.0" prefHeight="25.0" prefWidth="210.0" />
-      <JFXTextField fx:id="userText" layoutX="538.0" layoutY="274.0" prefHeight="25.0" prefWidth="210.0" />
+      <JFXPasswordField fx:id="passwordText" layoutX="538.0" layoutY="354.0" prefHeight="25.0" prefWidth="210.0" AnchorPane.leftAnchor="538.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="354.0" />
+      <JFXTextField fx:id="userText" focusTraversable="false" layoutX="538.0" layoutY="274.0" prefHeight="25.0" prefWidth="210.0" />
       <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="413.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../phase%202/program/portal/res/user.png" />
@@ -52,17 +52,17 @@
          <image>
             <Image url="@../../../../phase%202/program/portal/res/key.png" />
          </image></ImageView>
-      <ImageView fx:id="eyeHidden" fitHeight="22.0" fitWidth="22.0" layoutX="758.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="eyeHidden" fitHeight="22.0" fitWidth="22.0" layoutX="758.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="364.0">
          <image>
-            <Image url="@../../../../phase%202/program/portal/res/hide.png" />
+            <Image url="@../res/hide.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="eyeShow" fitHeight="22.0" fitWidth="22.0" layoutX="758.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="eyeShow" fitHeight="22.0" fitWidth="22.0" layoutX="758.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.topAnchor="364.0">
          <image>
-            <Image url="@../../../../phase%202/program/portal/res/view.png" />
+            <Image url="@../res/view.png" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="passwordReveal" layoutX="538.0" layoutY="355.0" prefHeight="25.0" prefWidth="210.0" visible="false" />
+      <JFXTextField fx:id="passwordReveal" layoutX="559.0" layoutY="408.0" prefHeight="25.0" prefWidth="210.0" visible="false" AnchorPane.leftAnchor="538.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="354.0" />
       <Text fx:id="incorrectLogin" fill="RED" layoutX="413.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="incorrect username or password please try again" visible="false" wrappingWidth="229.0498046875">
          <font>
             <Font name="Agency FB" size="14.0" />

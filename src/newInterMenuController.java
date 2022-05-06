@@ -177,6 +177,7 @@ public class newInterMenuController {
         //     thirdInterviewer.getSelectionModel().select(thirdInterviewerIndex);
         // }
         // }
+
             time.setText(interview.getTime());
             result.getSelectionModel().select(0);
             LocalDate interDate = LocalDate.parse(interview.getDate());
@@ -298,12 +299,12 @@ public class newInterMenuController {
             if(thirdInter != null) {
                 interview.addInterviewer(thirdInter);
             }
+            
             interview.setInterviewersName();
             interview.setResult(result.getSelectionModel().getSelectedItem());
             interview.setTime(time.getText());
             interview.setDate(date.getValue().toString());
 
-            App.interList.add(interview);
             App.save(App.interList,"../interList.ser");
             App.interList = App.read(App.interList,"../interList.ser");
             changeScene(e, "interList.fxml");

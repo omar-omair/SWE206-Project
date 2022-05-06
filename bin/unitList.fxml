@@ -97,21 +97,25 @@
             <Font name="Bodoni MT Bold" size="17.0" />
          </font>
       </Label>
-      <Button fx:id="editButtonL" layoutX="452.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Edit Unit" textFill="WHITE" AnchorPane.leftAnchor="452.0" />
-      <Button fx:id="editButtonUN" layoutX="452.0" layoutY="416.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Edit Unit" textFill="WHITE" visible="false" />
+      <Button fx:id="editButtonL" layoutX="409.0" layoutY="418.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="Edit Unit" textFill="WHITE" AnchorPane.leftAnchor="409.0" />
+      <Button fx:id="editButtonUN" layoutX="409.0" layoutY="418.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="Edit Unit" textFill="WHITE" visible="false" />
       <ImageView fx:id="back" fitHeight="22.0" fitWidth="22.0" layoutX="257.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" styleClass="back" AnchorPane.bottomAnchor="464.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="531.0" AnchorPane.topAnchor="14.0">
          <image>
             <Image url="@../res/left-arrow.png" />
          </image>
       </ImageView>
-      <TableView fx:id="table" layoutX="279.0" layoutY="57.0" prefHeight="336.0" prefWidth="462.0" styleClass="list">
+      <TableView fx:id="table" layoutX="232.0" layoutY="57.0" prefHeight="336.0" prefWidth="559.0" styleClass="list">
          <columns>
-            <TableColumn fx:id="name" prefWidth="322.5" text="Name" />
-            <TableColumn fx:id="level" prefWidth="138.5" text="Level" />
+            <TableColumn fx:id="name" prefWidth="164.0" text="Name" />
+            <TableColumn fx:id="level" prefWidth="178.0" text="Level" />
+            <TableColumn fx:id="spots" prefWidth="164.0" text="Available spots" />
+            <TableColumn fx:id="superior" prefWidth="178.0" text="Superior unit" />
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Button fx:id="infoButtonL" layoutX="530.0" layoutY="418.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="View Info" textFill="WHITE" />
+      <Button fx:id="infoButtonUN" layoutX="530.0" layoutY="418.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="View Info" textFill="WHITE" visible="false" />
    </children>
 </AnchorPane>
