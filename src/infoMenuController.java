@@ -96,9 +96,13 @@ public class infoMenuController {
 
     private Interview interview;
 
+    private Unit unit;
+
     protected static Boolean employeeInfo = false;
 
     protected static Boolean interviewInfo = false;
+
+    protected static boolean unitInfo = false;
 
     @FXML
     public void initialize() {
@@ -144,6 +148,25 @@ public class infoMenuController {
             toPDF.setVisible(false);
 
         }
+
+        else if(unitInfo){
+            unit = App.unitList.get(unitsListController.index);
+            infoLabel.setText("Unit Info");
+            nameLabel.setText("Unit name");
+            idLabel.setText("Level");
+            eduLabel.setText("Capacity");
+            yearsLabel.setText("available spots");
+            genderLabel.setText("Superior unit");
+            statusLabel.setVisible(false);
+            status.setVisible(false);
+            toPDF.setVisible(false);
+            name.setText(unit.getName());
+            EL.setText(Integer.toString(unit.getUnitCapacity()));
+            years.setText(Integer.toString(unit.getAvailableSpots()));
+            gender.setText(unit.getSuperior());
+            id.setText(unit.getLevel());
+        }
+
 
         else {
             applicant = App.appList.get(appListController.index);
@@ -210,6 +233,7 @@ public class infoMenuController {
             try {
             if(employeeInfo) {changeScene(e, "employeeList.fxml");}
             else if(interviewInfo) {changeScene(e, "interList.fxml");}
+            else if(unitInfo) {changeScene(e, "unitList.fxml");}
             else{changeScene(e, "appList.fxml");}}
             catch (Exception ex) {
                 ex.printStackTrace();

@@ -30,7 +30,12 @@ public class App extends Application{
         management = new Band("Project Management");
         engineering = new Band("Engineering");
 
-        management.addJob(new Job("Manager", 7500, management));
+        management.addJob(new Job("Program Manager", 12000, management));
+        management.addJob(new Job("Product Manager", 14000, management));
+
+        engineering.addJob(new Job("Lead Engineer", 10000, engineering));
+        engineering.addJob(new Job("Engineer", 8000, engineering));
+        engineering.addJob(new Job("Senior Engineer", 14000, engineering));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
         Parent root = (Parent) loader.load();

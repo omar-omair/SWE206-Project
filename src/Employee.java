@@ -21,7 +21,7 @@ public class Employee implements Serializable{
         if (salary < 0) throw new Exception("Invalid salary");
         if(!(gender.equalsIgnoreCase("male") || gender.equalsIgnoreCase("female"))) throw new Exception("Invalid gender");
         if (!(id.matches("[0-9]+"))) throw new Exception("Invalid ID");
-        if (unit.checkAvailability() <= 0) throw new Exception("The unit has no available jobs");
+        if (unit.getAvailableSpots() <= 0) throw new Exception("The unit has no available jobs");
         this.name = name.toUpperCase();
         this.salary = salary;
         this.gender = gender.toUpperCase();
@@ -29,7 +29,6 @@ public class Employee implements Serializable{
         this.job = job;
         this.unit = unit;
         this.yearsOfExperience = yearsOfExperience;
-        unit.addEmployee(Employee.this);
     }
 
     public String getName() {
@@ -83,7 +82,7 @@ public class Employee implements Serializable{
         System.out.printf("Employee name: %s\nID: %s\nGender: %s\nSalary: %d\nJob: %s", this.name, this.id, this.gender, this.salary,this.job.getName());
     }
     public boolean manageJobUnit(Job job, Unit unit) throws Exception {
-        if (unit.checkAvailability() > 0){
+        if (unit.getAvailableSpots() > 0){
             setJob(job);
             unit.addEmployee(Employee.this);
             this.unit.removeEmployee(Employee.this);

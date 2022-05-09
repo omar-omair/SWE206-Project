@@ -130,6 +130,7 @@ public class appListController {
             try {
            infoMenuController.employeeInfo = false;
            infoMenuController.interviewInfo = false;
+           infoMenuController.unitInfo = false;
            changeScene(e, "infoMenu.fxml");}
            catch (Exception ex) {
             ex.printStackTrace();
@@ -174,9 +175,17 @@ public class appListController {
         jobButtonUN.setOnAction(e -> {
             try {
             if(applicant.checkFeasibility() == true) {
+            System.out.println(applicant.getOfferedUnit().getAvailableSpots());
             Employee employee = applicant.assignJob();
             App.employeeList.add(employee);
+            for(int i = 0; i < App.unitList.size(); i++) {
+                if(employee.getUnit().getName().equals(App.unitList.get(i).getName())) {
+                    App.unitList.get(i).addEmployee(employee);
+                }
+            }
             App.save(App.employeeList,"../empList.ser");
+            App.save(App.unitList,"../unitList.ser");
+            App.unitList = App.read(App.unitList, "../unitList.ser");
             App.employeeList = App.read(App.employeeList, "../empList.ser");
             remove();
             }

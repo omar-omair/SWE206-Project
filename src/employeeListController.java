@@ -138,8 +138,14 @@ public class employeeListController {
 
         removeButtonUN.setOnAction(e -> {
             try {
-            employee.getUnit().removeEmployee(employee);
+            for(int i = 0; i < App.unitList.size(); i++) {
+                if(employee.getUnit().getName().equals(App.unitList.get(i).getName())) {
+                    App.unitList.get(i).removeEmployee(employee);
+                }
+            }
             App.employeeList.remove(index);
+            App.save(App.unitList, "../unitList.ser");
+            App.unitList = App.read(App.unitList, "../unitList.ser");
             App.save(App.employeeList,"../empList.ser");
             App.employeeList = App.read(App.employeeList, "../empList.ser");
             table.setItems(FXCollections.observableArrayList(App.employeeList));
@@ -152,6 +158,7 @@ public class employeeListController {
         infoButtonUN.setOnAction(e -> {
             try {
                 infoMenuController.employeeInfo = true;
+                infoMenuController.unitInfo = false;
                 infoMenuController.interviewInfo = false;
                 changeScene(e, "infoMenu.fxml");
             }

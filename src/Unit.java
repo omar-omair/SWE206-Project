@@ -21,7 +21,6 @@ public abstract class Unit implements Serializable {
         if(superior != null) {
             this.superior = superior;
         }
-        updateAvailableSpots();
     }
     public void addJobBand(Band band){
         this.jobBands.add(band);
@@ -46,14 +45,7 @@ public abstract class Unit implements Serializable {
         this.employees = employees;
     }
 
-    public void updateAvailableSpots() {
-        availableSpots = this.unitCapacity - employees.size();
-    }
-
     public void addEmployee(Employee employee) throws Exception{
-        for (Employee employee1: employees){
-            if (employee == employee1) throw new Exception("Employee already exists in unit");
-        }
         this.employees.add(employee);
         updateAvailableSpots();
 
@@ -62,8 +54,9 @@ public abstract class Unit implements Serializable {
         this.employees.remove(employee);
         updateAvailableSpots();
     }
-    public int checkAvailability(){
-        return this.unitCapacity - employees.size();
+
+    public void updateAvailableSpots() {
+        this.availableSpots = this.unitCapacity - employees.size();
     }
 
     public ArrayList<String> getEmployeesNames() {
@@ -99,6 +92,10 @@ public abstract class Unit implements Serializable {
     public void setName(String name) throws Exception{
         if (!(name.toUpperCase().matches("[A-Z - ]+"))) throw new Exception("Invalid name");
         this.name = name.toUpperCase();
+    }
+
+    public void setSuperior(String superior) {
+        this.superior = superior;
     }
 
     public void setUnitCapacity(int unitCapacity) throws Exception{

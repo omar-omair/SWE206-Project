@@ -170,6 +170,7 @@ public class interviewListController {
         infoButtonUN.setOnAction(e -> {
             try {
                 infoMenuController.employeeInfo = false;
+                infoMenuController.unitInfo = false;
                 infoMenuController.interviewInfo = true;
                 changeScene(e, "infoMenu.fxml");
             }

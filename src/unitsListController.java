@@ -68,9 +68,13 @@ public class unitsListController {
     @FXML
     private TableView<Unit> table;
 
+    @FXML
+    private Button removeButtonL;
+
+    @FXML
+    private Button removeButtonUN;
+
     protected static int index;
-
-
 
     public void initialize() {
         if(settingsMenuController.dark == true) {
@@ -136,6 +140,29 @@ public class unitsListController {
             }
         });
 
+        infoButtonUN.setOnAction(e -> {
+            try {
+                infoMenuController.employeeInfo = false;
+                infoMenuController.unitInfo = true;
+                infoMenuController.interviewInfo = false;
+                changeScene(e, "infoMenu.fxml");
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        removeButtonUN.setOnAction(e -> {
+            try {
+            App.unitList.remove(index);
+            App.save(App.unitList,"../unitList.ser");
+            App.unitList = App.read(App.unitList,"../unitList.ser");
+            table.setItems(FXCollections.observableArrayList(App.unitList));}
+            catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         name.setCellValueFactory(new PropertyValueFactory<Unit, String>("name"));
@@ -149,12 +176,26 @@ public class unitsListController {
             index = table.getSelectionModel().getSelectedIndex();
             
             if(picked != null) {
+                if(picked.getEmployees().size() == 0) {
+                    removeButtonUN.setVisible(true);
+                    removeButtonL.setVisible(false);
+                }
+                else {
+                    removeButtonUN.setVisible(false);
+                    removeButtonL.setVisible(true);
+                }
                 editButtonL.setVisible(false);
                 editButtonUN.setVisible(true);
+                infoButtonUN.setVisible(true);
+                infoButtonL.setVisible(false);
             }
             else {
+                removeButtonUN.setVisible(false);
+                removeButtonL.setVisible(true);
                 editButtonL.setVisible(true);
                 editButtonUN.setVisible(false);
+                infoButtonUN.setVisible(false);
+                infoButtonL.setVisible(true);
             }
         });
 

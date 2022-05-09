@@ -267,7 +267,7 @@ public class newUnitController {
                     if(managment.isDisabled() == false && managment.isSelected() == true) {
                         unit.addJobBand(App.management);
                     }
-                    if(!(levelPicked.equals(unit.getLevel()))) {
+                    if(!(levelPicked.equalsIgnoreCase(unit.getLevel()))) {
                         if(levelPicked.equals("Division")) {
                             App.unitList.set(unitsListController.index, unit.changeToDivision("Independent"));
                         }
@@ -280,6 +280,14 @@ public class newUnitController {
                             else { App.unitList.set(unitsListController.index, unit.changeToDirectorate(superior.getSelectionModel().getSelectedItem().getName()));}
                             
                         }
+                    }
+
+                    if(superiorUnit != null && !unit.getSuperior().equalsIgnoreCase(superiorUnit.getName())) {
+                        unit.setSuperior(superiorUnit.getName());
+                    }
+
+                    else if(superiorUnit == null) {
+                        unit.setSuperior("Independent");
                     }
 
                     App.save(App.unitList, "../unitList.ser");

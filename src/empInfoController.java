@@ -155,11 +155,19 @@ public class empInfoController {
         editButtonUN.setOnAction(e -> {
             try {
             Unit nUnit = unitBox.getSelectionModel().getSelectedItem();
-            if(nUnit.checkAvailability() > 0) {
+            if(!employee.getUnit().getName().equals(nUnit.getName())) {
+            if(nUnit.getAvailableSpots() > 0) {
             employee.setYearsOfExperience(Integer.parseInt(years.getText()));
-            employee.getUnit().removeEmployee(employee);
-            employee.setUnit(nUnit);
-            employee.getUnit().addEmployee(employee);
+            for(int i = 0; i < App.unitList.size(); i++) {
+                if(employee.getUnit().getName().equals(App.unitList.get(i).getName())) {
+                    App.unitList.get(i).removeEmployee(employee);
+                }
+                else if(nUnit.getName().equals(App.unitList.get(i).getName())) {
+                    App.unitList.get(i).addEmployee(employee);
+                }
+            }
+            employee.setUnit(nUnit);}
+
             employee.setSalary((int) salarySlider.getValue());
             App.save(App.employeeList, "../empList.ser");
             App.employeeList = App.read(App.employeeList, "../empList.ser");
@@ -185,9 +193,8 @@ public class empInfoController {
             }
         }
 
-        for(int i = 0; i < App.engineering.getJobs().size(); i++) {
-            if((App.engineering.getJobs().get(i) != null && employee.getJob().getName().equals(App.engineering.getJobs().get(i).getName()))
-            || (App.engineering.getJobs().get(i) != null && employee.getJob().getName().equals(App.management.getJobs().get(i).getName()))) {
+        for(int i = 0; i < jobBox.getItems().size(); i++) {
+            if((employee.getJob().getName().equals(jobBox.getItems().get(i).getName()))) {
                 jobIndex = i;
                 break;
             }

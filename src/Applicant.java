@@ -139,7 +139,15 @@ public class Applicant implements Serializable {
         return salaryRange;
     }
     public boolean checkFeasibility() throws Exception {
-        if (this.getOfferedUnit().checkAvailability() > 0 && this.getOfferedSalary() > 0){
+        Unit unit = null;
+
+        for(int i = 0; i < App.unitList.size(); i++){
+            if(App.unitList.get(i).getName().equals(offeredUnit.getName())) {
+                unit = App.unitList.get(i);
+            }
+        }
+
+        if (unit != null && unit.getAvailableSpots() > 0 && this.getOfferedSalary() > 0){
             return true;
         }
         else return false;
@@ -151,7 +159,7 @@ public class Applicant implements Serializable {
     }
 
     public boolean createJobOffer() throws Exception{
-        if(this.getOfferedUnit().checkAvailability() > 0) {
+        if(this.getOfferedUnit().getAvailableSpots() > 0) {
             setStatus("Approved");
             return true;
         }
