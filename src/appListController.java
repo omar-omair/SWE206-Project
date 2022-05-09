@@ -175,7 +175,6 @@ public class appListController {
         jobButtonUN.setOnAction(e -> {
             try {
             if(applicant.checkFeasibility() == true) {
-            System.out.println(applicant.getOfferedUnit().getAvailableSpots());
             Employee employee = applicant.assignJob();
             App.employeeList.add(employee);
             for(int i = 0; i < App.unitList.size(); i++) {
@@ -187,6 +186,7 @@ public class appListController {
             App.save(App.unitList,"../unitList.ser");
             App.unitList = App.read(App.unitList, "../unitList.ser");
             App.employeeList = App.read(App.employeeList, "../empList.ser");
+            wrong.setVisible(false);
             remove();
             }
             else {
