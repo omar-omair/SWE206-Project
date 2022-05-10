@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -75,6 +76,9 @@ public class employeeListController {
 
     @FXML
     private Button infoButtonUN;
+
+    @FXML
+    private Text fullNameLabel;
 
     protected static int index;
 

@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
@@ -84,13 +85,16 @@ public class interviewListController {
     @FXML
     private TableView<Interview> table;
 
+    @FXML
+    private Text fullNameLabel;
+
     protected static Interview interview;
 
     protected static int index;
 
     @FXML
     public void initialize() {
-
+        fullNameLabel.setText(controller.accountFullName);
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");

@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -84,11 +85,16 @@ public class appListController {
     @FXML
     private Label wrong;
 
+    @FXML
+    private Text fullNameLabel;
+
     protected static int index;
 
     protected static Applicant applicant;
 
+
     public void initialize() {
+        fullNameLabel.setText(controller.accountFullName);
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");
@@ -164,6 +170,11 @@ public class appListController {
 
         removeButtonUN.setOnAction(e -> {
             try {
+                for(int i = 0; i < App.interList.size(); i++) {
+                    if(App.interList.get(i).getInterviewee().getId().equals(applicant.getId())) {
+                        App.interList.remove(i);
+                    }
+                }
                 remove();
             }
             catch (Exception ex) {
@@ -187,6 +198,11 @@ public class appListController {
             App.unitList = App.read(App.unitList, "../unitList.ser");
             App.employeeList = App.read(App.employeeList, "../empList.ser");
             wrong.setVisible(false);
+            for(int i = 0; i < App.interList.size(); i++) {
+                if(App.interList.get(i).getInterviewee().getId().equals(applicant.getId())) {
+                    App.interList.remove(i);
+                }
+            }
             remove();
             }
             else {
@@ -254,6 +270,6 @@ public class appListController {
         App.save(App.appList,"../appList.ser");
         App.appList = App.read(App.appList,"../appList.ser");
         table.setItems(FXCollections.observableArrayList(App.appList));
-    }
+    } 
 
 }

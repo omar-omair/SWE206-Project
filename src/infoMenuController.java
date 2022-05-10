@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -98,6 +99,9 @@ public class infoMenuController {
 
     private Unit unit;
 
+    @FXML
+    private Text fullNameLabel;
+
     protected static Boolean employeeInfo = false;
 
     protected static Boolean interviewInfo = false;
@@ -106,6 +110,7 @@ public class infoMenuController {
 
     @FXML
     public void initialize() {
+        fullNameLabel.setText(controller.accountFullName);
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");

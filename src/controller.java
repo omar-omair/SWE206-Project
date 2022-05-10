@@ -1,7 +1,10 @@
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.Map.Entry;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,7 +13,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 
 public class controller {
 
@@ -41,8 +47,22 @@ public class controller {
     @FXML
     private Text incorrectLogin;
 
+    private HashMap<String,String[]> accounts;
+
+    protected static String accountFullName;
+
     @FXML
     public void initialize() {
+        try {
+        FileInputStream fis = new FileInputStream("../accounts.ser");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        accounts = (HashMap<String, String[]>) ois.readObject();
+        ois.close();}
+        
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
         eyeHidden.setOnMouseClicked(e -> {
             passwordReveal.setText(passwordText.getText());
             passwordReveal.setVisible(true);
@@ -62,8 +82,17 @@ public class controller {
         
         loginButton.setOnMouseClicked(e -> { 
             try {
-                if (userText.getText().equalsIgnoreCase("Ahmed12") && 
-                (passwordText.getText().equalsIgnoreCase("123") || passwordReveal.getText().equalsIgnoreCase("123"))) {
+                boolean correctInfo = false;
+                
+                for(Entry<String,String[]> entry: accounts.entrySet()) {
+                    if(userText.getText().equalsIgnoreCase(entry.getKey()) && 
+                    (passwordText.getText().equalsIgnoreCase(entry.getValue()[0]) || passwordReveal.getText().equalsIgnoreCase(entry.getValue()[0]))) {
+                        accountFullName = entry.getValue()[1];
+                        correctInfo = true;
+                    }
+                }
+
+                if (correctInfo) {
                     AnchorPane loader = (AnchorPane) FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
                     Stage stage = (Stage)(loginButton.getScene().getWindow());
                     stage.setScene(new Scene(loader));

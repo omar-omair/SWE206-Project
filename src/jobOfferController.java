@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.*;
@@ -67,11 +68,14 @@ public class jobOfferController {
     @FXML
     private Label wrong;
 
+    @FXML
+    private Text fullNameLabel;
+
     private Applicant applicant = App.appList.get(appListController.index);
 
     public void initialize() {
         unitBox.setItems(FXCollections.observableArrayList(App.unitList));
-        
+        fullNameLabel.setText(controller.accountFullName);
         unitBox.getSelectionModel().selectedItemProperty().addListener(z-> {
             ArrayList<Band> bands = unitBox.getSelectionModel().getSelectedItem().getJobBands();
             ArrayList<Job> jobs = new ArrayList<>();

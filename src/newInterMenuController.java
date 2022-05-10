@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.Duration;
@@ -95,12 +96,16 @@ public class newInterMenuController {
     @FXML
     private Label success;
 
+    @FXML
+    private Text fullNameLabel;
+
     protected static boolean edit = false;
 
     protected static Interview interview;
     
     @FXML
     public void initialize() {
+        fullNameLabel.setText(controller.accountFullName);
         ArrayList<String> results = new ArrayList<String>();
         results.add("HOLD");
         results.add("PASS");

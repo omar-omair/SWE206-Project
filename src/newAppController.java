@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.Node;
@@ -79,7 +80,11 @@ public class newAppController {
     private Label success;
 
     @FXML
+    private Text fullNameLabel;
+
+    @FXML
     public void initialize() {
+        fullNameLabel.setText(controller.accountFullName);
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");

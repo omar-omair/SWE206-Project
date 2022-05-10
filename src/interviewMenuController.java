@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -38,10 +39,13 @@ public class interviewMenuController {
 
     @FXML
     private AnchorPane pane;
+
+    @FXML
+    private Text fullNameLabel;
     
     @FXML
     public void initialize() {
-
+        fullNameLabel.setText(controller.accountFullName);
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");

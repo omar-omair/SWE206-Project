@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.Node;
@@ -41,7 +42,11 @@ public class appMenuController {
     private AnchorPane pane;
 
     @FXML
+    private Text fullNameLabel;
+
+    @FXML
     public void initialize() {
+        fullNameLabel.setText(controller.accountFullName);
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");

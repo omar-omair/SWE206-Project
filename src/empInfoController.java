@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.Node;
@@ -77,8 +78,11 @@ public class empInfoController {
     private Employee employee = App.employeeList.get(employeeListController.index);
 
     @FXML
-    public void initialize() {
+    private Text fullNameLabel;
 
+    @FXML
+    public void initialize() {
+        fullNameLabel.setText(controller.accountFullName);
         int oldYears = employee.getYearsOfExperience();
         unitBox.setItems(FXCollections.observableArrayList(App.unitList));
         unitBox.getSelectionModel().selectedItemProperty().addListener(z-> {

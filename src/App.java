@@ -3,6 +3,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -38,10 +39,11 @@ public class App extends Application{
         engineering.addJob(new Job("Senior Engineer", 14000, engineering));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+        HashMap<String,String[]> accounts = new HashMap<String,String[]>();
         Parent root = (Parent) loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("  login");
+        stage.setTitle("  Login");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.sizeToScene();
