@@ -130,5 +130,10 @@
       </ImageView>
       <Label fx:id="wrong" layoutX="267.0" layoutY="360.0" text="Somthing is wrong please try again" textFill="RED" visible="false" AnchorPane.leftAnchor="257.0" />
       <Label fx:id="success" layoutX="288.0" layoutY="360.0" text="Applicant added sucessfully" textFill="#00dd42" visible="false" />
+      <ImageView fx:id="femaleUser" fitHeight="94.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" styleClass="femaleUser" visible="false" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="14.0">
+         <image>
+            <Image url="@../res/female%20Employee.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

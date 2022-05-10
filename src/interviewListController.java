@@ -88,6 +88,9 @@ public class interviewListController {
     @FXML
     private Text fullNameLabel;
 
+    @FXML
+    private ImageView femaleUser;
+
     protected static Interview interview;
 
     protected static int index;
@@ -95,6 +98,11 @@ public class interviewListController {
     @FXML
     public void initialize() {
         fullNameLabel.setText(controller.accountFullName);
+
+        if(controller.isFemale) {
+            femaleUser.setVisible(true);
+        }
+        
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");

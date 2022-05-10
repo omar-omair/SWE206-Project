@@ -102,6 +102,9 @@ public class infoMenuController {
     @FXML
     private Text fullNameLabel;
 
+    @FXML
+    private ImageView femaleUser;
+
     protected static Boolean employeeInfo = false;
 
     protected static Boolean interviewInfo = false;
@@ -111,6 +114,11 @@ public class infoMenuController {
     @FXML
     public void initialize() {
         fullNameLabel.setText(controller.accountFullName);
+
+        if(controller.isFemale) {
+            femaleUser.setVisible(true);
+        }
+        
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");

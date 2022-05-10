@@ -68,9 +68,10 @@ public class settingsMenuController {
 
         signOutButton.setOnMouseClicked(e -> {
             try {
-            changeScene(e, "login.fxml");
             Stage stage = (Stage)((Node) e.getSource()).getScene().getWindow();
-            stage.setTitle("  Login");}
+            stage.setTitle("  Login");
+            changeScene(e, "login.fxml");
+            }
             catch (Exception ex) {
                 ex.printStackTrace();
             }

@@ -70,6 +70,9 @@ public class jobOfferController {
 
     @FXML
     private Text fullNameLabel;
+    
+    @FXML
+    private ImageView femaleUser;
 
     private Applicant applicant = App.appList.get(appListController.index);
 
@@ -95,6 +98,10 @@ public class jobOfferController {
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");
+        }
+
+        if(controller.isFemale) {
+            femaleUser.setVisible(true);
         }
 
         applicantsButton.setOnAction(e -> {

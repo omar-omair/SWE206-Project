@@ -80,11 +80,18 @@ public class employeeListController {
     @FXML
     private Text fullNameLabel;
 
+    @FXML
+    private ImageView femaleUser;
+
     protected static int index;
 
     protected static Employee employee;
 
     public void initialize() {
+        if(controller.isFemale) {
+            femaleUser.setVisible(true);
+        }
+        
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");

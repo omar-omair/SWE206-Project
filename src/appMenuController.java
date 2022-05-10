@@ -43,10 +43,18 @@ public class appMenuController {
 
     @FXML
     private Text fullNameLabel;
+    
+    @FXML
+    private ImageView femaleUser;
 
     @FXML
     public void initialize() {
         fullNameLabel.setText(controller.accountFullName);
+
+        if(controller.isFemale) {
+            femaleUser.setVisible(true);
+        }
+        
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");

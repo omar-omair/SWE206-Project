@@ -74,6 +74,9 @@ public class unitsListController {
 
     @FXML
     private Button removeButtonUN;
+    
+    @FXML
+    private ImageView femaleUser;
 
     @FXML
     private Text fullNameLabel;
@@ -85,6 +88,10 @@ public class unitsListController {
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");
+        }
+
+        if(controller.isFemale) {
+            femaleUser.setVisible(true);
         }
 
         applicantsButton.setOnAction(e -> {

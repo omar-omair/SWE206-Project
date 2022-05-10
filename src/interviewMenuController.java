@@ -42,6 +42,10 @@ public class interviewMenuController {
 
     @FXML
     private Text fullNameLabel;
+
+    
+    @FXML
+    private ImageView femaleUser;
     
     @FXML
     public void initialize() {
@@ -49,6 +53,10 @@ public class interviewMenuController {
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");
+        }
+
+        if(controller.isFemale) {
+            femaleUser.setVisible(true);
         }
 
         applicantsButton.setOnAction(e -> {

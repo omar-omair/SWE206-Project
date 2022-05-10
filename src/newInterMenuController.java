@@ -99,6 +99,9 @@ public class newInterMenuController {
     @FXML
     private Text fullNameLabel;
 
+    @FXML
+    private ImageView femaleUser;
+
     protected static boolean edit = false;
 
     protected static Interview interview;
@@ -138,6 +141,10 @@ public class newInterMenuController {
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");
+        }
+
+        if(controller.isFemale) {
+            femaleUser.setVisible(true);
         }
 
         if(edit) {

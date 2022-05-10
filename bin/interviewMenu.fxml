@@ -70,7 +70,7 @@
                   </Label>
                </children>
             </VBox>
-            <ImageView fitHeight="94.0" fitWidth="124.0" layoutX="61.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="user">
+            <ImageView fitHeight="94.0" fitWidth="124.0" layoutX="61.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="user" AnchorPane.bottomAnchor="392.0" AnchorPane.leftAnchor="61.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="14.0">
                <image>
                   <Image url="@../res/icon-g32f07143d_1920-modified.png" />
                </image>
@@ -99,6 +99,11 @@
       <ImageView fx:id="newInterButton" fitHeight="80.0" fitWidth="80.0" layoutX="551.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/job-interview.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="femaleUser" fitHeight="94.0" fitWidth="94.0" layoutX="281.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="femaleUser" visible="false" AnchorPane.bottomAnchor="392.0" AnchorPane.leftAnchor="61.0" AnchorPane.rightAnchor="645.0" AnchorPane.topAnchor="14.0">
+         <image>
+            <Image url="@../res/female%20Employee.png" />
          </image>
       </ImageView>
    </children>

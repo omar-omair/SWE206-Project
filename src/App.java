@@ -21,6 +21,8 @@ public class App extends Application{
     
     protected static Band management;
     protected static Band engineering;
+
+    private HashMap<String,String[]> accounts = new HashMap<String,String[]>();
     
     public void start(Stage stage) throws Exception{
         appList = read(appList, "../appList.ser");
@@ -39,7 +41,6 @@ public class App extends Application{
         engineering.addJob(new Job("Senior Engineer", 14000, engineering));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
-        HashMap<String,String[]> accounts = new HashMap<String,String[]>();
         Parent root = (Parent) loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -49,6 +50,22 @@ public class App extends Application{
         stage.sizeToScene();
         stage.getIcons().add(new Image(App.class.getResourceAsStream("icon.png")));
         stage.show();
+
+
+        // To the IT department if u wish to add an account uncomment these lines and fill the username, password, full name spots, put F if employee is female.
+        // run the App then comment the lines again.
+        // if u wish to remove an account uncomment line 65 instead of 64.
+
+        // FileInputStream fis = new FileInputStream("../accounts.ser");
+        // ObjectInputStream ois = new ObjectInputStream(fis);
+        // accounts = (HashMap<String, String[]>) ois.readObject();
+        // FileOutputStream fos = new FileOutputStream("../accounts.ser");
+        // ObjectOutputStream oos = new ObjectOutputStream(fos);
+        // accounts.put(username, new String[] {password, fullName, gender});
+        // accounts.remove(username);
+        // oos.writeObject(accounts);
+        // oos.close();
+        
     }
     public static void main(String[] args) throws Exception {
         launch();

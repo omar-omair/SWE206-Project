@@ -116,5 +116,10 @@
       <Button fx:id="toPDF" layoutX="446.0" layoutY="396.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" style="-fx-background-color: #3282B8;" text="To PDF" textFill="WHITE" />
       <Label fx:id="jobLabel" layoutX="277.0" layoutY="349.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Job" visible="false" />
       <TextField fx:id="job" editable="false" layoutX="411.0" layoutY="344.0" prefHeight="25.0" prefWidth="252.0" styleClass="textField" visible="false" />
+      <ImageView fx:id="femaleUser" fitHeight="94.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" styleClass="femaleUser" visible="false" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="14.0">
+         <image>
+            <Image url="@../res/female%20Employee.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

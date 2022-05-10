@@ -88,13 +88,21 @@ public class appListController {
     @FXML
     private Text fullNameLabel;
 
+    @FXML
+    private ImageView femaleUser;
+
     protected static int index;
 
     protected static Applicant applicant;
 
 
     public void initialize() {
+        if(controller.isFemale) {
+            femaleUser.setVisible(true);
+        }
+
         fullNameLabel.setText(controller.accountFullName);
+
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");

@@ -51,6 +51,8 @@ public class controller {
 
     protected static String accountFullName;
 
+    protected static boolean isFemale = false;
+
     @FXML
     public void initialize() {
         try {
@@ -89,6 +91,13 @@ public class controller {
                     (passwordText.getText().equalsIgnoreCase(entry.getValue()[0]) || passwordReveal.getText().equalsIgnoreCase(entry.getValue()[0]))) {
                         accountFullName = entry.getValue()[1];
                         correctInfo = true;
+
+                        if( entry.getValue().length > 2 && entry.getValue()[2].equalsIgnoreCase("F")) {
+                            isFemale = true;
+                        }
+                        else {
+                            isFemale = false;
+                        }
                     }
                 }
 

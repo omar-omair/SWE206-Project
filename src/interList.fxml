@@ -120,5 +120,10 @@
       </TableView>
       <Button fx:id="infoButtonL" layoutX="596.0" layoutY="423.0" mnemonicParsing="false" style="-fx-background-color: #808080;" text="View info" textFill="WHITE" />
       <Button fx:id="infoButtonUN" layoutX="596.0" layoutY="423.0" mnemonicParsing="false" style="-fx-background-color: #3282B8;" text="View info" textFill="WHITE" visible="false" />
+      <ImageView fx:id="femaleUser" fitHeight="94.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" styleClass="femaleUser" visible="false" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="14.0">
+         <image>
+            <Image url="@../res/female%20Employee.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

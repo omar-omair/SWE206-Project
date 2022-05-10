@@ -102,6 +102,9 @@ public class newUnitController {
 
     @FXML
     private JFXComboBox<Unit> superior;
+    
+    @FXML
+    private ImageView femaleUser;
 
     @FXML
     private Label superiorLabel;
@@ -115,6 +118,10 @@ public class newUnitController {
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");
             pane.getStylesheets().add("styleDark.css");
+        }
+
+        if(controller.isFemale) {
+            femaleUser.setVisible(true);
         }
 
         level.selectedToggleProperty().addListener(z-> {

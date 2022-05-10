@@ -36,6 +36,10 @@
     -fx-image: url(darkImages/user-male-modified.png);
 }
 
+.femaleUser {
+    -fx-image: url(darkImages/female-dark.png);
+}
+
 .list {
     -fx-background-color: #121212;
 }
