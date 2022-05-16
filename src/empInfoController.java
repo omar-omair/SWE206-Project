@@ -182,9 +182,8 @@ public class empInfoController {
             employee.setSalary((int) salarySlider.getValue());
             App.save(App.employeeList, "../empList.ser");
             App.employeeList = App.read(App.employeeList, "../empList.ser");
-            changeScene(e, "employeeList.fxml");
             }
-
+            changeScene(e, "employeeList.fxml");
             
             }
             catch (Exception ex) {

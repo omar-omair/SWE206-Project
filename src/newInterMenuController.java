@@ -191,7 +191,7 @@ public class newInterMenuController {
         // }
 
             time.setText(interview.getTime());
-            result.getSelectionModel().select(0);
+            result.getSelectionModel().select(results.indexOf(interview.getResult()));
             LocalDate interDate = LocalDate.parse(interview.getDate());
             date.setValue(interDate);
 
@@ -316,7 +316,7 @@ public class newInterMenuController {
             interview.setResult(result.getSelectionModel().getSelectedItem());
             interview.setTime(time.getText());
             interview.setDate(date.getValue().toString());
-
+    
             App.save(App.interList,"../interList.ser");
             App.interList = App.read(App.interList,"../interList.ser");
             changeScene(e, "interList.fxml");

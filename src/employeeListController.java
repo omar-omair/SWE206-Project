@@ -91,6 +91,12 @@ public class employeeListController {
         if(controller.isFemale) {
             femaleUser.setVisible(true);
         }
+
+        fullNameLabel.setText(controller.accountFullName);
+
+        if(controller.isFemale) {
+            femaleUser.setVisible(true);
+        }
         
         if(settingsMenuController.dark == true) {
             pane.getStylesheets().remove("style.css");

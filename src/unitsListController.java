@@ -166,6 +166,11 @@ public class unitsListController {
 
         removeButtonUN.setOnAction(e -> {
             try {
+            for(int i = 0; i < App.unitList.size(); i++) {
+                if(App.unitList.get(index).getName().equals(App.unitList.get(i).getSuperior())) {
+                    App.unitList.get(i).setSuperior("Independent");
+                }
+            }
             App.unitList.remove(index);
             App.save(App.unitList,"../unitList.ser");
             App.unitList = App.read(App.unitList,"../unitList.ser");

@@ -131,7 +131,7 @@
       </JFXRadioButton>
       <JFXCheckBox fx:id="managment" checkedColor="#00a5f5" layoutX="395.0" layoutY="264.0" styleClass="blackText" text="Project Managment" AnchorPane.rightAnchor="275.5" />
       <JFXCheckBox fx:id="engineering" checkedColor="#00a5f5" layoutX="557.0" layoutY="264.0" styleClass="blackText" text="Engineering" />
-      <Label layoutX="267.0" layoutY="265.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Bands" AnchorPane.leftAnchor="267.0" />
+      <Label layoutX="267.0" layoutY="265.0" prefHeight="17.0" prefWidth="46.0" styleClass="blackText" text="Bands" AnchorPane.leftAnchor="270.0" />
       <Button fx:id="editButtonL" layoutX="456.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #808080; -fx-text-fill: #FFFFFF;" text="Edit" visible="false" />
       <Button fx:id="editButtonUN" layoutX="456.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #3282B8; -fx-text-fill: #FFFFFF;" text="Edit" visible="false" />
       <Label fx:id="editUnit" layoutX="456.0" layoutY="16.0" prefHeight="51.0" prefWidth="94.0" styleClass="blackText" text="Edit Unit" visible="false">
