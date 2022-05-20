@@ -168,7 +168,6 @@ public class empInfoController {
             Unit nUnit = unitBox.getSelectionModel().getSelectedItem();
             if(!employee.getUnit().getName().equals(nUnit.getName())) {
             if(nUnit.getAvailableSpots() > 0) {
-            employee.setYearsOfExperience(Integer.parseInt(years.getText()));
             for(int i = 0; i < App.unitList.size(); i++) {
                 if(employee.getUnit().getName().equals(App.unitList.get(i).getName())) {
                     App.unitList.get(i).removeEmployee(employee);
@@ -178,11 +177,12 @@ public class empInfoController {
                 }
             }
             employee.setUnit(nUnit);}
-
+            }
+            employee.setYearsOfExperience(Integer.parseInt(years.getText()));
             employee.setSalary((int) salarySlider.getValue());
             App.save(App.employeeList, "../empList.ser");
             App.employeeList = App.read(App.employeeList, "../empList.ser");
-            }
+            App.save(App.unitList, "../unitList.ser");
             changeScene(e, "employeeList.fxml");
             
             }
@@ -215,9 +215,15 @@ public class empInfoController {
 
         salarySlider.visibleProperty().addListener(t-> {
             if(salarySlider.isVisible() == true) {
-                salarySlider.setMin((int) (employee.getSalary() - (employee.getSalary() * 0.10)));
-                salarySlider.setMax(employee.calculateMaxSalary(employee.getJob(), employee.getUnit()));
-                salarySlider.setValue(employee.getSalary());
+                salarySlider.setMin((int) (employee.getSalary()));
+                salarySlider.setMax(employee.calculateMaxSalary(jobBox.getSelectionModel().getSelectedItem(), unitBox.getSelectionModel().getSelectedItem()));
+            }
+        });
+
+        jobBox.valueProperty().addListener(t-> {
+            if(jobBox.getSelectionModel().getSelectedItem() != null){
+                salarySlider.setVisible(false);
+                salarySlider.setVisible(true);
             }
         });
 
@@ -233,6 +239,17 @@ public class empInfoController {
                 editButtonL.setVisible(false);
                 editButtonUN.setVisible(true);
                 salarySlider.setVisible(true);
+            }
+
+            if(salarySlider.getMax() <= salarySlider.getMin()) {
+                salarySlider.setVisible(false);
+                wrong.setText("The employee has the maximum salary for this position.");
+                wrong.setVisible(true);
+            }
+            else {
+                if(wrong.getText().equals("The employee has the maximum salary for this position.")){
+                    wrong.setVisible(false);
+                }
             }
         }));
 

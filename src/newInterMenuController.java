@@ -294,7 +294,6 @@ public class newInterMenuController {
             catch (Exception ex) {
                 wrong.setVisible(true);
                 wrong.setText(ex.getMessage());
-                ex.printStackTrace();
             }
         }); 
 
